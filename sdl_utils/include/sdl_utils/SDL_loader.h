@@ -1,0 +1,13 @@
+#ifndef SDL_UTILS_INCLUDE_SDL_UTILS_SDLLOADER_H_
+#define SDL_UTILS_INCLUDE_SDL_UTILS_SDLLOADER_H_
+
+#include <stdint.h>
+
+int32_t initSDL();
+void deinitSDL(); 
+
+
+
+
+#endif
+// SDL_UTILS_INCLUDE_SDL_UTILS_SDLLOADER_H_
