@@ -19,8 +19,15 @@ set(_SOURCES_DIR ${_BASE_DIR}/src)
 add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/main.c
     ${_SOURCES_DIR}/Engine/Engine.c
+    ${_SOURCES_DIR}/Game/Game.c
+    ${_SOURCES_DIR}/Engine/EngineConfigLoader.c
 
     ${_INCLUDE_DIR}/Engine/Engine.h
+    ${_INCLUDE_DIR}/Game/Game.h
+    ${_INCLUDE_DIR}/Game/config/GameCfg.h
+    ${_INCLUDE_DIR}/Engine/config/EngineCfg.h
+    ${_INCLUDE_DIR}/Engine/EngineConfigLoader.h
+
 )
 
 set_target_c_standard(${PROJECT_NAME} 11)

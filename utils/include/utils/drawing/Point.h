@@ -1,17 +1,26 @@
-#ifndef UTILS_INCLUDE_UTILS_POINT_H
-#define UTILS_INCLUDE_UTILS_POINT_H
+#ifndef UTILS_DRAWING_POINT_H_
+#define UTILS_DRAWING_POINT_H_
 
+//C system headers
 #include <stdint.h>
 #include <stdbool.h>
 
-struct Point {
-    int32_t x;
-    int32_t y;
+//Other libraries headers
 
+//Own components headers
+
+//Forward declarations
+
+struct Point {
+  int32_t x;
+  int32_t y;
 };
 
-bool arePointsEqual(struct Point* left, struct Point* right);
-struct Point POINT_ZERO;
-struct Point POINT_UNDEFINED;
+bool arePointsEqual(const struct Point* left, const struct Point* right);
 
-#endif
+bool arePointsDifferent(const struct Point* left, const struct Point* right);
+
+extern const struct Point POINT_ZERO;
+extern const struct Point POINT_UNDEFINED;
+
+#endif /* UTILS_DRAWING_POINT_H_ */

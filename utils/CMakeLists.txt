@@ -1,29 +1,41 @@
-cmake_minimum_required(VERSION 3.5.2)
+cmake_minimum_required(VERSION 3.10.2)
 
 project(utils LANGUAGES C)
 
-set(_ICLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-set(_HEADERS_DIR ${_ICLUDE_DIR}/utils)
-set(_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(_INC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/utils)
+set(_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/)
 
 add_library(
-    ${PROJECT_NAME} STATIC 
-        ${_HEADERS_DIR}/Log.h
-        ${_HEADERS_DIR}/ErrorCodes.h
-        ${_HEADERS_DIR}/containers/Vector.h
-        ${_HEADERS_DIR}/drawing/Point.h
-        ${_HEADERS_DIR}/drawing/Rectangle.h
-        ${_HEADERS_DIR}/input/EventDefines.h
-
-        ${_SOURCE_DIR}/containers/Vector.c
-        ${_SOURCE_DIR}/drawing/Point.c
-        ${_SOURCE_DIR}/drawing/Rectangle.c
+    ${PROJECT_NAME}
+        STATIC
+            ${_INC_DIR}/containers/Vector.h
+            ${_INC_DIR}/drawing/Point.h
+            ${_INC_DIR}/drawing/Rectangle.h
+            ${_INC_DIR}/input/EventDefines.h
+            ${_INC_DIR}/time/Time.h
+            ${_INC_DIR}/thread/Thread.h
+            ${_INC_DIR}/ErrorCodes.h
+            ${_INC_DIR}/Log.h
+            
+            ${_SRC_DIR}/drawing/Point.c
+            ${_SRC_DIR}/drawing/Rectangle.c
+            ${_SRC_DIR}/time/Time.c
+            ${_SRC_DIR}/thread/Thread.c
+            ${_SRC_DIR}/containers/Vector.c
 
 )
 
+set_target_c_standard(${PROJECT_NAME} 11)
+enable_target_c_warnings(${PROJECT_NAME})
+
 target_include_directories(
     ${PROJECT_NAME}
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_compile_definitions(
+    ${PROJECT_NAME}
         PUBLIC
-        ${_ICLUDE_DIR}
+            _DEFAULT_SOURCE=1
 )

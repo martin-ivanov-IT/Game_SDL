@@ -16,14 +16,17 @@ add_library(
     ${PROJECT_NAME} STATIC 
         ${_HEADERS_DIR}/SDL_loader.h
         ${_HEADERS_DIR}/MonitorWindow.h
+        ${_HEADERS_DIR}/config/MonitorWindowCfg.h
         ${_HEADERS_DIR}/Texture.h
         ${_HEADERS_DIR}/InputEvent.h
+        ${_HEADERS_DIR}/Renderer.h
 
 
         ${_SOURCES_DIR}/SDL_loader.c
         ${_SOURCES_DIR}/MonitorWindow.c
         ${_SOURCES_DIR}/Texture.c
         ${_SOURCES_DIR}/InputEvent.c
+        ${_SOURCES_DIR}/Renderer.c
 
 
 )

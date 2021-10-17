@@ -60,6 +60,9 @@ static void setEventTypeInternal(struct InputEvent *e) {
             break;
 
         default:
+            e->type = TOUCH_EVENT_UNKNOWN;
+            e->key = KEY_UNKNOWN;
+            e->mouseButton = MOUSE_UNKNOWN;
             LOGERR("Error, received unsupported eventTypeL %d",e->sdlEvent->type);
             break;
   }

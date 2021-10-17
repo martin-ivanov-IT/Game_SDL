@@ -1,8 +1,20 @@
+//Corresponding header
 #include "utils/drawing/Point.h"
 
-struct Point POINT_ZERO = {.x = 0, .y = 0};
-struct Point POINT_UNDEFINED = {.x = 10000, .y = 10000};
+//C system headers
 
-bool arePointsEqual(struct Point* left, struct Point* right){
-    return (left->x == right->x && left->y && right->y);
+//Other libraries headers
+
+//Own components headers
+
+bool arePointsEqual(const struct Point* left, const struct Point* right) {
+  return (left->x == right->x && left->y == right->y);
 }
+
+bool arePointsDifferent(const struct Point* left, const struct Point* right) {
+  return !arePointsEqual(left, right);
+}
+
+const struct Point POINT_ZERO = { .x = 0, .y = 0 };
+const struct Point POINT_UNDEFINED = { .x = 100000, .y = 100000 };
+
