@@ -6,8 +6,10 @@
 #include "sdl_utils/MonitorWindow.h"
 #include "sdl_utils/Renderer.h"
 #include "sdl_utils/InputEvent.h"
+#include "sdl_utils/containers/ImageContainer.h"
 #include "Game//Game.h"
 #include "utils/containers/Vector.h"
+#include "sdl_utils/containers/TextContainer.h"
 
 struct EngineConfig;
 
@@ -17,6 +19,8 @@ struct Engine {
   struct Game game;
   struct Vector imgs;
   struct Renderer renderer; 
+  struct ImageContainer imgContainer;
+  struct TextContainer textContainer;
 };
 
 int32_t initEngine(struct Engine* engine, const struct EngineConfig* cfg);

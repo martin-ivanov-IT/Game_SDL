@@ -1,9 +1,30 @@
 #include "Engine/EngineConfigLoader.h"
+#include "common/CommonDefines.h"
+#include "sdl_utils/config/ImageContainerCfg.h"
+#include "sdl_utils/config/TextContainerCfg.h"
 #include <string.h>
 
 
-static const int SCREEN_WIDTH = 640;
-static const int SCREEN_HEIGHT = 480;
+static const int32_t SCREEN_WIDTH = 640;
+static const int32_t SCREEN_HEIGHT = 480;
+
+static const int32_t PRESS_KEYS_IMG_WIDTH = 640;
+static const int32_t PRESS_KEYS_IMG_HEIGHT = 480;
+
+static const int32_t LAYER2_IMG_WIDTH_HEIGHT = 150;
+
+static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
+
+static void populateResourceLocation (char* buffer, const char* relativePath){
+    #ifdef RELEASE_BUILD
+    strcpy(buffer,relativePath);
+    #else
+        strcpy(buffer, "../");
+        strcat(buffer,relativePath);
+        
+    #endif
+}
+
 static void populateWindowCfg(struct MonitorWindowCfg* cfg){
     cfg->windowFlag = WINDOWS_SHOWN;
     cfg->windowWidth = SCREEN_WIDTH;
@@ -11,22 +32,34 @@ static void populateWindowCfg(struct MonitorWindowCfg* cfg){
     cfg->windowName = "Hello";
     cfg->windowPos = POINT_UNDEFINED;
 }
-static void populateGameCfg(struct GameConfig* cfg){
-    const char *imagePaths[IMAGES_COUNT] = { "../resources/up.png",
-      "../resources/down.png", "../resources/left.png",
-      "../resources/right.png", "../resources/press_keys.png", "../resources/layer_2.png"};
 
-    for (int32_t i = 0; i < IMAGES_COUNT; i++)
-    {
-        strcpy(cfg->imgLoadPaths[i], imagePaths[i]);
-    }
+static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
+    struct ImageConfig imgCfg;
+    imgCfg.width = PRESS_KEYS_IMG_WIDTH;
+    imgCfg.height = PRESS_KEYS_IMG_HEIGHT;
+    populateResourceLocation(imgCfg.location, "resources/p/press_keys.png");
+    insertImageConfig(cfg, PRESS_KEYS_TEXTURE_ID , &imgCfg);
+
+    imgCfg.width = LAYER2_IMG_WIDTH_HEIGHT;
+    imgCfg.height = LAYER2_IMG_WIDTH_HEIGHT;
+    populateResourceLocation(imgCfg.location, "resources/p/layer_2.png");
+    insertImageConfig(cfg, LAYER2_TEXTURE_ID , &imgCfg);
+}
+
+static void populateTextContainerCfg(struct TextContainerCfg* cfg){
+    struct FontConfig fontCfg;
+    fontCfg.fontSize = ANGELINE_VINATGE_FONT_SIZE;
+    populateResourceLocation(fontCfg.location, "resources/f/AngelineVintage.ttf");
+    insertFontConfig(cfg, ANGELINE_VINATGE_ID , &fontCfg);
 }
 
 struct EngineConfig loadEngineConfig() {
 
-    struct EngineConfig cfg;    
+    struct EngineConfig cfg; 
+    memset(&cfg, 0, sizeof(struct EngineConfig));   
     populateWindowCfg(&cfg.windowCfg);
-    populateGameCfg(&cfg.gameCfg);
+    populateImageContainerCfg(&cfg.imgContainerCfg);
+    populateTextContainerCfg(&cfg.textContainerCfg);
     
     return cfg;
 }

@@ -4,6 +4,9 @@
 #include <SDL_surface.h>
 #include <SDL_image.h>
 #include <SDL_render.h>
+#include <SDL_ttf.h>
+#include "utils/drawing/Color.h"
+
 
 static SDL_Renderer* gRenderer = NULL;
 
@@ -33,17 +36,17 @@ void freeTexture(SDL_Texture** texture ){
     }
 }
 
-int32_t loadTextureFormSurface(SDL_Surface* surface, SDL_Texture** outTexture){
+int32_t loadTextureFormSurface(SDL_Surface** outsurface, SDL_Texture** outTexture){
     if(*outTexture){
         LOGERR("Error, outTexture is already populated. Memory leak prvented");
         return FAILURE;
     }
-    *outTexture = SDL_CreateTextureFromSurface(gRenderer, surface);
+    *outTexture = SDL_CreateTextureFromSurface(gRenderer, *outsurface);
     if(*outTexture == NULL){
         LOGERR("SDL_CreateTextureFromSurface failed Reason: %s",SDL_GetError());
         return FAILURE;
     }
-    freeSurface(&surface);
+    freeSurface(outsurface);
     return SUCCESS;
 }
 
@@ -53,7 +56,7 @@ int32_t loadTextureFormFile(const char* path, SDL_Texture** outTexture){
         LOGERR("loadSurfaceFormFile failed ");
     }
 
-    if(SUCCESS != loadTextureFormSurface(surface, outTexture)){
+    if(SUCCESS != loadTextureFormSurface(&surface, outTexture)){
         LOGERR("loadSurfaceFormFile failed ");
     }
     return SUCCESS;
@@ -62,6 +65,54 @@ int32_t loadTextureFormFile(const char* path, SDL_Texture** outTexture){
 void setRenderer(SDL_Renderer* renderer){
     gRenderer = renderer;
 }
+
+int32_t setBlendModeTexture(SDL_Texture *texture, BlendMode blendMode){
+    if(SUCCESS != SDL_SetTextureBlendMode(texture, (SDL_BlendMode)blendMode)){
+        LOGERR("Error SDL_SetTextureBlendMode failed Resaon %s", SDL_GetError());
+        return FAILURE;
+    }
+    return SUCCESS;
+}
+
+int32_t setAlphaTexture(SDL_Texture *texture, int32_t alpha){
+    if (0>alpha || alpha > FULL_OPACITY){
+        LOGERR("Error invalid alpha value of %d whlie accepted range is [%d - %d]", alpha, ZERO_OPACITY, FULL_OPACITY);
+        return FAILURE;
+
+    }
+    if(SUCCESS != SDL_SetTextureAlphaMod(texture, (uint8_t)alpha)){
+        LOGERR("Error SDL_SetTextureAlphaMod failed Resaon %s", SDL_GetError());
+        return FAILURE;
+    }
+    return SUCCESS;
+}
+
+int32_t loadSurfaceFromText(const char* text , TTF_Font* font, const struct Color* color, SDL_Surface **outsurface){
+    const SDL_Color* sdlColor = (const SDL_Color*)&color->rgba;
+    *outsurface = TTF_RenderText_Blended(font, text, *sdlColor);
+    if(outsurface == NULL){
+        LOGERR("TTF_RenderText_Blended failed %s", SDL_GetError());
+    }
+ return SUCCESS;
+}
+int32_t loadTextureFromText(const char* text , TTF_Font* font, const struct Color* color, 
+                        SDL_Texture **outTextue, int32_t* outTextWidth, int32_t* outTextHeight){
+    SDL_Surface* textSurface = NULL;
+
+    if(SUCCESS != loadSurfaceFromText(text, font, color, &textSurface)){
+        LOGERR("loadSurfaceFromText failed for text %s", text);
+        return FAILURE;
+    }
+    *outTextWidth = textSurface->w;
+    *outTextHeight = textSurface->h;
+
+    if(SUCCESS != loadTextureFormSurface(&textSurface, outTextue)){
+        LOGERR("loadTextureFormSurface failed for text %s", text);
+        return FAILURE;
+    }
+    return SUCCESS;
+}
+
 
 
 

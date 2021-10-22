@@ -10,7 +10,9 @@ add_library(
         STATIC
             ${_INC_DIR}/containers/Vector.h
             ${_INC_DIR}/drawing/Point.h
+            ${_INC_DIR}/drawing/DrawParams.h
             ${_INC_DIR}/drawing/Rectangle.h
+            ${_INC_DIR}/drawing/Color.h
             ${_INC_DIR}/input/EventDefines.h
             ${_INC_DIR}/time/Time.h
             ${_INC_DIR}/thread/Thread.h
@@ -18,7 +20,9 @@ add_library(
             ${_INC_DIR}/Log.h
             
             ${_SRC_DIR}/drawing/Point.c
+            ${_SRC_DIR}/drawing/DrawParams.c
             ${_SRC_DIR}/drawing/Rectangle.c
+            ${_SRC_DIR}/drawing/Color.c
             ${_SRC_DIR}/time/Time.c
             ${_SRC_DIR}/thread/Thread.c
             ${_SRC_DIR}/containers/Vector.c

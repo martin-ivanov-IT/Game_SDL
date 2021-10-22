@@ -24,6 +24,7 @@ add_executable(${PROJECT_NAME}
 
     ${_INCLUDE_DIR}/Engine/Engine.h
     ${_INCLUDE_DIR}/Game/Game.h
+    ${_INCLUDE_DIR}/common/CommonDefines.h
     ${_INCLUDE_DIR}/Game/config/GameCfg.h
     ${_INCLUDE_DIR}/Engine/config/EngineCfg.h
     ${_INCLUDE_DIR}/Engine/EngineConfigLoader.h
@@ -46,3 +47,19 @@ target_include_directories(
 )
 add_subdirectory(utils)
 add_subdirectory(sdl_utils)
+
+if(CMAKE_BUILD_TYPE MATCHES Release)
+    target_compile_definitions(
+        ${PROJECT_NAME}
+            PRIVATE
+            -DRELEASE_BUILD=1
+    )
+
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources/
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+
+)
+endif()

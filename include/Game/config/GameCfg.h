@@ -3,14 +3,13 @@
 
 #include <stdint.h>
 
-#define MAX_IMG_NAME_LEN 50
+struct ImageContainer;
+struct TextContainer;
 
-enum GameImages {
-  UP, DOWN, LEFT, RIGHT, PRESS_KEYS, LAYER_2, IMAGES_COUNT
-};
 
 struct GameConfig {
-  char imgLoadPaths[IMAGES_COUNT][MAX_IMG_NAME_LEN];
+  const struct ImageContainer* imgContainer;
+  struct TextContainer* textContainer;
 };
 
 

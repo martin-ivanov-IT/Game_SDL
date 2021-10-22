@@ -1,4 +1,4 @@
- #include "sdl_utils/InputEvent.h"
+#include "sdl_utils/InputEvent.h"
 #include "utils/input/EventDefines.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"

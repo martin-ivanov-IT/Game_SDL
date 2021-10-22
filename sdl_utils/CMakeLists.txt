@@ -17,9 +17,13 @@ add_library(
         ${_HEADERS_DIR}/SDL_loader.h
         ${_HEADERS_DIR}/MonitorWindow.h
         ${_HEADERS_DIR}/config/MonitorWindowCfg.h
+        ${_HEADERS_DIR}/config/ImageContainerCfg.h
+        ${_HEADERS_DIR}/config/TextContainerCfg.h
         ${_HEADERS_DIR}/Texture.h
         ${_HEADERS_DIR}/InputEvent.h
         ${_HEADERS_DIR}/Renderer.h
+        ${_HEADERS_DIR}/containers/ImageContainer.h
+        ${_HEADERS_DIR}/containers/TextContainer.h
 
 
         ${_SOURCES_DIR}/SDL_loader.c
@@ -27,6 +31,12 @@ add_library(
         ${_SOURCES_DIR}/Texture.c
         ${_SOURCES_DIR}/InputEvent.c
         ${_SOURCES_DIR}/Renderer.c
+        ${_SOURCES_DIR}/containers/ImageContainer.c
+        ${_SOURCES_DIR}/containers/TextContainer.c
+        ${_SOURCES_DIR}/config/ImageContainerCfg.c
+        ${_SOURCES_DIR}/config/TextContainerCfg.c
+
+
 
 
 )
