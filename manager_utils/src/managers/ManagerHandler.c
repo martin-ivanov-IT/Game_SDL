@@ -55,6 +55,8 @@ void deinitManagerHadnler(){
     deinitDrawMgr(gDrawMgr);
     free(gDrawMgr);
     free(gDrawMgrProxy);
+    free(gResourceMngrProxy);
     gDrawMgrProxy = NULL;
+    gResourceMngrProxy = NULL;
     gDrawMgr = NULL;
 } 
