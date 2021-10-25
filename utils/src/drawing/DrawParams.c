@@ -1,7 +1,7 @@
 
 #include "utils/drawing/DrawParams.h"
 
-static int32_t INVALID_RSRC_ID = -1;
+const int32_t INVALID_RSRC_ID = -1;
 
 const int32_t FULL_OPACITY = 255;
 const int32_t ZERO_OPACITY = 0;

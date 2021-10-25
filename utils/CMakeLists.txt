@@ -9,6 +9,7 @@ add_library(
     ${PROJECT_NAME}
         STATIC
             ${_INC_DIR}/containers/Vector.h
+            ${_INC_DIR}/containers/VectorInt.h
             ${_INC_DIR}/drawing/Point.h
             ${_INC_DIR}/drawing/DrawParams.h
             ${_INC_DIR}/drawing/Rectangle.h
@@ -18,6 +19,7 @@ add_library(
             ${_INC_DIR}/thread/Thread.h
             ${_INC_DIR}/ErrorCodes.h
             ${_INC_DIR}/Log.h
+            ${_INC_DIR}/ContainerOf.h
             
             ${_SRC_DIR}/drawing/Point.c
             ${_SRC_DIR}/drawing/DrawParams.c
@@ -26,6 +28,7 @@ add_library(
             ${_SRC_DIR}/time/Time.c
             ${_SRC_DIR}/thread/Thread.c
             ${_SRC_DIR}/containers/Vector.c
+            ${_SRC_DIR}/containers/VectorInt.c
 
 )
 

@@ -2,6 +2,7 @@
 #define UTILS_DRAWING_COLOR_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 struct RGBA {
   uint8_t r;
   uint8_t g;
@@ -12,7 +13,7 @@ struct RGBA {
 struct Color {
   struct RGBA rgba;
 };
-
+bool areColorsEqual(const struct Color* left, const struct Color* right);
 extern const struct Color COLOR_RED;
 extern const struct Color COLOR_GREEN;
 extern const struct Color COLOR_BLUE;

@@ -21,7 +21,7 @@ typedef enum {
   UNKNOWN_WIDGET_TYPE
 } WidgetType;
 
-
+extern const int32_t INVALID_RSRC_ID;
 
 struct DrawParams {
   //Top left position of texture

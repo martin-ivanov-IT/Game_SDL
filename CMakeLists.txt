@@ -37,7 +37,7 @@ enable_target_c_warnings(${PROJECT_NAME})
 target_link_libraries(
     ${PROJECT_NAME} 
         PRIVATE
-            sdl_utils
+            manager_utils
 )
 target_include_directories(
     ${PROJECT_NAME} 
@@ -47,6 +47,7 @@ target_include_directories(
 )
 add_subdirectory(utils)
 add_subdirectory(sdl_utils)
+add_subdirectory(manager_utils)
 
 if(CMAKE_BUILD_TYPE MATCHES Release)
     target_compile_definitions(

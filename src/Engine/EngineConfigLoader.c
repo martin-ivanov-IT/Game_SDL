@@ -52,14 +52,16 @@ static void populateTextContainerCfg(struct TextContainerCfg* cfg){
     populateResourceLocation(fontCfg.location, "resources/f/AngelineVintage.ttf");
     insertFontConfig(cfg, ANGELINE_VINATGE_ID , &fontCfg);
 }
-
+static void populateManagerHandlerCfg(struct ManagerHandlerCfg* cfg){
+    populateWindowCfg(&cfg->drawMgrCfg.windowCfg);
+    populateImageContainerCfg(&cfg->resourceMgrCfg.imgContainerCfg);
+    populateTextContainerCfg(&cfg->resourceMgrCfg.textContainerCfg);
+}
 struct EngineConfig loadEngineConfig() {
 
     struct EngineConfig cfg; 
-    memset(&cfg, 0, sizeof(struct EngineConfig));   
-    populateWindowCfg(&cfg.windowCfg);
-    populateImageContainerCfg(&cfg.imgContainerCfg);
-    populateTextContainerCfg(&cfg.textContainerCfg);
+    memset(&cfg, 0, sizeof(struct EngineConfig));
+    populateManagerHandlerCfg(&cfg.managerHandlerCfg);   
     
     return cfg;
 }

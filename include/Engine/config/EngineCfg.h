@@ -6,12 +6,14 @@
 #include "sdl_utils/config/ImageContainerCfg.h"
 #include "sdl_utils/config/TextContainerCfg.h"
 #include "Game/config/GameCfg.h"
+#include "manager_utils/managers/config/DrawMgrCfg.h"
+#include "manager_utils/managers/config/ManagerHandlerCfg.h"
+
+
 
 
 struct EngineConfig {
-    struct MonitorWindowCfg windowCfg;
-    struct ImageContainerCfg imgContainerCfg;
-    struct TextContainerCfg textContainerCfg;
+    struct ManagerHandlerCfg managerHandlerCfg;
 };
 
 #endif 

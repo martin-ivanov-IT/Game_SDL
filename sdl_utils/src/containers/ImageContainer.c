@@ -32,11 +32,6 @@ int32_t initImageContainer(struct ImageContainer *self, const struct ImageContai
         self->textureFrames[i].w = currImgCfg->width;
         self->textureFrames[i].h = currImgCfg->height;
 
-        if (SUCCESS != setBlendModeTexture(self->textures[i], BLEND_BLEND)){
-            LOGERR("setBlendModeTexture() failed for filePath %s", currImgCfg->location);
-            return FAILURE;
-             
-        }
     }
     return SUCCESS;
 }

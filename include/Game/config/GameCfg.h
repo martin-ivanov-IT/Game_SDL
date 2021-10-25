@@ -3,13 +3,8 @@
 
 #include <stdint.h>
 
-struct ImageContainer;
-struct TextContainer;
-
-
 struct GameConfig {
-  const struct ImageContainer* imgContainer;
-  struct TextContainer* textContainer;
+  int32_t dummyCfg;
 };
 
 
