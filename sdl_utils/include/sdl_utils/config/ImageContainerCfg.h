@@ -3,15 +3,17 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include "utils/containers/Vector.h"
+
 
 #define MAX_IMAGE_NAME_LEN 50
 #define MAX_IMAGE_SIZE 50
 
 struct ImageConfig {
-  int32_t width;
-  int32_t height;
+  struct Vector frames;
   char location[MAX_IMAGE_NAME_LEN];
 };
+
 
 struct ImageContainerCfg {
   struct ImageConfig imageConfigs[MAX_IMAGE_SIZE];

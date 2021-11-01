@@ -146,3 +146,8 @@ void freeVector(struct Vector *vec) {
   }
 }
 
+void shallowCopyVector(const struct Vector *from, struct Vector *to){
+  to->size = from->size;
+  to->capacity = from->capacity;to->size = from->size;
+  to->items = from->items;
+}

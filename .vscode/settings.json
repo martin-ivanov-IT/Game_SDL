@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "resourcemngrproxy.h": "c"
+        "resourcemngrproxy.h": "c",
+        "imagecontainercfg.h": "c",
+        "vector.h": "c",
+        "textcontainercfg.h": "c"
     }
 }

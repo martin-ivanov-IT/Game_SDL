@@ -1,0 +1,12 @@
+/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/rebuild_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/edit_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/utils/CMakeFiles/rebuild_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/utils/CMakeFiles/edit_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/utils/CMakeFiles/utils.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/sdl_utils/CMakeFiles/rebuild_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/sdl_utils/CMakeFiles/edit_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/sdl_utils/CMakeFiles/sdl_utils.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/rebuild_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/edit_cache.dir
+/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir

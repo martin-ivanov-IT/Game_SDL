@@ -13,7 +13,6 @@ void insertImageConfig(struct ImageContainerCfg *self, int32_t idx, const struct
 
     }
     self->isConfigOccupied[idx] = true;
-    self->imageConfigs[idx].height = imgCfg->height;
-    self->imageConfigs[idx].width = imgCfg->width;
+    deepCopyVector(&imgCfg->frames, &self->imageConfigs[idx].frames);
     strcpy( self->imageConfigs[idx].location, imgCfg->location);
 }

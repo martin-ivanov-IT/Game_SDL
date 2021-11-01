@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "utils/drawing/Point.h"
+#include "utils/drawing/Rectangle.h"
+
 
 
 typedef enum {
@@ -21,9 +23,17 @@ typedef enum {
   UNKNOWN_WIDGET_TYPE
 } WidgetType;
 
+typedef enum {
+    NONE_WIDGET_FLIP,
+    HORIZONTAL_WIDGET_FLIP,
+    VERTICAL_WIDGET_FLIP,
+    HORIZONTAL_AND_VERTICAL_WIDGET_FLIP
+} WidgetFlip;
+
 extern const int32_t INVALID_RSRC_ID;
 
 struct DrawParams {
+  struct Rectangle frameRect;
   //Top left position of texture
   struct Point pos;
 
@@ -37,6 +47,11 @@ struct DrawParams {
 
   BlendMode blendMode;
   WidgetType widgetType;
+  WidgetFlip flipType;
+
+  struct Point rotationCenter;
+  double rotationAngle;
+
 };
 
 void resetDrawParams(struct DrawParams* drawParams);

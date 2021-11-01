@@ -7,7 +7,6 @@
 #include "utils/Log.h"
 #include "Engine/config/EngineCfg.h"
 #include "utils/containers/Vector.h"
-#include "Game/config/GameCfg.h"
 #include "sdl_utils/Texture.h"
 #include "manager_utils/managers/ManagerHandler.h"
 #include "manager_utils/managers/DrawMgrProxy.h"
@@ -75,10 +74,8 @@ int32_t initEngine(struct Engine* self, const struct EngineConfig* cfg) {
     LOGERR("initInputEvent() failed");
     return FAILURE;
   }
-
-  const struct GameConfig gameCfg = {.dummyCfg = 12};
   
-  if (SUCCESS != initGame(&self->game, &gameCfg)) {
+  if (SUCCESS != initGame(&self->game, &cfg->gameCfg)) {
     LOGERR("initGame() failed");
     return FAILURE;
   }
@@ -87,7 +84,6 @@ int32_t initEngine(struct Engine* self, const struct EngineConfig* cfg) {
 }
 
 void deinitEngine(struct Engine *engine) {
-
   deinitGame(&engine->game);
   deinitInputEvent(&engine->event);
   

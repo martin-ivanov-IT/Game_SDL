@@ -83,6 +83,9 @@ void setWidgetBlendModeDrawMgr(const struct DrawParams *drawParams, BlendMode bl
 }
 
 void setWidgetOpacityDrawMgr(const struct DrawParams *drawParams){
+  if(drawParams->widgetType == IMAGE_WIDGET){
+    return;
+  }
   SDL_Texture* texture = getTexture(drawParams);
   if (SUCCESS != setAlphaTexture(texture, drawParams->opacity)){
     LOGERR("setWidgetOpacityDrawMgr() failed for rsrcId %d", drawParams->rsrcId);

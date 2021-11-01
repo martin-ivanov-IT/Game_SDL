@@ -5,19 +5,28 @@
 #include <SDL_render.h>
 #include <SDL_hints.h>
 
-static void drawImage(struct Renderer *self,const struct DrawParams* drawParams, SDL_Texture *texture){
+int32_t drawTextureInternal(struct Renderer *self,const struct DrawParams* drawParams, SDL_Texture *texture){
     const SDL_Rect destRect = {.x = drawParams->pos.x, .y = drawParams->pos.y, .w = drawParams->width, .h = drawParams->height};
+
+    const SDL_Rect* frameRect = (const SDL_Rect*)(&drawParams->frameRect);
+
+    return SDL_RenderCopyEx(self->sdlRenderer, texture, frameRect, &destRect, drawParams->rotationAngle, NULL, (SDL_RendererFlip)drawParams->flipType);
+
+}
+
+static void drawImage(struct Renderer *self,const struct DrawParams* drawParams, SDL_Texture *texture){
     int32_t errorCode = 0;
     if(drawParams->opacity == FULL_OPACITY){
-        errorCode = SDL_RenderCopy(self->sdlRenderer, texture, NULL, &destRect);
+        errorCode = drawTextureInternal(self, drawParams, texture);
     }
 
     else{
+
         if(SUCCESS != setAlphaTexture (texture, drawParams->opacity)){
             LOGERR("setAlphaTexture failed!for rsrcID %d", drawParams->rsrcId);
         }
 
-        errorCode = SDL_RenderCopy(self->sdlRenderer, texture, NULL, &destRect);
+        errorCode = drawTextureInternal(self, drawParams, texture);
 
         if(SUCCESS != setAlphaTexture (texture, FULL_OPACITY)){
             LOGERR("setAlphaTexture failed!for rsrcID %d", drawParams->rsrcId);
@@ -31,8 +40,8 @@ static void drawImage(struct Renderer *self,const struct DrawParams* drawParams,
 }
 
 static void drawText(struct Renderer *self,const struct DrawParams* drawParams, SDL_Texture *texture){
-    const SDL_Rect destRect = {.x = drawParams->pos.x, .y = drawParams->pos.y, .w = drawParams->width, .h = drawParams->height};
-    SDL_RenderCopy(self->sdlRenderer, texture, NULL, &destRect);
+    drawTextureInternal(self, drawParams, texture);
+    
 }
 
 int32_t initRenderer(struct Renderer *self, SDL_Window *window){

@@ -20,7 +20,7 @@ int32_t initResourceMgr(struct ResourceMgr *self, const struct ResourceMgrCfg* c
         return FAILURE;
     }
     gResourceMngrProxy->getImageTextureResourceMgr = getImageTextureResourceMgr;
-    gResourceMngrProxy->getImageFrameResourceMgr = getImageFrameResourceMgr;
+    gResourceMngrProxy->getImageFramesResourceMgr = getImageFramesResourceMgr;
     gResourceMngrProxy->createTextResourceMgr = createTextResourceMgr;
     gResourceMngrProxy->reloadTextResourceMgr = reloadTextResourceMgr;
     gResourceMngrProxy->unloadTextResourceMgr = unloadTextResourceMgr;
@@ -39,8 +39,8 @@ SDL_Texture* getImageTextureResourceMgr( int32_t rsrcId){
     return getImageTextureImageContainer(&gResourceMgr->imgContainer, rsrcId);
 }
 
-const struct Rectangle* getImageFrameResourceMgr(int32_t rsrcId){
-    return getImageFrameImageContainer(&gResourceMgr->imgContainer, rsrcId);
+const struct Vector* getImageFramesResourceMgr(int32_t rsrcId){
+    return getImageFramesImageContainer(&gResourceMgr->imgContainer, rsrcId);
 }
 
 void createTextResourceMgr(const char *text, const struct Color *color,

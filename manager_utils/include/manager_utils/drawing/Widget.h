@@ -24,6 +24,10 @@ void activateAlphaModulationWidget(struct Widget *widget);
 
 void deactivateAlphaModulationWidget(struct Widget *widget);
 
+void hideWidget(struct Widget* widget);
+
+void showWidget(struct Widget* widget);
+
 //move methods could be added for convenience
 //show & hide methods could also be implemented for convenience
 

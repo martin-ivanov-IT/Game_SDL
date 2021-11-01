@@ -8,12 +8,11 @@
 #include "Game/config/GameCfg.h"
 #include "manager_utils/managers/config/DrawMgrCfg.h"
 #include "manager_utils/managers/config/ManagerHandlerCfg.h"
-
-
-
+#include "Game/config/GameCfg.h"
 
 struct EngineConfig {
     struct ManagerHandlerCfg managerHandlerCfg;
+    struct GameConfig gameCfg;
 };
 
 #endif 

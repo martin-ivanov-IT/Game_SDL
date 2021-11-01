@@ -20,7 +20,7 @@ void deinitResourceMgr(struct ResourceMgr *self);
 
 SDL_Texture* getImageTextureResourceMgr(int32_t rsrcId);
 
-const struct Rectangle* getImageFrameResourceMgr( int32_t rsrcId);
+const struct Vector* getImageFramesResourceMgr( int32_t rsrcId);
 
 void createTextResourceMgr(const char *text, const struct Color *color,
                         int32_t rsrcId, int32_t *outTextId,

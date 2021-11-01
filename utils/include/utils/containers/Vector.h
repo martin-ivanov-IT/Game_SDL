@@ -30,6 +30,7 @@ void deleteElementVector(struct Vector *vec, size_t idx);
 void popElementVector(struct Vector *vec);
 void clearElementsVector(struct Vector *vec);
 void shrinkToFitVector(struct Vector *vec);
+void shallowCopyVector(const struct Vector *from, struct Vector *to);
 void deepCopyVector(const struct Vector *from, struct Vector *to);
 void freeVector(struct Vector *vec);
 

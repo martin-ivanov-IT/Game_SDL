@@ -7,97 +7,73 @@
 #include "sdl_utils/Texture.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "utils/drawing/Color.h"
 #include "manager_utils/drawing/Image.h"
 
+static void updateMouseTargetText(struct Text *text, const struct Point *pos) {
+  const char initialStr[] = "X: ";
+  const size_t initialStrLen = strlen(initialStr);
+  char textContent[50];
+  memset(textContent, 0, sizeof (textContent));
+  size_t usedSize = 0;
+
+  //append initial string
+  strncpy(&textContent[usedSize], initialStr, initialStrLen);
+  usedSize += initialStrLen;
+
+  //append X value:
+  const size_t xValueStrLen = snprintf(NULL, 0, "%d", pos->x);
+  snprintf(&textContent[usedSize], xValueStrLen + 1, "%d", pos->x);
+  usedSize += xValueStrLen;
+
+  const char YStr[] = "nY: ";
+  const size_t YStrStrLen = strlen(YStr);
+  strncpy(&textContent[usedSize], YStr, YStrStrLen);
+  usedSize += YStrStrLen;
+
+
+  const size_t yValueStrLen = snprintf(NULL, 0, "%d", pos->y);
+  snprintf(&textContent[usedSize], yValueStrLen + 1, "%d", pos->y);
+  usedSize += yValueStrLen;
+  setText(text, textContent);
+  
+  //...
+}
 
 int32_t initGame(struct Game* self, const struct GameConfig* cfg){
-  UNUSED(cfg);
-  createImage(&self->pressKeysImg, PRESS_KEYS_TEXTURE_ID, &POINT_ZERO);
-  activateAlphaModulationWidget(&self->pressKeysImg.widget);
-  struct Point textPos = {.x = 300, .y = 300};
-  createText(&self->pressText, "Press M to hide", ANGELINE_VINATGE_ID, &COLOR_MAGENTA, &textPos);
-  createText(&self->hide, "Press N to show", ANGELINE_VINATGE_ID, &COLOR_MAGENTA, &POINT_ZERO);
+  if(SUCCESS != initHero(&self->hero, cfg->heroRsrcID)){
+    LOGERR("initHero failed");
+    return FAILURE;
+  }
+  createText(&self->mousePosText, "-", ANGELINE_VINATGE_ID, &COLOR_YELLOW, &POINT_ZERO);
+  hideWidget(&self->mousePosText.widget);
   return SUCCESS;
 }
 
 void deinitGame(struct Game* self){
-    destroyText(&self->pressText);
-    destroyText(&self->hide);
-    destroyImage(&self->pressKeysImg);
+  deinitHero(&self->hero);
+  destroyText(&self->mousePosText);
 
-    UNUSED(self);
+  UNUSED(self);
 
 }
 
 void handleEventGame (struct Game* self, struct InputEvent* e){
-  if (KEYBOARD_PRESS == e->type) {
+  handleEventHero(&self->hero, e);
+
+  if (TOUCH_PRESS == e->type && e->mouseButton == MOUSE_LEFT_BUTTON) {
+    updateMouseTargetText(&self->mousePosText, &e->pos);
+    showWidget(&self->mousePosText.widget);
+    self->mousePosText.widget.drawParams.pos = e->pos;
     return;
   }
-    switch (e->key) {
-        case KEY_M:
-        self->pressText.widget.isVisible = false;
-        self->hide.widget.isVisible = true;
 
-        break;
-
-        case KEY_N:
-        self->pressText.widget.isVisible = true;
-        self->hide.widget.isVisible = false;
-        break;
-
-        case KEY_P:
-        setText(&self->pressText, "Hello there");
-        break;
-
-        case KEY_J:
-        setColorText(&self->pressText, &COLOR_GREEN);
-        break;
-
-        case KEY_UP:
-          self->pressKeysImg.widget.drawParams.pos.y -= 10;
-        break;
-        // case KEY_DOWN:
-        //   self->pressKeysImg.pos.y += 10;
-        // break;
-        // case KEY_LEFT:
-        //   self->pressKeysImg.pos.x -= 10;
-        // break;
-        // case KEY_RIGHT:
-        //   self->pressKeysImg.pos.x += 10;
-        // break;
-
-        // case KEY_Q:
-        //   self->pressKeysImg.width -= 10;
-        // break;
-        // case KEY_W:
-        //   self->pressKeysImg.width += 10;
-        // break;
-        // case KEY_E:
-        //   self->pressKeysImg.height -= 10;
-        // break;
-        // case KEY_R:
-        //   self->pressKeysImg.height += 10;
-        // break;
-
-        case KEY_A:
-          setOpacityWidget(&self->pressKeysImg.widget, self->pressKeysImg.widget.drawParams.opacity +10);
-          
-        break;
-        case KEY_S:
-          setOpacityWidget(&self->pressKeysImg.widget, self->pressKeysImg.widget.drawParams.opacity -10);
-
-        break;
-
-
-        default:
-        break;
-      }
+  
 }
 
 
 void drawGame(struct Game* self){
-  drawImage(&self->pressKeysImg);
-  drawText(&self->pressText);
-  drawText(&self->hide);
+  drawHero(&self->hero);
+  drawText(&self->mousePosText);
 }

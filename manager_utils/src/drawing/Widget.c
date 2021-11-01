@@ -56,3 +56,10 @@ void deactivateAlphaModulationWidget(struct Widget *widget){
 
 }
 
+void hideWidget(struct Widget* widget){
+    widget->isVisible = false;
+}
+
+void showWidget(struct Widget* widget){
+    widget->isVisible = true;
+}

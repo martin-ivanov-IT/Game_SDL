@@ -31,6 +31,11 @@ void createText(struct Text *self, const char *textContent, int32_t fontId,
     self->textContent = NULL;
     copyTextContent(&self->textContent, textContent);
 
+    params->frameRect.x = 0;
+    params->frameRect.y = 0;
+    params->frameRect.w = params->width;
+    params->frameRect.h = params->height;
+
     gResourceMngrProxy->createTextResourceMgr(self->textContent, color, fontId,
                             &params->rsrcId, &params->width, &params->height);
     self->widget.isCreated = true;
@@ -50,9 +55,13 @@ void destroyText(struct Text *self){
 
 void resetText(struct Text *self){
     resetWidget(&self->widget);
-    self->textContent = NULL;
     self->color = COLOR_BLACK;
     self->fontId = INVALID_RSRC_ID;
+
+    if(self->textContent){
+        free(self->textContent);
+        self->textContent = NULL;
+    }
 }
 
 void setText(struct Text *self, const char *textContent){
@@ -60,13 +69,15 @@ void setText(struct Text *self, const char *textContent){
         LOGERR("Text with  fontId %d was not creayed  will not recreate",self->fontId);
         return;
     }
-    if(strcmp(self->textContent, textContent)){
+    if(!strcmp(self->textContent, textContent)){
         return;
     }
     copyTextContent(&self->textContent, textContent);
     struct DrawParams* params = &self->widget.drawParams;
-    gResourceMngrProxy->reloadTextResourceMgr(self->textContent, &self->color, self->fontId,
-                            params->rsrcId, &params->width, &params->height);
+    gResourceMngrProxy->reloadTextResourceMgr(self->textContent, &self->color, self->fontId, params->rsrcId, &params->width, &params->height);
+    params->frameRect.w = params->width;
+    params->frameRect.h = params->height;
+
 }
 
 void setColorText(struct Text *self, const struct Color *color){
@@ -79,8 +90,9 @@ void setColorText(struct Text *self, const struct Color *color){
     }
     self->color = *color;
     struct DrawParams* params = &self->widget.drawParams;
-    gResourceMngrProxy->reloadTextResourceMgr(self->textContent, &self->color, self->fontId,
-                            params->rsrcId, &params->width, &params->height);
+    gResourceMngrProxy->reloadTextResourceMgr(self->textContent, &self->color, self->fontId, params->rsrcId, &params->width, &params->height);
+    params->frameRect.w = params->width;
+    params->frameRect.h = params->height;
 }
 
 void drawText(struct Text* self){

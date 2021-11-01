@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 struct GameConfig {
-  int32_t dummyCfg;
+  int32_t heroRsrcID;
 };
 
 

@@ -2,8 +2,8 @@
 #define COMMON_COMMONDEFINES_H_
 
 typedef enum {
-    PRESS_KEYS_TEXTURE_ID,
-    LAYER2_TEXTURE_ID
+    RUNNING_GIRL_ID,
+    WHEEL_ID
 }TextureIdf;
 
 typedef enum {

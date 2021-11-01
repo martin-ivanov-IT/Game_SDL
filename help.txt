@@ -1,0 +1,17 @@
+cmake .. -DCMAKE_BUILD_TYPE=Debug
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/gcc
+valgrind --leak-check=full --track-origins=yes ./hello
+IC
+spe min pt 2
+git clone git@github.com:martin-ivanov-IT/Game_SDL.git
+
+git add -A
+
+git commit -m "update"
+59
+
+cmake .. -DCMAKE_BUILD_TYPE=Debug 
+
+1:30:46 :) fun
+
+2:15
