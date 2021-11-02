@@ -2,8 +2,17 @@
 #define COMMON_COMMONDEFINES_H_
 
 typedef enum {
+  TEXTURE_WHEEL,
+  TEXTURE_RUNNING_GIRL,
+  TEXTURE_WHEEL_START_BUTTON,
+  TEXTURE_WHEEL_STOP_BUTTON
+} Images;
+
+typedef enum {
     RUNNING_GIRL_ID,
-    WHEEL_ID
+    WHEEL_ID,
+    START_BUTTON_ID,
+    STOP_BUTTON_ID 
 }TextureIdf;
 
 typedef enum {

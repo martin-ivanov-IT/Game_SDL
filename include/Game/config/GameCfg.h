@@ -5,6 +5,9 @@
 
 struct GameConfig {
   int32_t heroRsrcID;
+  int32_t wheelRsrcID;
+  int32_t wheelStartBtnRsrcId;
+  int32_t wheelStopBtnRsrcId;
 };
 
 

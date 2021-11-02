@@ -12,6 +12,4 @@ git commit -m "update"
 
 cmake .. -DCMAKE_BUILD_TYPE=Debug 
 
-1:30:46 :) fun
-
-2:15
+0.04

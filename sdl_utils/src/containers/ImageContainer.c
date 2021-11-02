@@ -4,6 +4,7 @@
 #include "utils/Log.h"
 #include "utils/drawing/Rectangle.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 static struct Vector EMPTY_FRAMES;
 
@@ -50,6 +51,12 @@ void deinitImageContainer(struct ImageContainer *self){
         if(self->textures[i]){
             freeTexture(&self->textures[i]);
         }
+        const size_t size = getSizeVector(&self->textureFrames[i]);
+        for (size_t el = 0; el < size; el++)
+        {
+            free(getElementVector(&self->textureFrames[i], el));
+        }
+        
         freeVector(&self->textureFrames[i]);
     }
     freeVector(&EMPTY_FRAMES);

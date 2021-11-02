@@ -10,7 +10,9 @@ int32_t drawTextureInternal(struct Renderer *self,const struct DrawParams* drawP
 
     const SDL_Rect* frameRect = (const SDL_Rect*)(&drawParams->frameRect);
 
-    return SDL_RenderCopyEx(self->sdlRenderer, texture, frameRect, &destRect, drawParams->rotationAngle, NULL, (SDL_RendererFlip)drawParams->flipType);
+    const SDL_Point* rotationCenter = (const SDL_Point*)(&drawParams->rotationCenter);
+
+    return SDL_RenderCopyEx(self->sdlRenderer, texture, frameRect, &destRect, drawParams->rotationAngle, rotationCenter, (SDL_RendererFlip)drawParams->flipType);
 
 }
 

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/manager_utils.dir/src/drawing/Image.c.o"
   "CMakeFiles/manager_utils.dir/src/drawing/Text.c.o"
   "CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o"
+  "CMakeFiles/manager_utils.dir/src/input/Button.c.o"
   "CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o"
   "CMakeFiles/manager_utils.dir/src/managers/ManagerHandler.c.o"
   "CMakeFiles/manager_utils.dir/src/managers/ResourceMngr.c.o"

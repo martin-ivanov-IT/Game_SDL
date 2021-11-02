@@ -6,7 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/martin/SDL_GAME_GIT/Game_SDL/src/Engine/Engine.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Engine/Engine.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/src/Engine/EngineConfigLoader.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o"
+  "/home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Buttons/WheelButton.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Hero.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o"
+  "/home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Wheel.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Game.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/Game/Game.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/src/main.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles/hello.dir/src/main.c.o"
   )

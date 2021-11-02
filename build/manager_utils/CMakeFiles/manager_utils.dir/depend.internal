@@ -31,6 +31,16 @@ manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o
  ../utils/include/utils/drawing/Point.h
  ../utils/include/utils/drawing/Rectangle.h
  /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Widget.c
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o
+ ../manager_utils/include/manager_utils/drawing/Image.h
+ ../manager_utils/include/manager_utils/drawing/Widget.h
+ ../manager_utils/include/manager_utils/input/Button.h
+ ../sdl_utils/include/sdl_utils/InputEvent.h
+ ../utils/include/utils/drawing/DrawParams.h
+ ../utils/include/utils/drawing/Point.h
+ ../utils/include/utils/drawing/Rectangle.h
+ ../utils/include/utils/input/EventDefines.h
+ /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/input/Button.c
 manager_utils/CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o
  ../manager_utils/include/manager_utils/managers/DrawMgr.h
  ../manager_utils/include/manager_utils/managers/DrawMgrProxy.h

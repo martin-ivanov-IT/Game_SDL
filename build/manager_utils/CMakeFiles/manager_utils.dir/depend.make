@@ -31,6 +31,16 @@ manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o: ../utils/incl
 manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o: ../utils/include/utils/drawing/Rectangle.h
 manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o: ../manager_utils/src/drawing/Widget.c
 
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../manager_utils/include/manager_utils/drawing/Image.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../manager_utils/include/manager_utils/drawing/Widget.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../manager_utils/include/manager_utils/input/Button.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../sdl_utils/include/sdl_utils/InputEvent.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../utils/include/utils/drawing/DrawParams.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../utils/include/utils/drawing/Point.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../utils/include/utils/drawing/Rectangle.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../utils/include/utils/input/EventDefines.h
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../manager_utils/src/input/Button.c
+
 manager_utils/CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o: ../manager_utils/include/manager_utils/managers/DrawMgr.h
 manager_utils/CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o: ../manager_utils/include/manager_utils/managers/DrawMgrProxy.h
 manager_utils/CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o: ../manager_utils/include/manager_utils/managers/ResourceMngr.h

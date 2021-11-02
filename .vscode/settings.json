@@ -3,6 +3,9 @@
         "resourcemngrproxy.h": "c",
         "imagecontainercfg.h": "c",
         "vector.h": "c",
-        "textcontainercfg.h": "c"
+        "textcontainercfg.h": "c",
+        "rectangle.h": "c",
+        "gameinterface.h": "c",
+        "button.h": "c"
     }
 }

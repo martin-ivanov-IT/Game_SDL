@@ -22,12 +22,14 @@ add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/Game/Game.c
     ${_SOURCES_DIR}/Game/Entities/Hero.c
     ${_SOURCES_DIR}/Game/Entities/Wheel.c
+    ${_SOURCES_DIR}/Game/Entities/Buttons/WheelButton.c
     ${_SOURCES_DIR}/Engine/EngineConfigLoader.c
 
     ${_INCLUDE_DIR}/Engine/Engine.h
     ${_INCLUDE_DIR}/Game/Game.h
     ${_INCLUDE_DIR}/Game/Entities/Hero.h
     ${_INCLUDE_DIR}/Game/Entities/Wheel.h
+    ${_INCLUDE_DIR}/Game/Entities/Buttons/WheelButton.h
     ${_INCLUDE_DIR}/common/CommonDefines.h
     ${_INCLUDE_DIR}/Game/config/GameCfg.h
     ${_INCLUDE_DIR}/Engine/config/EngineCfg.h

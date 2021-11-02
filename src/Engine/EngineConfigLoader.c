@@ -15,9 +15,11 @@ static const int32_t GIRL_FRAME_HEIGHT = 220;
 
 static const int32_t WHEEL_IMG_WIDTH_HEIGHT = 695;
 
+
 static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
-
-
+static const int32_t START_STOP_BUTTON_FRAMES = 3;
+static const int32_t START_STOP_BUTTON_FRAME_WIDTH = 150;
+static const int32_t START_STOP_BUTTON_FRAME_HEIGHT = 50;
 
 static void populateResourceLocation (char* buffer, const char* relativePath){
     #ifdef RELEASE_BUILD
@@ -28,9 +30,14 @@ static void populateResourceLocation (char* buffer, const char* relativePath){
         
     #endif
 }
-// static void popilateCameCfg( struct GameConfig* cfg){
-//     cfg->heroRsrcID = RUNNING_GIRL_ID;
-// }
+
+static void popilateCameCfg( struct GameConfig* cfg){
+    cfg->heroRsrcID = RUNNING_GIRL_ID;
+    cfg->wheelRsrcID = WHEEL_ID;
+    cfg->wheelStartBtnRsrcId = TEXTURE_WHEEL_START_BUTTON;
+    cfg->wheelStopBtnRsrcId = TEXTURE_WHEEL_STOP_BUTTON;
+}
+
 static void populateWindowCfg(struct MonitorWindowCfg* cfg){
     cfg->windowFlag = WINDOWS_SHOWN;
     cfg->windowWidth = SCREEN_WIDTH;
@@ -43,6 +50,7 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     struct ImageConfig imgCfg;
     initVector(&imgCfg.frames,10);
     struct Rectangle* currframe = NULL;
+
     for (int32_t i = 0; i < GIRL_FRAMES_COUNT; i++)
     {
         currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
@@ -57,6 +65,7 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     insertImageConfig(cfg, RUNNING_GIRL_ID , &imgCfg);
     clearElementsVector(&imgCfg.frames);
 
+
     currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
     currframe->x = 0;
     currframe->y = 0;
@@ -66,7 +75,32 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     populateResourceLocation(imgCfg.location, "resources/p/wheel.png");
     insertImageConfig(cfg, WHEEL_ID , &imgCfg);
     clearElementsVector(&imgCfg.frames);
-    
+
+//buttons
+    const char* buttonPaths[2] = { "resources/p/buttons/button_start.png",
+      "resources/p/buttons/button_stop.png"};
+    const int32_t buttonRsrcIds[2] = { START_BUTTON_ID,
+      STOP_BUTTON_ID };
+
+    for (int32_t buttonId = 0; buttonId < 2; ++buttonId) {
+        strcpy(imgCfg.location, buttonPaths[buttonId]);
+        clearElementsVector(&imgCfg.frames);
+        for (int32_t i = 0; i < START_STOP_BUTTON_FRAMES; i++)
+        {
+            currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+
+            currframe->x = i * START_STOP_BUTTON_FRAME_WIDTH;
+            currframe->y = 0;
+            currframe->w = START_STOP_BUTTON_FRAME_WIDTH;
+            currframe->h = START_STOP_BUTTON_FRAME_HEIGHT;
+            pushElementVector(&imgCfg.frames, currframe);
+        }
+
+        populateResourceLocation(imgCfg.location, buttonPaths[buttonId]);
+        insertImageConfig(cfg, buttonRsrcIds[buttonId] , &imgCfg);
+        clearElementsVector(&imgCfg.frames);
+    }
+
     freeVector(&imgCfg.frames);
 }
 
@@ -85,7 +119,8 @@ struct EngineConfig loadEngineConfig() {
 
     struct EngineConfig cfg; 
     memset(&cfg, 0, sizeof(struct EngineConfig));
-    populateManagerHandlerCfg(&cfg.managerHandlerCfg);   
+    populateManagerHandlerCfg(&cfg.managerHandlerCfg);
+    popilateCameCfg(&cfg.gameCfg);   
     
     return cfg;
 }

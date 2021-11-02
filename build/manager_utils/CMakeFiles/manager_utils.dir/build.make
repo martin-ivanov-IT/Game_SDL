@@ -135,6 +135,19 @@ manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/drawing/Widget.c.s"
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Widget.c -o CMakeFiles/manager_utils.dir/src/drawing/Widget.c.s
 
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: manager_utils/CMakeFiles/manager_utils.dir/flags.make
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o: ../manager_utils/src/input/Button.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/manager_utils.dir/src/input/Button.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/input/Button.c
+
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/manager_utils.dir/src/input/Button.c.i"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/input/Button.c > CMakeFiles/manager_utils.dir/src/input/Button.c.i
+
+manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/input/Button.c.s"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/input/Button.c -o CMakeFiles/manager_utils.dir/src/input/Button.c.s
+
 # Object files for target manager_utils
 manager_utils_OBJECTS = \
 "CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o" \
@@ -142,7 +155,8 @@ manager_utils_OBJECTS = \
 "CMakeFiles/manager_utils.dir/src/managers/ManagerHandler.c.o" \
 "CMakeFiles/manager_utils.dir/src/drawing/Text.c.o" \
 "CMakeFiles/manager_utils.dir/src/drawing/Image.c.o" \
-"CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o"
+"CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o" \
+"CMakeFiles/manager_utils.dir/src/input/Button.c.o"
 
 # External object files for target manager_utils
 manager_utils_EXTERNAL_OBJECTS =
@@ -153,9 +167,10 @@ manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Text.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Image.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o
+manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/build.make
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libmanager_utils.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C static library libmanager_utils.a"
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && $(CMAKE_COMMAND) -P CMakeFiles/manager_utils.dir/cmake_clean_target.cmake
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/manager_utils.dir/link.txt --verbose=$(VERBOSE)
 

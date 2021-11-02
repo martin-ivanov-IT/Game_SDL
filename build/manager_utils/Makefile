@@ -206,6 +206,33 @@ src/drawing/Widget.c.s:
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.s
 .PHONY : src/drawing/Widget.c.s
 
+src/input/Button.o: src/input/Button.c.o
+
+.PHONY : src/input/Button.o
+
+# target to build an object file
+src/input/Button.c.o:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o
+.PHONY : src/input/Button.c.o
+
+src/input/Button.i: src/input/Button.c.i
+
+.PHONY : src/input/Button.i
+
+# target to preprocess a source file
+src/input/Button.c.i:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.i
+.PHONY : src/input/Button.c.i
+
+src/input/Button.s: src/input/Button.c.s
+
+.PHONY : src/input/Button.s
+
+# target to generate assembly for a file
+src/input/Button.c.s:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.s
+.PHONY : src/input/Button.c.s
+
 src/managers/DrawMgr.o: src/managers/DrawMgr.c.o
 
 .PHONY : src/managers/DrawMgr.o
@@ -305,6 +332,9 @@ help:
 	@echo "... src/drawing/Widget.o"
 	@echo "... src/drawing/Widget.i"
 	@echo "... src/drawing/Widget.s"
+	@echo "... src/input/Button.o"
+	@echo "... src/input/Button.i"
+	@echo "... src/input/Button.s"
 	@echo "... src/managers/DrawMgr.o"
 	@echo "... src/managers/DrawMgr.i"
 	@echo "... src/managers/DrawMgr.s"

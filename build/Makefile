@@ -216,6 +216,33 @@ src/Engine/EngineConfigLoader.c.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.s
 .PHONY : src/Engine/EngineConfigLoader.c.s
 
+src/Game/Entities/Buttons/WheelButton.o: src/Game/Entities/Buttons/WheelButton.c.o
+
+.PHONY : src/Game/Entities/Buttons/WheelButton.o
+
+# target to build an object file
+src/Game/Entities/Buttons/WheelButton.c.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o
+.PHONY : src/Game/Entities/Buttons/WheelButton.c.o
+
+src/Game/Entities/Buttons/WheelButton.i: src/Game/Entities/Buttons/WheelButton.c.i
+
+.PHONY : src/Game/Entities/Buttons/WheelButton.i
+
+# target to preprocess a source file
+src/Game/Entities/Buttons/WheelButton.c.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.i
+.PHONY : src/Game/Entities/Buttons/WheelButton.c.i
+
+src/Game/Entities/Buttons/WheelButton.s: src/Game/Entities/Buttons/WheelButton.c.s
+
+.PHONY : src/Game/Entities/Buttons/WheelButton.s
+
+# target to generate assembly for a file
+src/Game/Entities/Buttons/WheelButton.c.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.s
+.PHONY : src/Game/Entities/Buttons/WheelButton.c.s
+
 src/Game/Entities/Hero.o: src/Game/Entities/Hero.c.o
 
 .PHONY : src/Game/Entities/Hero.o
@@ -242,6 +269,33 @@ src/Game/Entities/Hero.s: src/Game/Entities/Hero.c.s
 src/Game/Entities/Hero.c.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Hero.c.s
 .PHONY : src/Game/Entities/Hero.c.s
+
+src/Game/Entities/Wheel.o: src/Game/Entities/Wheel.c.o
+
+.PHONY : src/Game/Entities/Wheel.o
+
+# target to build an object file
+src/Game/Entities/Wheel.c.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o
+.PHONY : src/Game/Entities/Wheel.c.o
+
+src/Game/Entities/Wheel.i: src/Game/Entities/Wheel.c.i
+
+.PHONY : src/Game/Entities/Wheel.i
+
+# target to preprocess a source file
+src/Game/Entities/Wheel.c.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.i
+.PHONY : src/Game/Entities/Wheel.c.i
+
+src/Game/Entities/Wheel.s: src/Game/Entities/Wheel.c.s
+
+.PHONY : src/Game/Entities/Wheel.s
+
+# target to generate assembly for a file
+src/Game/Entities/Wheel.c.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.s
+.PHONY : src/Game/Entities/Wheel.c.s
 
 src/Game/Game.o: src/Game/Game.c.o
 
@@ -315,9 +369,15 @@ help:
 	@echo "... src/Engine/EngineConfigLoader.o"
 	@echo "... src/Engine/EngineConfigLoader.i"
 	@echo "... src/Engine/EngineConfigLoader.s"
+	@echo "... src/Game/Entities/Buttons/WheelButton.o"
+	@echo "... src/Game/Entities/Buttons/WheelButton.i"
+	@echo "... src/Game/Entities/Buttons/WheelButton.s"
 	@echo "... src/Game/Entities/Hero.o"
 	@echo "... src/Game/Entities/Hero.i"
 	@echo "... src/Game/Entities/Hero.s"
+	@echo "... src/Game/Entities/Wheel.o"
+	@echo "... src/Game/Entities/Wheel.i"
+	@echo "... src/Game/Entities/Wheel.s"
 	@echo "... src/Game/Game.o"
 	@echo "... src/Game/Game.i"
 	@echo "... src/Game/Game.s"
