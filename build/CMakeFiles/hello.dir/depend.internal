@@ -9,15 +9,19 @@ CMakeFiles/hello.dir/src/Engine/Engine.c.o
  ../include/Game/Entities/Wheel.h
  ../include/Game/Game.h
  ../include/Game/config/GameCfg.h
+ ../manager_utils/include/manager_utils/common/DebugConsole.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Text.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
  ../manager_utils/include/manager_utils/input/Button.h
  ../manager_utils/include/manager_utils/managers/DrawMgrProxy.h
  ../manager_utils/include/manager_utils/managers/ManagerHandler.h
+ ../manager_utils/include/manager_utils/managers/TimerMgr.h
  ../manager_utils/include/manager_utils/managers/config/DrawMgrCfg.h
  ../manager_utils/include/manager_utils/managers/config/ManagerHandlerCfg.h
  ../manager_utils/include/manager_utils/managers/config/ResourceMngrCfg.h
+ ../manager_utils/include/manager_utils/time/TimerClient.h
+ ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../sdl_utils/include/sdl_utils/InputEvent.h
  ../sdl_utils/include/sdl_utils/MonitorWindow.h
  ../sdl_utils/include/sdl_utils/Texture.h
@@ -40,6 +44,7 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o
  ../include/Engine/config/EngineCfg.h
  ../include/Game/config/GameCfg.h
  ../include/common/CommonDefines.h
+ ../include/common/TimerDefines.h
  ../manager_utils/include/manager_utils/managers/config/DrawMgrCfg.h
  ../manager_utils/include/manager_utils/managers/config/ManagerHandlerCfg.h
  ../manager_utils/include/manager_utils/managers/config/ResourceMngrCfg.h
@@ -80,6 +85,8 @@ CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o
  ../include/Game/Entities/Wheel.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
+ ../manager_utils/include/manager_utils/time/TimerClient.h
+ ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../sdl_utils/include/sdl_utils/InputEvent.h
  ../utils/include/utils/ErrorCodes.h
  ../utils/include/utils/Log.h
@@ -100,6 +107,8 @@ CMakeFiles/hello.dir/src/Game/Game.c.o
  ../manager_utils/include/manager_utils/drawing/Text.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
  ../manager_utils/include/manager_utils/input/Button.h
+ ../manager_utils/include/manager_utils/time/TimerClient.h
+ ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../sdl_utils/include/sdl_utils/InputEvent.h
  ../sdl_utils/include/sdl_utils/MonitorWindow.h
  ../sdl_utils/include/sdl_utils/Texture.h
@@ -123,6 +132,7 @@ CMakeFiles/hello.dir/src/main.c.o
  ../include/Game/Entities/Wheel.h
  ../include/Game/Game.h
  ../include/Game/config/GameCfg.h
+ ../manager_utils/include/manager_utils/common/DebugConsole.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Text.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
@@ -130,6 +140,8 @@ CMakeFiles/hello.dir/src/main.c.o
  ../manager_utils/include/manager_utils/managers/config/DrawMgrCfg.h
  ../manager_utils/include/manager_utils/managers/config/ManagerHandlerCfg.h
  ../manager_utils/include/manager_utils/managers/config/ResourceMngrCfg.h
+ ../manager_utils/include/manager_utils/time/TimerClient.h
+ ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../sdl_utils/include/sdl_utils/InputEvent.h
  ../sdl_utils/include/sdl_utils/MonitorWindow.h
  ../sdl_utils/include/sdl_utils/SDL_loader.h

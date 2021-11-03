@@ -20,6 +20,10 @@ add_library(
             ${_INC_DIR}/drawing/Image.h
             ${_INC_DIR}/drawing/Widget.h
             ${_INC_DIR}/input/Button.h
+            ${_INC_DIR}/time/TimerClientStructs.h
+            ${_INC_DIR}/time/TimerClient.h
+            ${_INC_DIR}/managers/TimerMgr.h
+            ${_INC_DIR}/common/DebugConsole.h
 
             
             ${_SRC_DIR}//managers/DrawMgr.c
@@ -29,6 +33,13 @@ add_library(
             ${_SRC_DIR}/drawing/Image.c
             ${_SRC_DIR}/drawing/Widget.c
             ${_SRC_DIR}/input/Button.c
+            ${_SRC_DIR}/time/TimerClientStructs.c
+            ${_SRC_DIR}/time/TimerClient.c
+            ${_SRC_DIR}/managers/TimerMgr.c
+            ${_SRC_DIR}/common/DebugConsole.c
+
+
+
 
 )
 

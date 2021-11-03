@@ -31,6 +31,7 @@ add_executable(${PROJECT_NAME}
     ${_INCLUDE_DIR}/Game/Entities/Wheel.h
     ${_INCLUDE_DIR}/Game/Entities/Buttons/WheelButton.h
     ${_INCLUDE_DIR}/common/CommonDefines.h
+    ${_INCLUDE_DIR}/common/TimerDefines.h
     ${_INCLUDE_DIR}/Game/config/GameCfg.h
     ${_INCLUDE_DIR}/Engine/config/EngineCfg.h
     ${_INCLUDE_DIR}/Engine/EngineConfigLoader.h

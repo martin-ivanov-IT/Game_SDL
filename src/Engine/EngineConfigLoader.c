@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "utils/drawing/Rectangle.h"
+#include "common/TimerDefines.h"
+
 
 static const int32_t SCREEN_WIDTH = 1024;
 static const int32_t SCREEN_HEIGHT = 800;
@@ -20,6 +22,7 @@ static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
 static const int32_t START_STOP_BUTTON_FRAMES = 3;
 static const int32_t START_STOP_BUTTON_FRAME_WIDTH = 150;
 static const int32_t START_STOP_BUTTON_FRAME_HEIGHT = 50;
+static const int32_t ENGINE_TARGET_FRAMES = 60;
 
 static void populateResourceLocation (char* buffer, const char* relativePath){
     #ifdef RELEASE_BUILD
@@ -36,6 +39,7 @@ static void popilateCameCfg( struct GameConfig* cfg){
     cfg->wheelRsrcID = WHEEL_ID;
     cfg->wheelStartBtnRsrcId = TEXTURE_WHEEL_START_BUTTON;
     cfg->wheelStopBtnRsrcId = TEXTURE_WHEEL_STOP_BUTTON;
+    cfg->wheelRotAnimTimerId = WHEEL_ANIM_TIMER_ID;
 }
 
 static void populateWindowCfg(struct MonitorWindowCfg* cfg){
@@ -112,6 +116,7 @@ static void populateTextContainerCfg(struct TextContainerCfg* cfg){
 }
 static void populateManagerHandlerCfg(struct ManagerHandlerCfg* cfg){
     populateWindowCfg(&cfg->drawMgrCfg.windowCfg);
+    cfg->drawMgrCfg.maxFrames =ENGINE_TARGET_FRAMES;
     populateImageContainerCfg(&cfg->resourceMgrCfg.imgContainerCfg);
     populateTextContainerCfg(&cfg->resourceMgrCfg.textContainerCfg);
 }
@@ -121,6 +126,8 @@ struct EngineConfig loadEngineConfig() {
     memset(&cfg, 0, sizeof(struct EngineConfig));
     populateManagerHandlerCfg(&cfg.managerHandlerCfg);
     popilateCameCfg(&cfg.gameCfg);   
+    cfg.debugConsoleFontId = ANGELINE_VINATGE_ID;
+
     
     return cfg;
 }

@@ -6,6 +6,7 @@
         "textcontainercfg.h": "c",
         "rectangle.h": "c",
         "gameinterface.h": "c",
-        "button.h": "c"
+        "button.h": "c",
+        "timerclient.h": "c"
     }
 }

@@ -8,7 +8,6 @@
 struct ManagerHandlerCfg {
     struct DrawMgrCfg drawMgrCfg;
     struct ResourceMgrCfg resourceMgrCfg;
-
 };
 
 #endif

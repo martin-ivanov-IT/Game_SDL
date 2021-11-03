@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/DebugConsole.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Image.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Image.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Text.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Text.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Widget.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o"
@@ -11,6 +12,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/DrawMgr.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/ManagerHandler.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/managers/ManagerHandler.c.o"
   "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/ResourceMngr.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/managers/ResourceMngr.c.o"
+  "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/TimerMgr.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o"
+  "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClient.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o"
+  "/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClientStructs.c" "/home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

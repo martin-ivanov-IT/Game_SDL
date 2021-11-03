@@ -148,6 +148,58 @@ manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/input/Button.c.s"
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/input/Button.c -o CMakeFiles/manager_utils.dir/src/input/Button.c.s
 
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o: manager_utils/CMakeFiles/manager_utils.dir/flags.make
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o: ../manager_utils/src/time/TimerClientStructs.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClientStructs.c
+
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.i"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClientStructs.c > CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.i
+
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.s"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClientStructs.c -o CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.s
+
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o: manager_utils/CMakeFiles/manager_utils.dir/flags.make
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o: ../manager_utils/src/time/TimerClient.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClient.c
+
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/manager_utils.dir/src/time/TimerClient.c.i"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClient.c > CMakeFiles/manager_utils.dir/src/time/TimerClient.c.i
+
+manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/time/TimerClient.c.s"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/time/TimerClient.c -o CMakeFiles/manager_utils.dir/src/time/TimerClient.c.s
+
+manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o: manager_utils/CMakeFiles/manager_utils.dir/flags.make
+manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o: ../manager_utils/src/managers/TimerMgr.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/TimerMgr.c
+
+manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.i"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/TimerMgr.c > CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.i
+
+manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.s"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/managers/TimerMgr.c -o CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.s
+
+manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o: manager_utils/CMakeFiles/manager_utils.dir/flags.make
+manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o: ../manager_utils/src/common/DebugConsole.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/DebugConsole.c
+
+manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.i"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/DebugConsole.c > CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.i
+
+manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.s"
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/DebugConsole.c -o CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.s
+
 # Object files for target manager_utils
 manager_utils_OBJECTS = \
 "CMakeFiles/manager_utils.dir/src/managers/DrawMgr.c.o" \
@@ -156,7 +208,11 @@ manager_utils_OBJECTS = \
 "CMakeFiles/manager_utils.dir/src/drawing/Text.c.o" \
 "CMakeFiles/manager_utils.dir/src/drawing/Image.c.o" \
 "CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o" \
-"CMakeFiles/manager_utils.dir/src/input/Button.c.o"
+"CMakeFiles/manager_utils.dir/src/input/Button.c.o" \
+"CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o" \
+"CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o" \
+"CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o" \
+"CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o"
 
 # External object files for target manager_utils
 manager_utils_EXTERNAL_OBJECTS =
@@ -168,9 +224,13 @@ manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Image.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/drawing/Widget.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/input/Button.c.o
+manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o
+manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o
+manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o
+manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/build.make
 manager_utils/libmanager_utils.a: manager_utils/CMakeFiles/manager_utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C static library libmanager_utils.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C static library libmanager_utils.a"
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && $(CMAKE_COMMAND) -P CMakeFiles/manager_utils.dir/cmake_clean_target.cmake
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build/manager_utils && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/manager_utils.dir/link.txt --verbose=$(VERBOSE)
 

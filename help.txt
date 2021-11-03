@@ -13,3 +13,4 @@ git commit -m "update"
 cmake .. -DCMAKE_BUILD_TYPE=Debug 
 
 0.04
+3.06

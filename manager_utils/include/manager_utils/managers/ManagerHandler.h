@@ -5,5 +5,6 @@ struct ManagerHandlerCfg;
 
 int32_t initManagerHandler(const struct ManagerHandlerCfg* cfg);
 void deinitManagerHadnler(); 
+void processManagerHandler();
 
 #endif

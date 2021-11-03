@@ -8,6 +8,7 @@ struct GameConfig {
   int32_t wheelRsrcID;
   int32_t wheelStartBtnRsrcId;
   int32_t wheelStopBtnRsrcId;
+  int32_t wheelRotAnimTimerId;
 };
 
 

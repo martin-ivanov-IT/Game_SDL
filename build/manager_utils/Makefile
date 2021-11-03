@@ -125,6 +125,33 @@ manager_utils/fast:
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/build
 .PHONY : manager_utils/fast
 
+src/common/DebugConsole.o: src/common/DebugConsole.c.o
+
+.PHONY : src/common/DebugConsole.o
+
+# target to build an object file
+src/common/DebugConsole.c.o:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.o
+.PHONY : src/common/DebugConsole.c.o
+
+src/common/DebugConsole.i: src/common/DebugConsole.c.i
+
+.PHONY : src/common/DebugConsole.i
+
+# target to preprocess a source file
+src/common/DebugConsole.c.i:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.i
+.PHONY : src/common/DebugConsole.c.i
+
+src/common/DebugConsole.s: src/common/DebugConsole.c.s
+
+.PHONY : src/common/DebugConsole.s
+
+# target to generate assembly for a file
+src/common/DebugConsole.c.s:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/common/DebugConsole.c.s
+.PHONY : src/common/DebugConsole.c.s
+
 src/drawing/Image.o: src/drawing/Image.c.o
 
 .PHONY : src/drawing/Image.o
@@ -314,6 +341,87 @@ src/managers/ResourceMngr.c.s:
 	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/managers/ResourceMngr.c.s
 .PHONY : src/managers/ResourceMngr.c.s
 
+src/managers/TimerMgr.o: src/managers/TimerMgr.c.o
+
+.PHONY : src/managers/TimerMgr.o
+
+# target to build an object file
+src/managers/TimerMgr.c.o:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.o
+.PHONY : src/managers/TimerMgr.c.o
+
+src/managers/TimerMgr.i: src/managers/TimerMgr.c.i
+
+.PHONY : src/managers/TimerMgr.i
+
+# target to preprocess a source file
+src/managers/TimerMgr.c.i:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.i
+.PHONY : src/managers/TimerMgr.c.i
+
+src/managers/TimerMgr.s: src/managers/TimerMgr.c.s
+
+.PHONY : src/managers/TimerMgr.s
+
+# target to generate assembly for a file
+src/managers/TimerMgr.c.s:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/managers/TimerMgr.c.s
+.PHONY : src/managers/TimerMgr.c.s
+
+src/time/TimerClient.o: src/time/TimerClient.c.o
+
+.PHONY : src/time/TimerClient.o
+
+# target to build an object file
+src/time/TimerClient.c.o:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.o
+.PHONY : src/time/TimerClient.c.o
+
+src/time/TimerClient.i: src/time/TimerClient.c.i
+
+.PHONY : src/time/TimerClient.i
+
+# target to preprocess a source file
+src/time/TimerClient.c.i:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.i
+.PHONY : src/time/TimerClient.c.i
+
+src/time/TimerClient.s: src/time/TimerClient.c.s
+
+.PHONY : src/time/TimerClient.s
+
+# target to generate assembly for a file
+src/time/TimerClient.c.s:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClient.c.s
+.PHONY : src/time/TimerClient.c.s
+
+src/time/TimerClientStructs.o: src/time/TimerClientStructs.c.o
+
+.PHONY : src/time/TimerClientStructs.o
+
+# target to build an object file
+src/time/TimerClientStructs.c.o:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.o
+.PHONY : src/time/TimerClientStructs.c.o
+
+src/time/TimerClientStructs.i: src/time/TimerClientStructs.c.i
+
+.PHONY : src/time/TimerClientStructs.i
+
+# target to preprocess a source file
+src/time/TimerClientStructs.c.i:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.i
+.PHONY : src/time/TimerClientStructs.c.i
+
+src/time/TimerClientStructs.s: src/time/TimerClientStructs.c.s
+
+.PHONY : src/time/TimerClientStructs.s
+
+# target to generate assembly for a file
+src/time/TimerClientStructs.c.s:
+	cd /home/martin/SDL_GAME_GIT/Game_SDL/build && $(MAKE) -f manager_utils/CMakeFiles/manager_utils.dir/build.make manager_utils/CMakeFiles/manager_utils.dir/src/time/TimerClientStructs.c.s
+.PHONY : src/time/TimerClientStructs.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -323,6 +431,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... manager_utils"
+	@echo "... src/common/DebugConsole.o"
+	@echo "... src/common/DebugConsole.i"
+	@echo "... src/common/DebugConsole.s"
 	@echo "... src/drawing/Image.o"
 	@echo "... src/drawing/Image.i"
 	@echo "... src/drawing/Image.s"
@@ -344,6 +455,15 @@ help:
 	@echo "... src/managers/ResourceMngr.o"
 	@echo "... src/managers/ResourceMngr.i"
 	@echo "... src/managers/ResourceMngr.s"
+	@echo "... src/managers/TimerMgr.o"
+	@echo "... src/managers/TimerMgr.i"
+	@echo "... src/managers/TimerMgr.s"
+	@echo "... src/time/TimerClient.o"
+	@echo "... src/time/TimerClient.i"
+	@echo "... src/time/TimerClient.s"
+	@echo "... src/time/TimerClientStructs.o"
+	@echo "... src/time/TimerClientStructs.i"
+	@echo "... src/time/TimerClientStructs.s"
 .PHONY : help
 
 

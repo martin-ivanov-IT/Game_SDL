@@ -3,6 +3,7 @@
 #include "sdl_utils/config/MonitorWindowCfg.h"
 struct DrawMgrCfg{
     struct MonitorWindowCfg windowCfg;
+    int64_t maxFrames;
 };
 
 

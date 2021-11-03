@@ -3,6 +3,7 @@
 #include "manager_utils/managers/ResourceMngr.h"
 #include "manager_utils/managers/ResourceMngrProxy.h"
 #include "manager_utils/managers/DrawMgrProxy.h"
+#include "manager_utils/managers/TimerMgr.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"
 #include "stdlib.h"
@@ -49,14 +50,36 @@ int32_t initManagerHandler(const struct ManagerHandlerCfg* cfg){
         return FAILURE;
     }
 
+
+    gTimerMgr = (struct TimerMgr*)malloc(sizeof(struct TimerMgr));
+    if(gResourceMgr == NULL){
+        LOGERR("bad allocation for TimerMgr");
+        return FAILURE;
+    }
+    memset(gTimerMgr, 0, sizeof(struct TimerMgr));
+    if (SUCCESS != initTimerMgr(gTimerMgr)) {
+        LOGERR("initTimerMgr() failed");
+        return FAILURE;
+    }
+
+
     return SUCCESS;
 }
 void deinitManagerHadnler(){
     deinitDrawMgr(gDrawMgr);
+    deinitResourceMgr(gResourceMgr);
+    deinitTimerMgr(gTimerMgr);
     free(gDrawMgr);
+    free(gTimerMgr);
+    free(gResourceMgr);
+
     free(gDrawMgrProxy);
     free(gResourceMngrProxy);
     gDrawMgrProxy = NULL;
     gResourceMngrProxy = NULL;
     gDrawMgr = NULL;
+    gResourceMgr = NULL;
 } 
+void processManagerHandler(){
+    processTimerMgr(gTimerMgr);
+}

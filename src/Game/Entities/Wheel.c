@@ -2,6 +2,28 @@
 #include "sdl_utils/InputEvent.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"
+static const int64_t ROT_INTERVAL = 20;
+
+static void processAnimation(struct Wheel *wheel){
+    struct DrawParams* params = &wheel->WheelImg.widget.drawParams;
+    params->rotationAngle +=10;
+    const double FULL_ROTATION = 360.0;
+    if(params->rotationAngle >= FULL_ROTATION){
+        params->rotationAngle -= FULL_ROTATION;
+    }
+
+}
+
+static void onTimerTimeout(void *clientProxy, int32_t timerId) {
+    
+  struct Wheel *wheel = (struct Wheel*) (clientProxy);
+
+  if (timerId == wheel->rotTimerId) {
+    processAnimation(wheel);
+  } else {
+    LOGERR("Error, received unknown timerId: [%d]", wheel->rotTimerId);
+  }
+}
 
 void handleEventWheel (struct Wheel* self, struct InputEvent* e){
     if (e->type == KEYBOARD_PRESS){
@@ -77,9 +99,12 @@ void handleEventWheel (struct Wheel* self, struct InputEvent* e){
     }
 }
 
-int32_t initWheel (struct Wheel* self, int32_t rsrcId){
+int32_t initWheel (struct Wheel* self, int32_t rsrcId, int32_t rotTimerId){
     createImage(&self->WheelImg, rsrcId, &POINT_ZERO);
     self->isRotStarted = false;
+    self->rotTimerId = rotTimerId;
+    createTimer(&self->timerClient, (void*)self, onTimerTimeout);
+
     return SUCCESS;
 }
 
@@ -92,22 +117,22 @@ void drawWheel(struct Wheel* self){
 }
 
 void startRotationWheel(struct Wheel *wheel) {
-  if (wheel->isRotStarted) {
-    LOGERR("Error, rotation was already started");
-    return;
-  }
+    if (wheel->isRotStarted) {
+        LOGERR("Error, rotation was already started");
+        return;
+    }
 
-  wheel->isRotStarted = true;
-  wheel->WheelImg.widget.drawParams.rotationAngle +=10;
-//   startTimer(&wheel->timerClient, ROT_INTERVAL, wheel->rotTimerId, PULSE_TIMER);
+    wheel->isRotStarted = true;
+    startTimer(&wheel->timerClient, ROT_INTERVAL, wheel->rotTimerId, PULSE_TIMER);
 }
 
 void stopRotationWheel(struct Wheel *wheel) {
-  if (!wheel->isRotStarted) {
-    LOGERR("Error, rotation was already stopped");
-    return;
-  }
+    if (!wheel->isRotStarted) {
+        LOGERR("Error, rotation was already stopped");
+        return;
+    }
 
-  wheel->isRotStarted = false;
-//   stopTimer(wheel->rotTimerId);
+    wheel->isRotStarted = false;
+    stopTimer(wheel->rotTimerId);
 }
+

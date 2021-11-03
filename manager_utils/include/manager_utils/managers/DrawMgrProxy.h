@@ -8,6 +8,8 @@ struct DrawMgrProxy {
     void (*addDrawCmdDrawMgr)(const struct DrawParams *drawParams);
     void (*setWidgetBlendModeDrawMgr)(const struct DrawParams *drawParams, BlendMode blendmode);
     void (*setWidgetOpacityDrawMgr)(const struct DrawParams *drawParams);
+    int64_t maxFrames;
+
 };
 
 extern struct DrawMgrProxy *gDrawMgrProxy;

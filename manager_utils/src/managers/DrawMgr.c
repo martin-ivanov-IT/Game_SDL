@@ -44,7 +44,8 @@ int32_t initDrawMgr(struct DrawMgr *self, const struct DrawMgrCfg* cfg){
     LOGERR("initRenderer() failed");
     return FAILURE;
   }
-
+  self->maxFrames = cfg->maxFrames;
+  gDrawMgrProxy->maxFrames = cfg->maxFrames;
   gDrawMgrProxy->addDrawCmdDrawMgr = addDrawCmdDrawMgr;
   gDrawMgrProxy->clearScreenDrawMgr = clearScreenDrawMgr;
   gDrawMgrProxy->finishFrameDrawMgr = finishFrameDrawMgr;

@@ -13,6 +13,8 @@
 struct EngineConfig {
     struct ManagerHandlerCfg managerHandlerCfg;
     struct GameConfig gameCfg;
+    int32_t debugConsoleFontId;
+
 };
 
 #endif 

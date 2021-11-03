@@ -48,7 +48,7 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
     return FAILURE;
   }
 
-  if(SUCCESS != initWheel(&self->wheel, cfg->wheelRsrcID)){
+  if(SUCCESS != initWheel(&self->wheel, cfg->wheelRsrcID, cfg->wheelRotAnimTimerId)){
     LOGERR("initWheel failed");
     return FAILURE;
   }
