@@ -6,21 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../manager_utils/include/manager_utils/common/DebugConsole.h
-stdint.h
--
-stdbool.h
--
-manager_utils/drawing/Text.h
-../manager_utils/include/manager_utils/common/manager_utils/drawing/Text.h
-
-../manager_utils/include/manager_utils/drawing/Text.h
+../manager_utils/include/manager_utils/drawing/Image.h
 stdint.h
 -
 manager_utils/drawing/Widget.h
 ../manager_utils/include/manager_utils/drawing/manager_utils/drawing/Widget.h
-utils/drawing/Color.h
-../manager_utils/include/manager_utils/drawing/utils/drawing/Color.h
 
 ../manager_utils/include/manager_utils/drawing/Widget.h
 stdint.h
@@ -30,13 +20,9 @@ stdbool.h
 utils/drawing/DrawParams.h
 ../manager_utils/include/manager_utils/drawing/utils/drawing/DrawParams.h
 
-../sdl_utils/include/sdl_utils/InputEvent.h
+../manager_utils/include/manager_utils/managers/ResourceMngrProxy.h
 stdint.h
 -
-utils/drawing/Point.h
-../sdl_utils/include/sdl_utils/utils/drawing/Point.h
-utils/input/EventDefines.h
-../sdl_utils/include/sdl_utils/utils/input/EventDefines.h
 
 ../utils/include/utils/ErrorCodes.h
 
@@ -46,8 +32,8 @@ stdarg.h
 stdio.h
 -
 
-../utils/include/utils/drawing/Color.h
-stdint.h
+../utils/include/utils/containers/Vector.h
+stddef.h
 -
 stdbool.h
 -
@@ -74,27 +60,19 @@ stdint.h
 stdbool.h
 -
 
-../utils/include/utils/input/EventDefines.h
-stdint.h
--
-
-../utils/include/utils/time/Time.h
-stdint.h
--
-time.h
--
-
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/DebugConsole.c
-manager_utils/common/DebugConsole.h
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/manager_utils/common/DebugConsole.h
-string.h
--
-sdl_utils/InputEvent.h
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/sdl_utils/InputEvent.h
-utils/time/Time.h
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/utils/time/Time.h
-utils/ErrorCodes.h
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/utils/ErrorCodes.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/Image.c
+manager_utils/drawing/Image.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/manager_utils/drawing/Image.h
+manager_utils/managers/ResourceMngrProxy.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/manager_utils/managers/ResourceMngrProxy.h
+utils/drawing/Rectangle.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/utils/drawing/Rectangle.h
+utils/containers/Vector.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/utils/containers/Vector.h
 utils/Log.h
-/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/common/utils/Log.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/utils/Log.h
+utils/ErrorCodes.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/utils/ErrorCodes.h
+utils/Log.h
+/home/martin/SDL_GAME_GIT/Game_SDL/manager_utils/src/drawing/utils/Log.h
 

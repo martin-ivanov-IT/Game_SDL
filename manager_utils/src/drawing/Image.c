@@ -7,10 +7,10 @@
 #include "utils/Log.h"
 
 void createImage(struct Image *self, int32_t rsrcId, const struct Point *pos){
-    if (self->widget.isCreated){
-        LOGERR("image with rsrc id was already creayed  will not recreate %d", rsrcId);
-        return;
-    }
+    // if (self->widget.isCreated){
+    //     LOGERR("image with rsrc id was already creayed  will not recreate %d", rsrcId);
+    //     return;
+    // }
     resetImage(self);
     struct DrawParams* params = &self->widget.drawParams;
     params->rsrcId = rsrcId;

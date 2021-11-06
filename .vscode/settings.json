@@ -7,6 +7,8 @@
         "rectangle.h": "c",
         "gameinterface.h": "c",
         "button.h": "c",
-        "timerclient.h": "c"
+        "timerclient.h": "c",
+        "inputevent.h": "c",
+        "island_boy.h": "c"
     }
 }

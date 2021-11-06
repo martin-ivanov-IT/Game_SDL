@@ -11,10 +11,11 @@
 #include "Game/Entities/Hero.h"
 #include "Game/Entities/Wheel.h"
 #include "Game/Entities/Buttons/WheelButton.h"
+#include "include/containers/VectorHero.h"
 
 enum WheelButtons {
-  START_WHEEL_BTN_IDX,
-  STOP_WHEEL_BTN_IDX,
+  TROLL_1_BUTTON_IDX,
+  TROLL_1_BUTTON_ENEMY_IDX,
   WHEEL_BUTTON_COUNT
 };
 
@@ -23,9 +24,12 @@ struct InputEvent;
 struct Vector;
 
 struct Game {
-  struct Hero hero;
-  struct Wheel wheel;
-  struct WheelButton wheelBtns[WHEEL_BUTTON_COUNT];
+  struct Image gameImg;
+  struct WheelButton buttons [WHEEL_BUTTON_COUNT];
+  struct VectorHero playerArmy;
+  struct VectorHero enemyArmy;
+  int32_t gSpriteTimerId;
+  int32_t gAnimTimerId;
 };
 void handleEventGame (struct Game* self, struct InputEvent* e);
 int32_t initGame(struct Game* self, const struct GameConfig* cfg);

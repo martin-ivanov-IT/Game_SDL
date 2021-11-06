@@ -3,12 +3,16 @@
 
 #include <stdint.h>
 
+#include "Game/Entities/Hero.h"
+
+
 struct GameConfig {
-  int32_t heroRsrcID;
-  int32_t wheelRsrcID;
-  int32_t wheelStartBtnRsrcId;
-  int32_t wheelStopBtnRsrcId;
-  int32_t wheelRotAnimTimerId;
+
+  struct HeroCfg heroCfg;
+  int32_t trollBtnRsrcId;
+  int32_t trollBtnEnemyRsrcId;
+
+
 };
 
 

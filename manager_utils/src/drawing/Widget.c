@@ -63,3 +63,18 @@ void hideWidget(struct Widget* widget){
 void showWidget(struct Widget* widget){
     widget->isVisible = true;
 }
+
+void moveRight(struct Widget* widget, int32_t delta){
+    widget->drawParams.pos.x += delta;
+}
+void moveLeft(struct Widget* widget, int32_t delta){
+    widget->drawParams.pos.x -= delta;
+
+}
+void moveUp(struct Widget* widget, int32_t delta){
+    widget->drawParams.pos.y -= delta;
+
+}
+void moveDown(struct Widget* widget, int32_t delta){
+    widget->drawParams.pos.y += delta;
+}

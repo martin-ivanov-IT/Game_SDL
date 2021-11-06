@@ -6,22 +6,24 @@
 #include <stdlib.h>
 #include "utils/drawing/Rectangle.h"
 #include "common/TimerDefines.h"
+#include "utils/ErrorCodes.h"
+#include "utils/Log.h"
 
 
-static const int32_t SCREEN_WIDTH = 1024;
-static const int32_t SCREEN_HEIGHT = 800;
+static const int32_t SCREEN_WIDTH = 1400;
+static const int32_t SCREEN_HEIGHT = 750;
 
-static const int32_t GIRL_FRAMES_COUNT = 6;
-static const int32_t GIRL_FRAME_WIDTH = 256;
-static const int32_t GIRL_FRAME_HEIGHT = 220;
+static const int32_t TROLL_1_ID_FRAMES_COUNT = 10;
+static const int32_t TROLL_1_FRAME_WIDTH = 200;
+static const int32_t TROLL_1_FRAME_HEIGHT = 300;
+static const int32_t TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT = 50;
+static const int32_t BUTTON_COUNT = 2;
 
-static const int32_t WHEEL_IMG_WIDTH_HEIGHT = 695;
-
+static const int32_t BACKGROUND_IMG_WIDTH = 1400;
+static const int32_t BACKGROUND_IMG_HEIGHT= 750;
 
 static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
-static const int32_t START_STOP_BUTTON_FRAMES = 3;
-static const int32_t START_STOP_BUTTON_FRAME_WIDTH = 150;
-static const int32_t START_STOP_BUTTON_FRAME_HEIGHT = 50;
+static const int32_t BUTTON_FRAMES = 2;
 static const int32_t ENGINE_TARGET_FRAMES = 60;
 
 static void populateResourceLocation (char* buffer, const char* relativePath){
@@ -35,11 +37,31 @@ static void populateResourceLocation (char* buffer, const char* relativePath){
 }
 
 static void popilateCameCfg( struct GameConfig* cfg){
-    cfg->heroRsrcID = RUNNING_GIRL_ID;
-    cfg->wheelRsrcID = WHEEL_ID;
-    cfg->wheelStartBtnRsrcId = TEXTURE_WHEEL_START_BUTTON;
-    cfg->wheelStopBtnRsrcId = TEXTURE_WHEEL_STOP_BUTTON;
-    cfg->wheelRotAnimTimerId = WHEEL_ANIM_TIMER_ID;
+    UNUSED(cfg);
+    // cfg->heroRsrcID = RUNNING_GIRL_ID;
+    // cfg->wheelRsrcID = WHEEL_ID;
+    // cfg->trollRsrcID = TROLL_1_ID;
+    // cfg->trollRsrcID = TROLL_1_BUTTON_ID;
+    // cfg->wheelStartBtnRsrcId = TEXTURE_WHEEL_START_BUTTON;
+    // cfg->wheelStopBtnRsrcId = TEXTURE_WHEEL_STOP_BUTTON;
+    // cfg->wheelRotAnimTimerId = WHEEL_ANIM_TIMER_ID;
+
+    // cfg->heroCfg.rsrcId = TROLL_1_ID;
+    // cfg->heroCfg.heroChangeAnimTimerId = TROLL_1_CHANGE_SPRITE_TIMER_ID;
+    // cfg->heroCfg.heroMoveTimerId = TROLL_1_MOVE_TIMER_ID;
+    // cfg->heroCfg.horSteps = 75;
+    // cfg->heroCfg.verSteps = 50;
+    // cfg->heroCfg.deltaMovePx = 10;
+    cfg->trollBtnRsrcId = TROLL_1_BUTTON_ID;
+    cfg->trollBtnEnemyRsrcId = TROLL_1_BUTTON_ENEMY_ID;
+
+    // cfg->islandBoyCfg.rsrcId = TROLL_1_ID;
+    // cfg->islandBoyCfg.heroChangeAnimTimerId = TROLL_1_CHANGE_SPRITE_TIMER_ID;
+    // cfg->islandBoyCfg.heroMoveTimerId = TROLL_1_MOVE_TIMER_ID;
+    // cfg->islandBoyCfg.horSteps = 40;
+    // cfg->islandBoyCfg.verSteps = 20;
+    // cfg->islandBoyCfg.deltaMovePx = 5;
+    // cfg->
 }
 
 static void populateWindowCfg(struct MonitorWindowCfg* cfg){
@@ -52,51 +74,101 @@ static void populateWindowCfg(struct MonitorWindowCfg* cfg){
 
 static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     struct ImageConfig imgCfg;
-    initVector(&imgCfg.frames,10);
     struct Rectangle* currframe = NULL;
-
-    for (int32_t i = 0; i < GIRL_FRAMES_COUNT; i++)
+    
+    //Troll die sprite
+    initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
+    for (int32_t i = 0; i < TROLL_1_ID_FRAMES_COUNT; i++)
     {
         currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
-        currframe->x = 0+(GIRL_FRAME_WIDTH*i);
+        currframe->x = 0+(TROLL_1_FRAME_WIDTH*i);
         currframe->y = 0;
-        currframe->w = GIRL_FRAME_WIDTH;
-        currframe->h = GIRL_FRAME_HEIGHT;
+        currframe->w = TROLL_1_FRAME_WIDTH;
+        currframe->h = TROLL_1_FRAME_HEIGHT;
         pushElementVector(&imgCfg.frames, currframe);
     }
 
-    populateResourceLocation(imgCfg.location, "resources/p/sprites/running_girl.png");
-    insertImageConfig(cfg, RUNNING_GIRL_ID , &imgCfg);
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_die.png");
+    insertImageConfig(cfg, TROLL_1_DIE_ID , &imgCfg);
     clearElementsVector(&imgCfg.frames);
+    //end Troll die sprite
 
+    //Troll run sprite
+    initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
+    for (int32_t i = 0; i < TROLL_1_ID_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TROLL_1_FRAME_WIDTH*i);
+        currframe->y = 0;
+        currframe->w = TROLL_1_FRAME_WIDTH;
+        currframe->h = TROLL_1_FRAME_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_run.png");
+    insertImageConfig(cfg, TROLL_1_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Troll run sprite
+
+    //Troll atack sprite
+    initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
+    for (int32_t i = 0; i < TROLL_1_ID_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TROLL_1_FRAME_WIDTH*i);
+        currframe->y = 0;
+        currframe->w = TROLL_1_FRAME_WIDTH;
+        currframe->h = TROLL_1_FRAME_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_atack.png");
+    insertImageConfig(cfg, TROLL_1_ATACK_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Troll atack sprite
+
+    //Troll hurt sprite
+    initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
+    for (int32_t i = 0; i < TROLL_1_ID_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TROLL_1_FRAME_WIDTH*i);
+        currframe->y = 0;
+        currframe->w = TROLL_1_FRAME_WIDTH;
+        currframe->h = TROLL_1_FRAME_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_hurt.png");
+    insertImageConfig(cfg, TROLL_1_HURT_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Troll hurt sprite
 
     currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
     currframe->x = 0;
     currframe->y = 0;
-    currframe->w = WHEEL_IMG_WIDTH_HEIGHT;
-    currframe->h = WHEEL_IMG_WIDTH_HEIGHT;
+    currframe->w = BACKGROUND_IMG_WIDTH;
+    currframe->h = BACKGROUND_IMG_HEIGHT;
     pushElementVector(&imgCfg.frames, currframe);
-    populateResourceLocation(imgCfg.location, "resources/p/wheel.png");
-    insertImageConfig(cfg, WHEEL_ID , &imgCfg);
+    populateResourceLocation(imgCfg.location, "resources/p/background_1400x750.png");
+    insertImageConfig(cfg, BACKGROUND_ID, &imgCfg);
     clearElementsVector(&imgCfg.frames);
 
 //buttons
-    const char* buttonPaths[2] = { "resources/p/buttons/button_start.png",
-      "resources/p/buttons/button_stop.png"};
-    const int32_t buttonRsrcIds[2] = { START_BUTTON_ID,
-      STOP_BUTTON_ID };
+    const char* buttonPaths[2] = {"resources/p/buttons/island_boy_face.png", "resources/p/buttons/troll_1_face.png"};
+    const int32_t buttonRsrcIds[2] = { TROLL_1_BUTTON_ID, TROLL_1_BUTTON_ENEMY_ID};
 
-    for (int32_t buttonId = 0; buttonId < 2; ++buttonId) {
+    for (int32_t buttonId = 0; buttonId < BUTTON_COUNT; ++buttonId) {
         strcpy(imgCfg.location, buttonPaths[buttonId]);
         clearElementsVector(&imgCfg.frames);
-        for (int32_t i = 0; i < START_STOP_BUTTON_FRAMES; i++)
+        for (int32_t i = 0; i < BUTTON_FRAMES; i++)
         {
             currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
 
-            currframe->x = i * START_STOP_BUTTON_FRAME_WIDTH;
+            currframe->x = i * TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT;
             currframe->y = 0;
-            currframe->w = START_STOP_BUTTON_FRAME_WIDTH;
-            currframe->h = START_STOP_BUTTON_FRAME_HEIGHT;
+            currframe->w = TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT;
+            currframe->h = TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT;
             pushElementVector(&imgCfg.frames, currframe);
         }
 

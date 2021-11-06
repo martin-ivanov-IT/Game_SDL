@@ -324,6 +324,33 @@ src/Game/Game.c.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Game.c.s
 .PHONY : src/Game/Game.c.s
 
+src/containers/VectorHero.o: src/containers/VectorHero.c.o
+
+.PHONY : src/containers/VectorHero.o
+
+# target to build an object file
+src/containers/VectorHero.c.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/containers/VectorHero.c.o
+.PHONY : src/containers/VectorHero.c.o
+
+src/containers/VectorHero.i: src/containers/VectorHero.c.i
+
+.PHONY : src/containers/VectorHero.i
+
+# target to preprocess a source file
+src/containers/VectorHero.c.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/containers/VectorHero.c.i
+.PHONY : src/containers/VectorHero.c.i
+
+src/containers/VectorHero.s: src/containers/VectorHero.c.s
+
+.PHONY : src/containers/VectorHero.s
+
+# target to generate assembly for a file
+src/containers/VectorHero.c.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/containers/VectorHero.c.s
+.PHONY : src/containers/VectorHero.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -381,6 +408,9 @@ help:
 	@echo "... src/Game/Game.o"
 	@echo "... src/Game/Game.i"
 	@echo "... src/Game/Game.s"
+	@echo "... src/containers/VectorHero.o"
+	@echo "... src/containers/VectorHero.i"
+	@echo "... src/containers/VectorHero.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -24,6 +24,7 @@ add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/Game/Entities/Wheel.c
     ${_SOURCES_DIR}/Game/Entities/Buttons/WheelButton.c
     ${_SOURCES_DIR}/Engine/EngineConfigLoader.c
+    ${_SOURCES_DIR}/containers/VectorHero.c
 
     ${_INCLUDE_DIR}/Engine/Engine.h
     ${_INCLUDE_DIR}/Game/Game.h
@@ -35,6 +36,8 @@ add_executable(${PROJECT_NAME}
     ${_INCLUDE_DIR}/Game/config/GameCfg.h
     ${_INCLUDE_DIR}/Engine/config/EngineCfg.h
     ${_INCLUDE_DIR}/Engine/EngineConfigLoader.h
+    ${_INCLUDE_DIR}/containers/VectorHero.h
+
 
 )
 
