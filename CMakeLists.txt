@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/main.c
     ${_SOURCES_DIR}/Engine/Engine.c
     ${_SOURCES_DIR}/Game/Game.c
+    ${_SOURCES_DIR}/Game/Battlefield/Battlefield.c
     ${_SOURCES_DIR}/Game/Entities/Hero.c
     ${_SOURCES_DIR}/Game/Entities/Wheel.c
     ${_SOURCES_DIR}/Game/Entities/Buttons/WheelButton.c
@@ -27,6 +28,7 @@ add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/containers/VectorHero.c
 
     ${_INCLUDE_DIR}/Engine/Engine.h
+    ${_INCLUDE_DIR}/Game/Battlefield/Battlefield.h
     ${_INCLUDE_DIR}/Game/Game.h
     ${_INCLUDE_DIR}/Game/Entities/Hero.h
     ${_INCLUDE_DIR}/Game/Entities/Wheel.h
@@ -43,7 +45,7 @@ add_executable(${PROJECT_NAME}
 
 set_target_c_standard(${PROJECT_NAME} 11)
 enable_target_c_warnings(${PROJECT_NAME})
-# enable_target_c_sanitizer(${PROJECT_NAME} "address")
+enable_target_c_sanitizer(${PROJECT_NAME} "address")
 # "undefined"
 # "address"
 

@@ -37,5 +37,5 @@ bool containsEventButton(struct Button *button, const struct InputEvent *e) {
   const struct DrawParams *drawParams = &button->img.widget.drawParams;
   const struct Rectangle bounds = { .x = drawParams->pos.x, .y =
       drawParams->pos.y, .w = drawParams->width, .h = drawParams->height };
-  return isPointInsideRect(&bounds, &e->pos);
+  return isPointInRect(&e->pos, &bounds );
 }

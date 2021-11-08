@@ -17,7 +17,7 @@ struct Rectangle {
 const struct Rectangle RECTANGLE_ZERO;
 const struct Rectangle RECTANGLE_UNDEFINED;
 
-bool isPointInsideRect( const struct Rectangle* self, const struct Point* point);
+bool isPointInRect(const struct Point *point, const struct Rectangle *rect);
 bool areRectsEqual(const struct Rectangle* left, const struct Rectangle* right);
 
 

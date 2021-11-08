@@ -12,6 +12,8 @@
 #include "Game/Entities/Wheel.h"
 #include "Game/Entities/Buttons/WheelButton.h"
 #include "include/containers/VectorHero.h"
+#include "Game/Battlefield/Battlefield.h"
+
 
 enum WheelButtons {
   TROLL_1_BUTTON_IDX,
@@ -25,11 +27,17 @@ struct Vector;
 
 struct Game {
   struct Image gameImg;
+  struct Hero playerTower;
+  struct Hero enemyTower;
   struct WheelButton buttons [WHEEL_BUTTON_COUNT];
-  struct VectorHero playerArmy;
-  struct VectorHero enemyArmy;
+  struct Battlefield battlefield;
+
+  struct HeroCfg heroCfg;
   int32_t gSpriteTimerId;
   int32_t gAnimTimerId;
+
+  bool camaraMotionRightOn;
+  bool camaraMotionLeftOn;
 };
 void handleEventGame (struct Game* self, struct InputEvent* e);
 int32_t initGame(struct Game* self, const struct GameConfig* cfg);

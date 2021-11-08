@@ -216,6 +216,33 @@ src/Engine/EngineConfigLoader.c.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.s
 .PHONY : src/Engine/EngineConfigLoader.c.s
 
+src/Game/Battlefield/Battlefield.o: src/Game/Battlefield/Battlefield.c.o
+
+.PHONY : src/Game/Battlefield/Battlefield.o
+
+# target to build an object file
+src/Game/Battlefield/Battlefield.c.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o
+.PHONY : src/Game/Battlefield/Battlefield.c.o
+
+src/Game/Battlefield/Battlefield.i: src/Game/Battlefield/Battlefield.c.i
+
+.PHONY : src/Game/Battlefield/Battlefield.i
+
+# target to preprocess a source file
+src/Game/Battlefield/Battlefield.c.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.i
+.PHONY : src/Game/Battlefield/Battlefield.c.i
+
+src/Game/Battlefield/Battlefield.s: src/Game/Battlefield/Battlefield.c.s
+
+.PHONY : src/Game/Battlefield/Battlefield.s
+
+# target to generate assembly for a file
+src/Game/Battlefield/Battlefield.c.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.s
+.PHONY : src/Game/Battlefield/Battlefield.c.s
+
 src/Game/Entities/Buttons/WheelButton.o: src/Game/Entities/Buttons/WheelButton.c.o
 
 .PHONY : src/Game/Entities/Buttons/WheelButton.o
@@ -396,6 +423,9 @@ help:
 	@echo "... src/Engine/EngineConfigLoader.o"
 	@echo "... src/Engine/EngineConfigLoader.i"
 	@echo "... src/Engine/EngineConfigLoader.s"
+	@echo "... src/Game/Battlefield/Battlefield.o"
+	@echo "... src/Game/Battlefield/Battlefield.i"
+	@echo "... src/Game/Battlefield/Battlefield.s"
 	@echo "... src/Game/Entities/Buttons/WheelButton.o"
 	@echo "... src/Game/Entities/Buttons/WheelButton.i"
 	@echo "... src/Game/Entities/Buttons/WheelButton.s"

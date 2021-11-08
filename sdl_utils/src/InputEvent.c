@@ -51,6 +51,10 @@ static void setEventTypeInternal(struct InputEvent *e) {
         case WINDOW_TYPE:
         case OS_TEXTEDITING_TYPE:
         case MOUSE_MOTION_TYPE:
+            e->key = KEY_UNKNOWN;
+            e->mouseButton = MOUSE_UNKNOWN;
+            e->type = MOUSE_MOTION;
+            break;
         case AUDIO_DEVICE_ADDED_TYPE:
         case TEXT_INPUT_TYPE:
         case MOUSE_WHEEL_MOTION_TYPE:

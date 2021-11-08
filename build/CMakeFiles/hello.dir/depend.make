@@ -3,6 +3,7 @@
 
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Engine/Engine.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Engine/config/EngineCfg.h
+CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Battlefield/Battlefield.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Wheel.h
@@ -64,6 +65,21 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../utils/include/utils/d
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../utils/include/utils/drawing/Rectangle.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../src/Engine/EngineConfigLoader.c
 
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../include/Game/Battlefield/Battlefield.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../include/Game/Entities/Hero.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../include/common/CommonDefines.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../include/containers/VectorHero.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../manager_utils/include/manager_utils/drawing/Image.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../manager_utils/include/manager_utils/drawing/Widget.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../manager_utils/include/manager_utils/time/TimerClient.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../manager_utils/include/manager_utils/time/TimerClientStructs.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../utils/include/utils/ErrorCodes.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../utils/include/utils/Log.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../utils/include/utils/drawing/DrawParams.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../utils/include/utils/drawing/Point.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../utils/include/utils/drawing/Rectangle.h
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../src/Game/Battlefield/Battlefield.c
+
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o: ../include/Game/proxies/GameInterface.h
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o: ../manager_utils/include/manager_utils/drawing/Image.h
@@ -107,6 +123,7 @@ CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o: ../utils/include/utils/drawing
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o: ../utils/include/utils/input/EventDefines.h
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o: ../src/Game/Entities/Wheel.c
 
+CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Battlefield/Battlefield.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Wheel.h
@@ -151,6 +168,7 @@ CMakeFiles/hello.dir/src/containers/VectorHero.c.o: ../src/containers/VectorHero
 CMakeFiles/hello.dir/src/main.c.o: ../include/Engine/Engine.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Engine/EngineConfigLoader.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Engine/config/EngineCfg.h
+CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Battlefield/Battlefield.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Wheel.h

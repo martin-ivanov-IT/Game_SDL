@@ -12,6 +12,8 @@
 #include "manager_utils/managers/DrawMgrProxy.h"
 #include "Game/Game.h"
 #include "manager_utils/managers/TimerMgr.h"
+#include "Game/Battlefield/Battlefield.h"
+
 
 
 static void processEngine (struct Engine* eng){
@@ -23,6 +25,7 @@ static void handleEvent(struct Engine *engine) {
   handleEventGame(&engine->game, &engine->event);
   handleEventDebugConsole(&engine->debugConsole, &engine->event);
 
+
 }
 
 static void drawFrame(struct Engine *engine) {
@@ -30,6 +33,7 @@ static void drawFrame(struct Engine *engine) {
   drawGame(&engine->game);
   if (engine->debugConsole.isActive) {
     drawDebugConsole(&engine->debugConsole);
+
   }
   gDrawMgrProxy->finishFrameDrawMgr();
 }
@@ -51,7 +55,7 @@ static bool processFrame(struct Engine *engine) {
 
 static void limitFPS(int64_t elapsedNanoseconds) {
   const int64_t maxNanosecodsPerFrame = SECOND_NS / gDrawMgrProxy->maxFrames;
-
+  
   const int64_t nanosecondsFpsDelay = maxNanosecodsPerFrame
       - elapsedNanoseconds;
   if (0 < nanosecondsFpsDelay) {
@@ -65,6 +69,7 @@ static void mainLoop(struct Engine *engine) {
   struct DebugConsoleData debugConsoleData;
 
   while (true) {
+
     advanceTime(&time); //begin measure the new frame elapsed time
 
     if (processFrame(engine)) {
@@ -74,6 +79,7 @@ static void mainLoop(struct Engine *engine) {
     debugConsoleData.elapsedNanoseconds = elapsedNanoseconds;
     debugConsoleData.activeTimersCount = getActiveTimersCountTimerMgr(gTimerMgr);
     updateDebugConsole(&engine->debugConsole, &debugConsoleData);
+    
     limitFPS(getElapsedNanoseconds(&time));
   }
 }

@@ -4,6 +4,7 @@
 CMakeFiles/hello.dir/src/Engine/Engine.c.o
  ../include/Engine/Engine.h
  ../include/Engine/config/EngineCfg.h
+ ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
  ../include/Game/Entities/Wheel.h
@@ -64,6 +65,21 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o
  ../utils/include/utils/drawing/Point.h
  ../utils/include/utils/drawing/Rectangle.h
  /home/martin/SDL_GAME_GIT/Game_SDL/src/Engine/EngineConfigLoader.c
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o
+ ../include/Game/Battlefield/Battlefield.h
+ ../include/Game/Entities/Hero.h
+ ../include/common/CommonDefines.h
+ ../include/containers/VectorHero.h
+ ../manager_utils/include/manager_utils/drawing/Image.h
+ ../manager_utils/include/manager_utils/drawing/Widget.h
+ ../manager_utils/include/manager_utils/time/TimerClient.h
+ ../manager_utils/include/manager_utils/time/TimerClientStructs.h
+ ../utils/include/utils/ErrorCodes.h
+ ../utils/include/utils/Log.h
+ ../utils/include/utils/drawing/DrawParams.h
+ ../utils/include/utils/drawing/Point.h
+ ../utils/include/utils/drawing/Rectangle.h
+ /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Battlefield/Battlefield.c
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/proxies/GameInterface.h
@@ -108,6 +124,7 @@ CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o
  ../utils/include/utils/input/EventDefines.h
  /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Wheel.c
 CMakeFiles/hello.dir/src/Game/Game.c.o
+ ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
  ../include/Game/Entities/Wheel.h
@@ -152,6 +169,7 @@ CMakeFiles/hello.dir/src/main.c.o
  ../include/Engine/Engine.h
  ../include/Engine/EngineConfigLoader.h
  ../include/Engine/config/EngineCfg.h
+ ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
  ../include/Game/Entities/Wheel.h

@@ -32,3 +32,9 @@ stdbool.h
 utils/drawing/DrawParams.h
 /home/martin/SDL_GAME_GIT/Game_SDL/utils/src/drawing/utils/drawing/DrawParams.h
 
+/home/martin/SDL_GAME_GIT/Game_SDL/utils/src/drawing/Rectangle.c
+utils/drawing/Rectangle.h
+/home/martin/SDL_GAME_GIT/Game_SDL/utils/src/drawing/utils/drawing/Rectangle.h
+utils/drawing/Point.h
+/home/martin/SDL_GAME_GIT/Game_SDL/utils/src/drawing/utils/drawing/Point.h
+

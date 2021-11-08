@@ -15,6 +15,8 @@
 #include "common/TimerDefines.h"
 
 
+
+
 // static void updateMouseTargetText(struct Text *text, const struct Point *pos) {
 //   const char initialStr[] = "X: ";
 //   const size_t initialStrLen = strlen(initialStr);
@@ -27,7 +29,7 @@
 //   usedSize += initialStrLen;
 
 //   //append X value:
-//   const size_t xValueStrLen = snprintf(NULL, 0, "%d", pos->x);z
+//   const size_t xValueStrLen = snprintf(NULL, 0, "%d", pos->x);
 //   snprintf(&textContent[usedSize], xValueStrLen + 1, "%d", pos->x);
 //   usedSize += xValueStrLen;
 
@@ -44,13 +46,49 @@
   
 //   //...
 // }
+static void cameraMotion(struct Game* self){
+  if(self->camaraMotionLeftOn){
+
+      if(self->gameImg.widget.drawParams.pos.x != 0){
+        self->gameImg.widget.drawParams.pos.x += 2;
+      }
+      if(self->enemyTower.heroImg.widget.drawParams.pos.x+2 <= 2400){
+        self->enemyTower.heroImg.widget.drawParams.pos.x += 2;
+      }
+
+      if(self->playerTower.heroImg.widget.drawParams.pos.x != 0){
+        self->playerTower.heroImg.widget.drawParams.pos.x += 2;
+      }
+
+      
+  }
+  else if(self->camaraMotionRightOn){
+    if(self->gameImg.widget.drawParams.pos.x-2 >= -1600){
+      self->gameImg.widget.drawParams.pos.x -= 2;
+    }
+
+    if(self->playerTower.heroImg.widget.drawParams.pos.x >= -1600){ 
+        self->playerTower.heroImg.widget.drawParams.pos.x -= 2;
+    }
+
+    if(self->enemyTower.heroImg.widget.drawParams.pos.x >= 800){
+        self->enemyTower.heroImg.widget.drawParams.pos.x -= 2;
+    }
+   
+  }
+}
+
 
 int32_t initGame(struct Game* self, const struct GameConfig* cfg){
+  self->camaraMotionLeftOn = false;
+  self->camaraMotionRightOn = false;
+  initBattlefield(&self->battlefield);
   struct Point widgetPos = { .x = 0, .y = 0 };
+  self->heroCfg = cfg->heroCfg;
   resetImage(&self->gameImg);
   createImage(&self->gameImg, TEXTURE_BACKGROUND, &widgetPos);
   activateAlphaModulationWidget(&self->gameImg.widget);
-  initVectorHero(&self->playerArmy, 10);
+
   self->gSpriteTimerId = 10;
   self->gAnimTimerId = 11;
 
@@ -65,6 +103,17 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
       return FAILURE;
     }
   }
+
+  if (SUCCESS != initTower(&self->playerTower, &cfg->playerTowerCfg)) {
+    LOGERR("Error, initTower() failed");
+    return FAILURE;
+  }
+  self->playerTower.heroImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
+
+  if (SUCCESS != initTower(&self->enemyTower, &cfg->enemyTowerCfg)) {
+    LOGERR("Error, initTower() failed");
+    return FAILURE;
+  }
   return SUCCESS;
 }
 
@@ -78,6 +127,22 @@ void deinitGame(struct Game* self){
 }
 
 void handleEventGame (struct Game* self, struct InputEvent* e){
+  if(MOUSE_MOTION == e->type){
+    if(e->pos.x>=1200){
+      self->camaraMotionRightOn = true;
+      self->camaraMotionLeftOn = false;
+    }
+
+    else if(e->pos.x<=200){
+      self->camaraMotionLeftOn = true;
+      self->camaraMotionRightOn = false;
+    }
+    else {
+      self->camaraMotionRightOn = false;
+      self->camaraMotionLeftOn = false;
+    }
+    // LOGY("x: %d  y: %d", e->pos.x , e->pos.y );
+  }
   for (int32_t i = 0; i < WHEEL_BUTTON_COUNT; ++i) {
     if (&self->buttons[i].button.isInputUnlocked && containsEventButton(&self->buttons[i].button, e)){
       handleEventWheelButton(&self->buttons[i], e);
@@ -89,25 +154,31 @@ void handleEventGame (struct Game* self, struct InputEvent* e){
 
 void drawGame(struct Game* self){
   // drawWheel(&self->wheel);
+  cameraMotion(self);
   drawWidget(&self->gameImg.widget);
+  
   // drawHero(&self->hero);
   // drawHero(&self->island_boy);
   drawWheelButton(&self->buttons[0]);
   drawWheelButton(&self->buttons[1]);
-  
-  for (size_t i = 0; i < getSizeVectorHero(&self->playerArmy); i++)
+  startBattle(&self->battlefield);
+
+  for (size_t i = 0; i < getSizeVectorHero(&self->battlefield.playerArmy); i++)
   {
-    struct Hero* hero = getElementVectorHero(&self->playerArmy, i);
+    struct Hero* hero = getElementVectorHero(&self->battlefield.playerArmy, i);
     drawHero(hero);
 
   }
 
-  for (size_t i = 0; i < getSizeVectorHero(&self->enemyArmy); i++)
+  for (size_t i = 0; i < getSizeVectorHero(&self->battlefield.enemyArmy); i++)
   {
-    struct Hero* hero = getElementVectorHero(&self->enemyArmy, i);
+    struct Hero* hero = getElementVectorHero(&self->battlefield.enemyArmy, i);
     drawHero(hero);
 
   }
+
+  drawHero(&self->playerTower);
+  drawHero(&self->enemyTower);
   
 }
 
@@ -117,45 +188,40 @@ void onButtonPressedGameProxy (void* gameProxy, int32_t buttonId){
     struct Hero* currHero = malloc(sizeof(struct Hero));
     currHero->playerType = PLAYER;
     struct HeroCfg cfg;
-    cfg.rsrcId = TROLL_1_ID;
+    cfg = game->heroCfg;
+    currHero->moveTimerId = game->gAnimTimerId;
+    currHero->spriteTimerId = game->gSpriteTimerId;
+    
     cfg.heroMoveTimerId = game->gSpriteTimerId;
     cfg.heroChangeAnimTimerId = game->gAnimTimerId;
   
-    
-
     game->gAnimTimerId+=2;
-
     game->gSpriteTimerId+=2;
-
-    cfg.horSteps = 40;
-    cfg.verSteps = 20;
-    cfg.deltaMovePx = 5;
 
     initHero(currHero, &cfg);
 
-    pushElementVectorHero(&game->playerArmy, currHero);
+    pushElementVectorHero(&game->battlefield.playerArmy, currHero);
     startAnim(currHero);
   }
 
   else if(buttonId == TROLL_1_BUTTON_ENEMY_IDX){
     struct Hero* currHero = malloc(sizeof(struct Hero));
+    currHero->playerType = ENEMY;
     struct HeroCfg cfg;
-    cfg.rsrcId = TROLL_1_ID;
+    cfg = game->heroCfg;
+
+    currHero->moveTimerId = game->gAnimTimerId;
+    currHero->spriteTimerId = game->gSpriteTimerId;
+    
     cfg.heroMoveTimerId = game->gSpriteTimerId;
     cfg.heroChangeAnimTimerId = game->gAnimTimerId;
-    currHero->playerType = ENEMY;
-    
+  
     game->gAnimTimerId+=2;
-
     game->gSpriteTimerId+=2;
-
-    cfg.horSteps = 40;
-    cfg.verSteps = 20;
-    cfg.deltaMovePx = 5;
 
     initHero(currHero, &cfg);
 
-    pushElementVectorHero(&game->enemyArmy, currHero);
+    pushElementVectorHero(&game->battlefield.enemyArmy, currHero);
     startAnim(currHero);
   }
 
@@ -163,3 +229,4 @@ void onButtonPressedGameProxy (void* gameProxy, int32_t buttonId){
     LOGERR("Received unknown buttonId: %d", buttonId);
   }
 }
+

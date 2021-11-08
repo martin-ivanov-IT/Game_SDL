@@ -17,14 +17,22 @@ static const int32_t TROLL_1_ID_FRAMES_COUNT = 10;
 static const int32_t TROLL_1_FRAME_WIDTH = 200;
 static const int32_t TROLL_1_FRAME_HEIGHT = 300;
 static const int32_t TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT = 50;
+
+static const int32_t TROLL_1_HEALTH = 50;
+static const int32_t TROLL_1_ATACK_DEMAGE = 25;
+
+static const int32_t TOWER_HEALTH = 50;
+static const int32_t TOWER_FRAMES_COUNT= 50;
+static const int32_t TOWER_FRAME_WIDTH_HEIGHT = 600;
+
 static const int32_t BUTTON_COUNT = 2;
 
-static const int32_t BACKGROUND_IMG_WIDTH = 1400;
+static const int32_t BACKGROUND_IMG_WIDTH = 3000;
 static const int32_t BACKGROUND_IMG_HEIGHT= 750;
 
 static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
 static const int32_t BUTTON_FRAMES = 2;
-static const int32_t ENGINE_TARGET_FRAMES = 60;
+static const int32_t ENGINE_TARGET_FRAMES = 120;
 
 static void populateResourceLocation (char* buffer, const char* relativePath){
     #ifdef RELEASE_BUILD
@@ -38,30 +46,29 @@ static void populateResourceLocation (char* buffer, const char* relativePath){
 
 static void popilateCameCfg( struct GameConfig* cfg){
     UNUSED(cfg);
-    // cfg->heroRsrcID = RUNNING_GIRL_ID;
-    // cfg->wheelRsrcID = WHEEL_ID;
-    // cfg->trollRsrcID = TROLL_1_ID;
-    // cfg->trollRsrcID = TROLL_1_BUTTON_ID;
-    // cfg->wheelStartBtnRsrcId = TEXTURE_WHEEL_START_BUTTON;
-    // cfg->wheelStopBtnRsrcId = TEXTURE_WHEEL_STOP_BUTTON;
-    // cfg->wheelRotAnimTimerId = WHEEL_ANIM_TIMER_ID;
+    cfg->heroCfg.rsrcId = TROLL_1_RUN_ID;
+    cfg->heroCfg.runRsrcId = TROLL_1_RUN_ID;
+    cfg->heroCfg.atackRsrcId = TROLL_1_ATACK_ID;
+    cfg->heroCfg.dieRsrcId = TROLL_1_DIE_ID;
+    cfg->heroCfg.hurtRsrcId = TROLL_1_HURT_ID;
+    cfg->heroCfg.idleRsrcId = TROLL_1_IDLE_ID;
+    cfg->heroCfg.health = TROLL_1_HEALTH;
+    cfg->heroCfg.atackDamage = TROLL_1_ATACK_DEMAGE;
+    cfg->heroCfg.mode = RUN;
+    cfg->heroCfg.horSteps = 40;
+    cfg->heroCfg.verSteps = 20;
+    cfg->heroCfg.deltaMovePx = 40;
 
-    // cfg->heroCfg.rsrcId = TROLL_1_ID;
-    // cfg->heroCfg.heroChangeAnimTimerId = TROLL_1_CHANGE_SPRITE_TIMER_ID;
-    // cfg->heroCfg.heroMoveTimerId = TROLL_1_MOVE_TIMER_ID;
-    // cfg->heroCfg.horSteps = 75;
-    // cfg->heroCfg.verSteps = 50;
-    // cfg->heroCfg.deltaMovePx = 10;
+    cfg->playerTowerCfg.health = TOWER_HEALTH;
+    cfg->playerTowerCfg.rsrcId = PLAYER_TOWER_ID;
+    cfg->playerTowerCfg.playerType = PLAYER;
+
+    cfg->enemyTowerCfg.health = TOWER_HEALTH;
+    cfg->enemyTowerCfg.rsrcId = ENEMY_TOWER_ID;
+    cfg->enemyTowerCfg.playerType = ENEMY;
+
     cfg->trollBtnRsrcId = TROLL_1_BUTTON_ID;
     cfg->trollBtnEnemyRsrcId = TROLL_1_BUTTON_ENEMY_ID;
-
-    // cfg->islandBoyCfg.rsrcId = TROLL_1_ID;
-    // cfg->islandBoyCfg.heroChangeAnimTimerId = TROLL_1_CHANGE_SPRITE_TIMER_ID;
-    // cfg->islandBoyCfg.heroMoveTimerId = TROLL_1_MOVE_TIMER_ID;
-    // cfg->islandBoyCfg.horSteps = 40;
-    // cfg->islandBoyCfg.verSteps = 20;
-    // cfg->islandBoyCfg.deltaMovePx = 5;
-    // cfg->
 }
 
 static void populateWindowCfg(struct MonitorWindowCfg* cfg){
@@ -106,9 +113,26 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     }
 
     populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_run.png");
-    insertImageConfig(cfg, TROLL_1_ID , &imgCfg);
+    insertImageConfig(cfg, TROLL_1_RUN_ID , &imgCfg);
     clearElementsVector(&imgCfg.frames);
     //end Troll run sprite
+
+    //Troll idle sprite
+    initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
+    for (int32_t i = 0; i < TROLL_1_ID_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TROLL_1_FRAME_WIDTH*i);
+        currframe->y = 0;
+        currframe->w = TROLL_1_FRAME_WIDTH;
+        currframe->h = TROLL_1_FRAME_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/troll_1_sprite_idle.png");
+    insertImageConfig(cfg, TROLL_1_IDLE_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Troll idle sprite
 
     //Troll atack sprite
     initVector(&imgCfg.frames,TROLL_1_ID_FRAMES_COUNT);
@@ -144,13 +168,47 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     clearElementsVector(&imgCfg.frames);
     //end Troll hurt sprite
 
+    //Catsle player sprite
+    initVector(&imgCfg.frames,TOWER_FRAMES_COUNT);
+    for (int32_t i = 0; i < TOWER_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TOWER_FRAME_WIDTH_HEIGHT*i);
+        currframe->y = 0;
+        currframe->w = TOWER_FRAME_WIDTH_HEIGHT;
+        currframe->h = TOWER_FRAME_WIDTH_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/castle_1_sprite.png");
+    insertImageConfig(cfg, PLAYER_TOWER_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Catsle player sprite
+
+    //Catsle enemy sprite
+    initVector(&imgCfg.frames,TOWER_FRAMES_COUNT);
+    for (int32_t i = 0; i < TOWER_FRAMES_COUNT; i++)
+    {
+        currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+        currframe->x = 0+(TOWER_FRAME_WIDTH_HEIGHT*i);
+        currframe->y = 0;
+        currframe->w = TOWER_FRAME_WIDTH_HEIGHT;
+        currframe->h = TOWER_FRAME_WIDTH_HEIGHT;
+        pushElementVector(&imgCfg.frames, currframe);
+    }
+
+    populateResourceLocation(imgCfg.location, "resources/p/sprites/castle_2_sprite.png");
+    insertImageConfig(cfg, ENEMY_TOWER_ID , &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+    //end Catsle enemy sprite
+
     currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
     currframe->x = 0;
     currframe->y = 0;
     currframe->w = BACKGROUND_IMG_WIDTH;
     currframe->h = BACKGROUND_IMG_HEIGHT;
     pushElementVector(&imgCfg.frames, currframe);
-    populateResourceLocation(imgCfg.location, "resources/p/background_1400x750.png");
+    populateResourceLocation(imgCfg.location, "resources/p/background_1_3000x750.png");
     insertImageConfig(cfg, BACKGROUND_ID, &imgCfg);
     clearElementsVector(&imgCfg.frames);
 

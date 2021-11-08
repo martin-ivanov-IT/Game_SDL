@@ -9,6 +9,9 @@
         "button.h": "c",
         "timerclient.h": "c",
         "inputevent.h": "c",
-        "island_boy.h": "c"
+        "island_boy.h": "c",
+        "game.h": "c",
+        "hero.h": "c",
+        "battlefield.h": "c"
     }
 }

@@ -96,9 +96,22 @@ CMakeFiles/hello.dir/src/Game/Game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hello.dir/src/Game/Game.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Game.c -o CMakeFiles/hello.dir/src/Game/Game.c.s
 
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: CMakeFiles/hello.dir/flags.make
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o: ../src/Game/Battlefield/Battlefield.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Battlefield/Battlefield.c
+
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Battlefield/Battlefield.c > CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.i
+
+CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Battlefield/Battlefield.c -o CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.s
+
 CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o: ../src/Game/Entities/Hero.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Hero.c
 
 CMakeFiles/hello.dir/src/Game/Entities/Hero.c.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/hello.dir/src/Game/Entities/Hero.c.s: cmake_force
 
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o: ../src/Game/Entities/Wheel.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Wheel.c
 
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.i: cmake_force
@@ -124,7 +137,7 @@ CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.s: cmake_force
 
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o: ../src/Game/Entities/Buttons/WheelButton.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Buttons/WheelButton.c
 
 CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.s: cmake_force
 
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../src/Engine/EngineConfigLoader.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/Engine/EngineConfigLoader.c
 
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.i: cmake_force
@@ -150,7 +163,7 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.s: cmake_force
 
 CMakeFiles/hello.dir/src/containers/VectorHero.c.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/src/containers/VectorHero.c.o: ../src/containers/VectorHero.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/hello.dir/src/containers/VectorHero.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/hello.dir/src/containers/VectorHero.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/hello.dir/src/containers/VectorHero.c.o   -c /home/martin/SDL_GAME_GIT/Game_SDL/src/containers/VectorHero.c
 
 CMakeFiles/hello.dir/src/containers/VectorHero.c.i: cmake_force
@@ -166,6 +179,7 @@ hello_OBJECTS = \
 "CMakeFiles/hello.dir/src/main.c.o" \
 "CMakeFiles/hello.dir/src/Engine/Engine.c.o" \
 "CMakeFiles/hello.dir/src/Game/Game.c.o" \
+"CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o" \
 "CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o" \
 "CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o" \
 "CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o" \
@@ -178,6 +192,7 @@ hello_EXTERNAL_OBJECTS =
 hello: CMakeFiles/hello.dir/src/main.c.o
 hello: CMakeFiles/hello.dir/src/Engine/Engine.c.o
 hello: CMakeFiles/hello.dir/src/Game/Game.c.o
+hello: CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o
 hello: CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o
 hello: CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o
 hello: CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o
@@ -193,7 +208,7 @@ hello: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 hello: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 hello: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so
 hello: CMakeFiles/hello.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable hello"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/martin/SDL_GAME_GIT/Game_SDL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable hello"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hello.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

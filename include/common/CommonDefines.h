@@ -21,12 +21,17 @@ typedef enum {
     BACKGROUND_ID,
 
     TROLL_1_ID,
+    TROLL_1_RUN_ID,
     TROLL_1_ATACK_ID,
     TROLL_1_DIE_ID,
     TROLL_1_HURT_ID,
+    TROLL_1_IDLE_ID,
 
     TROLL_1_BUTTON_ID,
     TROLL_1_BUTTON_ENEMY_ID,
+
+    PLAYER_TOWER_ID,
+    ENEMY_TOWER_ID,
 }TextureIdf;
 
 typedef enum {

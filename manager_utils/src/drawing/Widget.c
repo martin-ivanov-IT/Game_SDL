@@ -24,7 +24,7 @@ bool containsPointWidget(const struct Widget *widget, const struct Point *point)
     const struct DrawParams* params = &widget->drawParams;
     const struct Rectangle rect = {.x = params->pos.x, .y = params->pos.y, .w = params->width, .h = params->height};
 
-    return isPointInsideRect(&rect,point);
+    return isPointInRect(point, &rect);
 }
 
 void setOpacityWidget(struct Widget *widget, int32_t opacity){
