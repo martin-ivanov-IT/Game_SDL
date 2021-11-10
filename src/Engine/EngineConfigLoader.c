@@ -57,7 +57,7 @@ static void popilateCameCfg( struct GameConfig* cfg){
     cfg->heroCfg.mode = RUN;
     cfg->heroCfg.horSteps = 40;
     cfg->heroCfg.verSteps = 20;
-    cfg->heroCfg.deltaMovePx = 40;
+    cfg->heroCfg.deltaMovePx = 5;
 
     cfg->playerTowerCfg.health = TOWER_HEALTH;
     cfg->playerTowerCfg.rsrcId = PLAYER_TOWER_ID;

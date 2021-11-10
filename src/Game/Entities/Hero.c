@@ -93,14 +93,10 @@ static void onTimerTimeout(void* proxy, int32_t timerId){
     }
     
 }
-int32_t initHero (struct Hero* self, const struct HeroCfg* cfg){
+int32_t initHero (struct Hero* self,const struct HeroCfg* cfg, struct Point* pos){
     self->heroCfg = *cfg;
 
-    struct Point widgetPos = { .x = 5, .y = 150 };
-    if(self->playerType == ENEMY){
-        widgetPos.x = 1200;
-        widgetPos.y = 150;
-    }
+    struct Point widgetPos = *pos;
     createImage(&self->heroRunImg, cfg->runRsrcId, &widgetPos);
     createImage(&self->heroDieImg, cfg->dieRsrcId, &widgetPos);
     createImage(&self->heroHurtImg, cfg->hurtRsrcId, &widgetPos);
@@ -129,6 +125,7 @@ int32_t initHero (struct Hero* self, const struct HeroCfg* cfg){
     self->health = cfg->health;
     self->atackDamage = cfg->atackDamage;
     self->isAlive = true;
+    self->heroType = HERO;
     
     createTimer(&self->TimerClient, self, onTimerTimeout);
     return SUCCESS;
@@ -136,11 +133,13 @@ int32_t initHero (struct Hero* self, const struct HeroCfg* cfg){
 
 int32_t initTower(struct Hero* self, const struct HeroCfg* cfg){
     self->heroCfg = *cfg;
+    self->heroType = TOWER;
 
-    struct Point widgetPos = { .x = 0, .y = 0 };
+
+    struct Point widgetPos = { .x = 0, .y = 150 };
     if(cfg->playerType == ENEMY){
         widgetPos.x = 2400;
-        widgetPos.y = 0;
+        widgetPos.y = 150;
     }
     createImage(&self->heroImg, cfg->rsrcId, &widgetPos);
     return SUCCESS;

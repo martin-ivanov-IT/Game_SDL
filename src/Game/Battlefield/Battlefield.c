@@ -8,6 +8,7 @@
 
 #include "manager_utils/drawing/Widget.h"
 
+static const int32_t FIRST_PLAYER_ENEMY_IDX = 1;
 
 void initBattlefield(struct Battlefield* self){
       initVectorHero(&self->playerArmy, 10);
@@ -26,37 +27,40 @@ static bool meetHeros(struct Hero* firstPlayer, struct Hero* secondPlayer){
 }
 
 void startBattle(struct Battlefield* self){
-    struct Hero* firstPlayer = getElementVectorHero(&self->playerArmy, 0);
-    struct Hero* firstEnemy = getElementVectorHero(&self->enemyArmy, 0);
+    struct Hero* firstPlayer = getElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX);
+    struct Hero* firstEnemy = getElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX);
     if(firstPlayer == NULL || firstEnemy == NULL){
         return;
     }
     
-    for (size_t i = 1; i < getSizeVectorHero(&self->playerArmy); i++)
+    for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->playerArmy); i++)
     {
         struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
         if(meetHeros(firstPlayer, currHero)){
             if(firstPlayer->mode != RUN){
+                LOGY("meet teammate player");
                 setModeIdleHero(currHero);
-                currHero->heroImg.widget.drawParams.pos.x = firstPlayer->heroImg.widget.drawParams.pos.x -30;
+                // currHero->heroImg.widget.drawParams.pos.x = firstPlayer->heroImg.widget.drawParams.pos.x - 15;
 
             }
         }
     }
 
-    for (size_t i = 1; i < getSizeVectorHero(&self->enemyArmy); i++)
+    for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->enemyArmy); i++)
     {
         struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
         if(meetHeros(firstEnemy, currHero)){
+            
             if(firstEnemy->mode != RUN){
+                LOGY("enemeies met")
                 setModeIdleHero(currHero);
-                currHero->heroImg.widget.drawParams.pos.x = firstEnemy->heroImg.widget.drawParams.pos.x +30;
+                // currHero->heroImg.widget.drawParams.pos.x = firstEnemy->heroImg.widget.drawParams.pos.x +15;
             }
         }
     }
 
     if(meetHeros(firstEnemy, firstPlayer)){
-        LOGY("meet opposite");
+        
         if(firstPlayer->mode == RUN){
             setModeAtackHero(firstPlayer);
         }
@@ -85,7 +89,7 @@ void startBattle(struct Battlefield* self){
             stopTimer(firstPlayer->spriteTimerId);
             
             deinitHero(firstPlayer);            
-            deleteElementVectorHero(&self->playerArmy, 0);
+            deleteElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX);
 
             firstPlayer = NULL;
 
@@ -101,7 +105,7 @@ void startBattle(struct Battlefield* self){
             stopTimer(firstEnemy->spriteTimerId);
 
             deinitHero(firstEnemy);            
-            deleteElementVectorHero(&self->enemyArmy, 0);
+            deleteElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX);
             firstEnemy = NULL;
             if(firstPlayer){
                 setModeRunHero(firstPlayer);
@@ -121,18 +125,22 @@ void startBattle(struct Battlefield* self){
     }
 
         if(firstPlayer && firstPlayer->mode == RUN){
-            for (size_t i = 1; i < getSizeVectorHero(&self->playerArmy); i++)
+            for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->playerArmy); i++)
             {
                 struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
+                if(currHero->mode != RUN){
                 setModeRunHero(currHero);
+                }
             }
         }
 
         if(firstEnemy && firstEnemy->mode == RUN){
-            for (size_t i = 1; i < getSizeVectorHero(&self->enemyArmy); i++)
+            for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->enemyArmy); i++)
             {
                 struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
+                if(currHero->mode != RUN){
                 setModeRunHero(currHero);
+                }
             }
         }
 }

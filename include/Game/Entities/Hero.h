@@ -20,6 +20,11 @@ typedef enum HeroMode{
     IDLE,
 }HeroMode;
 
+typedef enum HeroType{
+    HERO,
+    TOWER,
+}HeroType;
+
 struct HeroCfg{
     int32_t rsrcId;
     int32_t runRsrcId;
@@ -58,6 +63,7 @@ struct Hero{
     int32_t atackDamage;
     bool isAlive;
     PlayerType playerType;
+    HeroType heroType;
     enum HeroMode mode;
     int32_t currAnimStep;
     bool isMovingHor;
@@ -65,7 +71,7 @@ struct Hero{
     bool isMovingUp;
 };
 void handleEventHero (struct Hero* self, struct InputEvent* e);
-int32_t initHero(struct Hero* self,const struct HeroCfg* cfg);
+int32_t initHero(struct Hero* self,const struct HeroCfg* cfg, struct Point* pos);
 void deinitHero(struct Hero* self);
 void drawHero(struct Hero* self);
 void startAnim(struct Hero* self);
