@@ -4,13 +4,11 @@
 #include <stdint.h>
 #include "manager_utils/drawing/Image.h"
 #include "manager_utils/time/TimerClient.h"
+#include "Game/Entities/HeroBase.h"
 
 
 struct InputEvent;
-typedef enum PlayerType{
-    ENEMY,
-    PLAYER,
-}PlayerType;
+
 
 typedef enum HeroMode{
     RUN,
@@ -25,7 +23,9 @@ typedef enum HeroType{
     TOWER,
 }HeroType;
 
+
 struct HeroCfg{
+    
     int32_t rsrcId;
     int32_t runRsrcId;
     int32_t atackRsrcId;
@@ -46,6 +46,8 @@ struct HeroCfg{
 
     PlayerType playerType;
 };
+
+
 struct Hero{
     struct TimerClient TimerClient;
     

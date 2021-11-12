@@ -12,6 +12,7 @@
         "island_boy.h": "c",
         "game.h": "c",
         "hero.h": "c",
-        "battlefield.h": "c"
+        "battlefield.h": "c",
+        "*.tcc": "cpp"
     }
 }

@@ -29,6 +29,69 @@ static bool meetHeros(struct Hero* firstPlayer, struct Hero* secondPlayer){
 void startBattle(struct Battlefield* self){
     struct Hero* firstPlayer = getElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX);
     struct Hero* firstEnemy = getElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX);
+    struct Hero* enemyTower = getElementVectorHero(&self->enemyArmy, 0);
+    struct Hero* playerTower = getElementVectorHero(&self->playerArmy, 0);
+    if(firstPlayer){
+        LOGY("first player x: %d", firstPlayer->heroImg.widget.drawParams.pos.x);
+        LOGY("enemy tower x: %d", enemyTower->heroImg.widget.drawParams.pos.x);
+    }
+    
+
+    if(firstPlayer == NULL && firstEnemy){
+        if(meetHeros(firstEnemy, playerTower)){
+            for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->enemyArmy); i++){
+                struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
+                    if(meetHeros(currHero,playerTower )){
+                        if(currHero->mode != ATACK){
+                            setModeAtackHero(currHero);
+                        }
+                    }
+                    else {
+                        if(currHero->mode != RUN){
+                            setModeRunHero(currHero);
+                        }
+                    }
+                    if(currHero->mode == ATACK && currHero->heroImg.currFrame == 9){
+                        currHero->heroImg.currFrame = 1;
+                        int32_t damage = produceDamage(currHero);
+                        LOGY("player towedamage taken")
+                        takeDamage(playerTower, damage);
+                    }
+                }
+            }
+    }
+
+    if(firstEnemy == NULL && firstPlayer){
+        struct Hero towerCopy = {
+            .heroImg.widget.drawParams.pos.x = enemyTower->heroImg.widget.drawParams.pos.x -120,
+            .heroImg.widget.drawParams.pos.y = enemyTower->heroImg.widget.drawParams.pos.y,
+            .heroImg.widget.drawParams.width = enemyTower->heroImg.widget.drawParams.width,
+            .heroImg.widget.drawParams.height = enemyTower->heroImg.widget.drawParams.height,
+            };
+        if(meetHeros(firstPlayer, &towerCopy)){
+            for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->playerArmy); i++){
+                struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
+                    // struct Point pointFirst = {.x = enemyTower->heroImg.widget.drawParams.pos.x -150, .y = currHero->heroImg.widget.drawParams.pos.y};
+                    if(meetHeros(currHero, &towerCopy)){
+                        if(currHero->mode != ATACK){
+                            setModeAtackHero(currHero);
+                        }
+                    }
+                    else {
+                        if(currHero->mode != RUN){
+                            setModeRunHero(currHero);
+                        }
+                    }
+                    if(currHero->mode == ATACK && currHero->heroImg.currFrame == 9){
+                        currHero->heroImg.currFrame = 1;
+                        int32_t damage = produceDamage(currHero);
+                        LOGY("player towedamage taken")
+                        takeDamage(playerTower, damage);
+                    }
+                }
+            }
+    }
+
     if(firstPlayer == NULL || firstEnemy == NULL){
         return;
     }

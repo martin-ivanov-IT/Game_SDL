@@ -4,8 +4,6 @@
 #include "utils/Log.h"
 #include "common/CommonDefines.h"
 
-
-
 void handleEventHero (struct Hero* self, struct InputEvent* e){
     UNUSED(self);
     UNUSED(e);
@@ -22,58 +20,13 @@ static void processMoveAnim(struct Hero* self){
     if(self->playerType == PLAYER){
         self->currAnimStep++;
         moveRight(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-        // moveRight(&self->heroRunImg.widget, self->heroCfg.deltaMovePx);
-        // moveRight(&self->heroIdleImg.widget, self->heroCfg.deltaMovePx);
-        // moveRight(&self->heroAtackImg.widget, self->heroCfg.deltaMovePx);
-        // moveRight(&self->heroDieImg.widget, self->heroCfg.deltaMovePx);
-        // moveRight(&self->heroHurtImg.widget, self->heroCfg.deltaMovePx);
 
     }
 
     else if(self->playerType == ENEMY){
         self->currAnimStep++;
-        // self->heroImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
         moveLeft(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-        // moveLeft(&self->heroRunImg.widget, self->heroCfg.deltaMovePx);
-        // moveLeft(&self->heroIdleImg.widget, self->heroCfg.deltaMovePx);
-        // moveLeft(&self->heroAtackImg.widget, self->heroCfg.deltaMovePx);
-        // moveLeft(&self->heroDieImg.widget, self->heroCfg.deltaMovePx);
-        // moveLeft(&self->heroHurtImg.widget, self->heroCfg.deltaMovePx);
     }
-    
-    
-    // if(self->isMovingHor){
-    //     if(self->isMovingRight){
-    //         moveRight(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-    //     }
-    //     else{
-    //         moveLeft(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-    //     }
-
-    //     if (self->currAnimStep == self->heroCfg.horSteps){
-    //         self->currAnimStep = 0;
-    //         self->isMovingHor = false;
-    //         self->isMovingUp = false;
-    //     }
-    // }
-    // else {
-    //     if(self->isMovingUp){
-    //         moveUp(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-    //     }
-    //     else{
-    //         moveDown(&self->heroImg.widget, self->heroCfg.deltaMovePx);
-    //     }
-
-    //     if (self->currAnimStep == self->heroCfg.verSteps){
-    //         self->currAnimStep = 0;
-    //         self->isMovingHor = true;
-    //         self->isMovingUp = true;
-    //         self->isMovingRight = false;
-    //         self->heroImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
-    //     }
-
-    // }
-
 }
 
 static void onTimerTimeout(void* proxy, int32_t timerId){
@@ -116,7 +69,6 @@ int32_t initHero (struct Hero* self,const struct HeroCfg* cfg, struct Point* pos
     // createImage(&self->heroImg, cfg->rsrcId, &widgetPos);
     self->heroImg = self->heroRunImg;
 
-    
     self->currAnimStep = 0;
     self->isMovingHor = true;
     self->isMovingRight = true;
@@ -133,7 +85,9 @@ int32_t initHero (struct Hero* self,const struct HeroCfg* cfg, struct Point* pos
 
 int32_t initTower(struct Hero* self, const struct HeroCfg* cfg){
     self->heroCfg = *cfg;
-    self->heroType = TOWER;
+    self->heroType = cfg->playerType;
+    self->isAlive = true;
+    self->health = cfg->health;
 
 
     struct Point widgetPos = { .x = 0, .y = 150 };
@@ -142,6 +96,8 @@ int32_t initTower(struct Hero* self, const struct HeroCfg* cfg){
         widgetPos.y = 150;
     }
     createImage(&self->heroImg, cfg->rsrcId, &widgetPos);
+    
+    
     return SUCCESS;
 
 }

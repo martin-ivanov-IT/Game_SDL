@@ -9,6 +9,7 @@
 #include "manager_utils/drawing/Image.h"
 #include "manager_utils/drawing/Text.h"
 #include "Game/Entities/Hero.h"
+#include "Game/Entities/Tower.h"
 #include "Game/Entities/Wheel.h"
 #include "Game/Entities/Buttons/WheelButton.h"
 #include "include/containers/VectorHero.h"
@@ -27,12 +28,15 @@ struct Vector;
 
 struct Game {
   struct Image gameImg;
+  struct Image gameOverImg;
+  struct Image gameWinImg;
   struct Hero playerTower;
   struct Hero enemyTower;
   struct WheelButton buttons [WHEEL_BUTTON_COUNT];
   struct Battlefield battlefield;
 
   struct HeroCfg heroCfg;
+  struct HeroBaseCfg herobaseCfg;
   int32_t gSpriteTimerId;
   int32_t gAnimTimerId;
 

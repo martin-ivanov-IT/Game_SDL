@@ -9,6 +9,7 @@ bool isPointInRect(const struct Point *point, const struct Rectangle *rect) {
          && (point->y >= rect->y) && (point->y < (rect->y + rect->h));
 }
 
+
 bool areRectsEqual(const struct Rectangle* left, const struct Rectangle* right){
     return left->x == right->x && left->y == right->y && left->w == right->w
          && left->h == right->h;

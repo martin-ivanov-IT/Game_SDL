@@ -30,6 +30,9 @@ static const int32_t BUTTON_COUNT = 2;
 static const int32_t BACKGROUND_IMG_WIDTH = 3000;
 static const int32_t BACKGROUND_IMG_HEIGHT= 750;
 
+static const int32_t GAME_OVER_IMG_WIDTH = 1400;
+static const int32_t GAME_OVER_IMG_HEIGHT= 750;
+
 static const int32_t ANGELINE_VINATGE_FONT_SIZE = 40;
 static const int32_t BUTTON_FRAMES = 2;
 static const int32_t ENGINE_TARGET_FRAMES = 120;
@@ -57,7 +60,7 @@ static void popilateCameCfg( struct GameConfig* cfg){
     cfg->heroCfg.mode = RUN;
     cfg->heroCfg.horSteps = 40;
     cfg->heroCfg.verSteps = 20;
-    cfg->heroCfg.deltaMovePx = 5;
+    cfg->heroCfg.deltaMovePx = 50;
 
     cfg->playerTowerCfg.health = TOWER_HEALTH;
     cfg->playerTowerCfg.rsrcId = PLAYER_TOWER_ID;
@@ -212,6 +215,25 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     insertImageConfig(cfg, BACKGROUND_ID, &imgCfg);
     clearElementsVector(&imgCfg.frames);
 
+    currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+    currframe->x = 0;
+    currframe->y = 0;
+    currframe->w = GAME_OVER_IMG_WIDTH;
+    currframe->h = GAME_OVER_IMG_HEIGHT;
+    pushElementVector(&imgCfg.frames, currframe);
+    populateResourceLocation(imgCfg.location, "resources/p/game_over.png");
+    insertImageConfig(cfg, GAME_OVER_ID, &imgCfg);
+    clearElementsVector(&imgCfg.frames);
+
+    currframe = (struct Rectangle*)malloc( sizeof(struct Rectangle));
+    currframe->x = 0;
+    currframe->y = 0;
+    currframe->w = GAME_OVER_IMG_WIDTH;
+    currframe->h = GAME_OVER_IMG_HEIGHT;
+    pushElementVector(&imgCfg.frames, currframe);
+    populateResourceLocation(imgCfg.location, "resources/p/win-game-screen .png");
+    insertImageConfig(cfg, TEXTURE_WIN_GAME, &imgCfg);
+    clearElementsVector(&imgCfg.frames);
 //buttons
     const char* buttonPaths[2] = {"resources/p/buttons/island_boy_face.png", "resources/p/buttons/troll_1_face.png"};
     const int32_t buttonRsrcIds[2] = { TROLL_1_BUTTON_ID, TROLL_1_BUTTON_ENEMY_ID};

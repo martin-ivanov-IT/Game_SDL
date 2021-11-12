@@ -120,8 +120,14 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
   struct Point widgetPos = { .x = 0, .y = 0 };
   self->heroCfg = cfg->heroCfg;
   resetImage(&self->gameImg);
+  resetImage(&self->gameOverImg);
+  resetImage(&self->gameWinImg);
   createImage(&self->gameImg, TEXTURE_BACKGROUND, &widgetPos);
+  createImage(&self->gameOverImg, TEXTURE_GAME_OVER, &widgetPos);
+  createImage(&self->gameWinImg, TEXTURE_WIN_GAME, &widgetPos);
   activateAlphaModulationWidget(&self->gameImg.widget);
+  activateAlphaModulationWidget(&self->gameOverImg.widget);
+  activateAlphaModulationWidget(&self->gameWinImg.widget);
 
   self->gSpriteTimerId = 10;
   self->gAnimTimerId = 11;
@@ -190,6 +196,15 @@ void handleEventGame (struct Game* self, struct InputEvent* e){
 
 
 void drawGame(struct Game* self){
+  if(!self->playerTower.isAlive){
+     drawWidget(&self->gameOverImg.widget);
+     return;
+  }
+
+  if(!self->enemyTower.isAlive){
+     drawWidget(&self->gameWinImg.widget);
+     return;
+  }
   // drawWheel(&self->wheel);
   cameraMotion(self);
   drawWidget(&self->gameImg.widget);
@@ -214,8 +229,6 @@ void drawGame(struct Game* self){
     drawHero(hero);
 
   }
-
-  
   
 }
 
