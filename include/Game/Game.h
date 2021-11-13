@@ -19,6 +19,8 @@
 enum WheelButtons {
   TROLL_1_BUTTON_IDX,
   TROLL_1_BUTTON_ENEMY_IDX,
+  TROLL_2_BUTTON_IDX,
+  TROLL_2_BUTTON_ENEMY_IDX,
   WHEEL_BUTTON_COUNT
 };
 
@@ -38,6 +40,7 @@ struct Game {
   struct Battlefield battlefield;
 
   struct HeroCfg troll_1Cfg;
+  struct HeroCfg troll_2Cfg;
 
   int32_t gSpriteTimerId;
   int32_t gAnimTimerId;

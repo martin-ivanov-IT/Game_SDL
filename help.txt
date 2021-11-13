@@ -15,6 +15,10 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 0.04
 3.06
 
-convert +append *.png castle_2_sprite.png
+convert +append *.png troll_2_sprite_run.png
+convert +append *.png troll_2_sprite_atack.png
+convert +append *.png troll_2_sprite_idle.png
+convert +append *.png troll_2_sprite_die.png
+convert +append *.png troll_2_sprite_hurt.png
 
 convert *.png -resize 200x100 myfigure.jpg

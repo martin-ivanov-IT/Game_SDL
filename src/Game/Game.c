@@ -93,6 +93,7 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
   initBattlefield(&self->battlefield);
   struct Point widgetPos = { .x = 0, .y = 0 };
   self->troll_1Cfg = cfg->troll_1Cfg;
+  self->troll_2Cfg = cfg->troll_2Cfg;
   resetImage(&self->gameImg);
   resetImage(&self->gameOverImg);
   resetImage(&self->gameWinImg);
@@ -106,9 +107,14 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
   self->gSpriteTimerId = 10;
   self->gAnimTimerId = 11;
 
-  const int32_t buttonIds[WHEEL_BUTTON_COUNT] = {cfg->trollBtnRsrcId,cfg->trollBtnEnemyRsrcId};
+  const int32_t buttonIds[WHEEL_BUTTON_COUNT] = 
+    {
+      cfg->trollBtnRsrcId,cfg->trollBtnEnemyRsrcId,
+      cfg->troll2BtnRsrcId, cfg->troll2BtnEnemyRsrcId
+    };
   const struct Point buttonPos[WHEEL_BUTTON_COUNT] = {
-    {.x=220, .y=50}, {.x=1000, .y=50}
+    {.x=220, .y=50}, {.x=1000, .y=50},
+    {.x=290, .y=50}, {.x=1070, .y=50}
   };
 
   for (int32_t i = 0; i < WHEEL_BUTTON_COUNT; ++i) {
@@ -210,6 +216,8 @@ void drawGame(struct Game* self){
   // drawHero(&self->island_boy);
   drawWheelButton(&self->buttons[0]);
   drawWheelButton(&self->buttons[1]);
+  drawWheelButton(&self->buttons[2]);
+  drawWheelButton(&self->buttons[3]);
   startBattle(&self->battlefield);
 
   self->playerTower.draw_func(&self->playerTower);
@@ -258,6 +266,38 @@ void onButtonPressedGameProxy (void* gameProxy, int32_t buttonId){
 
     struct Point widgetPos = { .x = game->enemyTower.heroImg.widget.drawParams.pos.x + HERO_ENEMY_START_X, .y = TROLL_START_Y};
     initHero(&currHero->base, &game->troll_1Cfg, &widgetPos, ENEMY);
+
+    pushElementVectorHero(&game->battlefield.enemyArmy, &currHero->base);
+    currHero->startAnim_func(currHero);
+
+  }
+
+  else if(buttonId == TROLL_2_BUTTON_IDX){
+    struct Hero* currHero = malloc(sizeof(struct Hero));
+
+    currHero->moveTimerId = game->gAnimTimerId;
+    currHero->spriteTimerId = game->gSpriteTimerId;
+    game->gAnimTimerId+=2;
+    game->gSpriteTimerId+=2;
+
+    struct Point widgetPos = { .x = game->playerTower.heroImg.widget.drawParams.pos.x + HERO_PLAYER_START_X, .y = TROLL_START_Y};
+
+    initHero(&currHero->base, &game->troll_2Cfg, &widgetPos, PLAYER);
+
+    pushElementVectorHero(&game->battlefield.playerArmy, &currHero->base);
+    currHero->startAnim_func(currHero);
+  }
+
+  else if(buttonId == TROLL_2_BUTTON_ENEMY_IDX){
+    struct Hero* currHero = malloc(sizeof(struct Hero));
+
+    currHero->moveTimerId = game->gAnimTimerId;
+    currHero->spriteTimerId = game->gSpriteTimerId;
+    game->gAnimTimerId+=2;
+    game->gSpriteTimerId+=2;
+
+    struct Point widgetPos = { .x = game->enemyTower.heroImg.widget.drawParams.pos.x + HERO_ENEMY_START_X, .y = TROLL_START_Y};
+    initHero(&currHero->base, &game->troll_2Cfg, &widgetPos, ENEMY);
 
     pushElementVectorHero(&game->battlefield.enemyArmy, &currHero->base);
     currHero->startAnim_func(currHero);
