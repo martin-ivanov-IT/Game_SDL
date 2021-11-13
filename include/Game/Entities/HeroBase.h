@@ -2,6 +2,12 @@
 #define GAME_HEROBASE_H_
 #include <stdint.h>
 #include "manager_utils/drawing/Image.h"
+typedef enum HeroType{
+    HERO,
+    TOWER,
+    TROLL_1,
+}HeroType;
+
 struct HeroBaseCfg{
     int32_t rsrcId;
     int32_t health;
@@ -14,18 +20,15 @@ typedef enum PlayerType{
     PLAYER,
 }PlayerType;
 
-typedef enum HeroType{
-    TROLL,
-}HeroType;
+
 struct HeroBase{
     struct Image heroImg;
     int32_t rsrcId;
     int32_t health;
     int32_t heroChangeAnimTimerId;
     PlayerType playerType;
-    bool isAlive;
     HeroType heroType;
-    int32_t (*init_func)(struct HeroBase* self,const struct HeroCfg* cfg, struct Point* pos);
+    bool isAlive;
     void (*deinit_func)(struct HeroBase* self);
     void (*draw_func)(struct HeroBase* self);
     void (*takeDamage_func)(struct HeroBase* self, int32_t damage); 

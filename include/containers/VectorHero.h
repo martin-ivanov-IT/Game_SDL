@@ -5,10 +5,10 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-struct Hero;
+struct HeroBase;
 
 struct VectorHero {
-  struct Hero **items;
+  struct HeroBase **items;
   size_t capacity;
   size_t size;
 };
@@ -18,10 +18,10 @@ size_t getSizeVectorHero(const struct VectorHero *vec);
 bool isEmptyVectorHero(const struct VectorHero *vec);
 void resizeVectorHero(struct VectorHero *vec, size_t newSize);
 void reserveVectorHero(struct VectorHero *vec, size_t newCapacity);
-void pushElementVectorHero(struct VectorHero *vec, struct Hero* elem);
-void setElementVectorHero(struct VectorHero *vec, size_t idx, struct Hero* elem);
-struct Hero* getElementVectorHero(const struct VectorHero *vec, size_t idx);
-struct Hero* backElementVectorHero(struct VectorHero *vec);
+void pushElementVectorHero(struct VectorHero *vec, struct HeroBase* elem);
+void setElementVectorHero(struct VectorHero *vec, size_t idx, struct HeroBase* elem);
+struct HeroBase* getElementVectorHero(const struct VectorHero *vec, size_t idx);
+struct HeroBase* backElementVectorHero(struct VectorHero *vec);
 void deleteElementVectorHero(struct VectorHero *vec, size_t idx);
 void popElementVectorHero(struct VectorHero *vec);
 void clearElementsVectorHero(struct VectorHero *vec);

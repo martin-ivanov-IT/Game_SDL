@@ -1,6 +1,6 @@
 //Corresponding header
 #include "include/containers/VectorHero.h"
-#include "Game/Entities/Hero.h"
+#include "Game/Entities/HeroBase.h"
 #include <stdlib.h>
 
 
@@ -13,7 +13,7 @@ void initVectorHero(struct VectorHero *vec, size_t initialCapacity) {
   vec->size = 0;
 
   if (0 != initialCapacity) {
-    vec->items = malloc(sizeof(struct Hero*) * vec->capacity);
+    vec->items = malloc(sizeof(struct HeroBase*) * vec->capacity);
   } else {
     vec->items = NULL;
   }
@@ -34,7 +34,7 @@ void resizeVectorHero(struct VectorHero *vec, size_t newSize) {
     return;
   }
 
-  struct Hero **items = realloc(vec->items, sizeof(struct Hero*) * newSize);
+  struct HeroBase **items = realloc(vec->items, sizeof(struct HeroBase*) * newSize);
   if (items) {
     vec->items = items;
     vec->capacity = newSize;
@@ -43,7 +43,7 @@ void resizeVectorHero(struct VectorHero *vec, size_t newSize) {
 }
 
 void reserveVectorHero(struct VectorHero *vec, size_t newCapacity) {
-  struct Hero **items = realloc(vec->items, sizeof(struct Hero*) * newCapacity);
+  struct HeroBase **items = realloc(vec->items, sizeof(struct HeroBase*) * newCapacity);
   if (items) {
     vec->items = items;
     vec->capacity = newCapacity;
@@ -55,7 +55,7 @@ void reserveVectorHero(struct VectorHero *vec, size_t newCapacity) {
   }
 }
 
-void pushElementVectorHero(struct VectorHero *vec, struct Hero *item) {
+void pushElementVectorHero(struct VectorHero *vec, struct HeroBase* item) {
   if (0 == vec->capacity) {
     reserveVectorHero(vec, 1);
   }
@@ -66,20 +66,20 @@ void pushElementVectorHero(struct VectorHero *vec, struct Hero *item) {
   vec->size++;
 }
 
-void setElementVectorHero(struct VectorHero *vec, size_t idx, struct Hero *item) {
+void setElementVectorHero(struct VectorHero *vec, size_t idx, struct HeroBase *item) {
   if (idx < vec->size) {
     vec->items[idx] = item;
   }
 }
 
-struct Hero* getElementVectorHero(const struct VectorHero *vec, size_t idx) {
+struct HeroBase* getElementVectorHero(const struct VectorHero *vec, size_t idx) {
   if (idx < vec->size) {
     return vec->items[idx];
   }
   return NULL;
 }
 
-struct Hero* backElementVectorHero(struct VectorHero *vec) {
+struct HeroBase* backElementVectorHero(struct VectorHero *vec) {
   if (0 == vec->size) {
     return NULL;
   }
@@ -119,7 +119,7 @@ void shrinkToFitVectorHero(struct VectorHero *vec) {
     return;
   }
 
-  struct Hero **items = realloc(vec->items, sizeof(struct Hero*) * vec->capacity);
+  struct HeroBase **items = realloc(vec->items, sizeof(struct HeroBase*) * vec->capacity);
   if (items) {
     vec->items = items;
     vec->size = vec->capacity;
@@ -130,7 +130,7 @@ void deepCopyVectorHero(const struct VectorHero *from, struct VectorHero *to) {
   to->size = from->size;
   to->capacity = from->capacity;
   if (NULL != from->items) {
-    to->items = malloc(sizeof(struct Hero*) * from->capacity);
+    to->items = malloc(sizeof(struct HeroBase*) * from->capacity);
     for (size_t i = 0; i < to->capacity; ++i) {
       to->items[i] = from->items[i];
     }

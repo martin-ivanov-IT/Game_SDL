@@ -5,6 +5,7 @@
 #include "common/CommonDefines.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"
+#include "utils/ContainerOf.h"
 
 #include "manager_utils/drawing/Widget.h"
 
@@ -17,7 +18,7 @@ void initBattlefield(struct Battlefield* self){
 void deinitBattlefield(struct Battlefield* self){
     UNUSED(self);
 }
-static bool meetHeros(struct Hero* firstPlayer, struct Hero* secondPlayer){
+static bool meetHeros(struct HeroBase* firstPlayer, struct HeroBase* secondPlayer){
     if(!firstPlayer || !secondPlayer){
         return false;
     }
@@ -27,66 +28,78 @@ static bool meetHeros(struct Hero* firstPlayer, struct Hero* secondPlayer){
 }
 
 void startBattle(struct Battlefield* self){
-    struct Hero* firstPlayer = getElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX);
-    struct Hero* firstEnemy = getElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX);
-    struct Hero* enemyTower = getElementVectorHero(&self->enemyArmy, 0);
-    struct Hero* playerTower = getElementVectorHero(&self->playerArmy, 0);
+    struct Hero* firstPlayer =
+     container_of(getElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX), struct Hero, base);
+    
+    struct Hero* firstEnemy =
+     container_of(getElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX), struct Hero, base);
+
+    struct HeroBase* enemyTower = getElementVectorHero(&self->enemyArmy, 0);
+    struct HeroBase* playerTower = getElementVectorHero(&self->playerArmy, 0);
+    
     if(firstPlayer){
-        LOGY("first player x: %d", firstPlayer->heroImg.widget.drawParams.pos.x);
+        LOGY("first player x: %d rsrcId%d", firstPlayer->base.heroImg.widget.drawParams.pos.x, firstPlayer->base.playerType);
+        LOGY("enemy tower x: %d", enemyTower->heroImg.widget.drawParams.pos.x);
+    }
+
+    if(firstEnemy){
+        LOGY("firstEnemy x: %d rsrcId%d", firstEnemy->base.heroImg.widget.drawParams.pos.x, firstEnemy->base.playerType);
         LOGY("enemy tower x: %d", enemyTower->heroImg.widget.drawParams.pos.x);
     }
     
 
     if(firstPlayer == NULL && firstEnemy){
-        if(meetHeros(firstEnemy, playerTower)){
+        if(meetHeros(&firstEnemy->base, playerTower)){
             for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->enemyArmy); i++){
-                struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
-                    if(meetHeros(currHero,playerTower )){
+                struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->enemyArmy, i), struct Hero, base);
+                    if(meetHeros(&currHero->base,playerTower )){
                         if(currHero->mode != ATACK){
-                            setModeAtackHero(currHero);
+                            currHero->setModeAtackHero_func(currHero);
                         }
                     }
                     else {
                         if(currHero->mode != RUN){
-                            setModeRunHero(currHero);
+                            currHero->setModeRunHero_func(currHero);
                         }
                     }
-                    if(currHero->mode == ATACK && currHero->heroImg.currFrame == 9){
-                        currHero->heroImg.currFrame = 1;
-                        int32_t damage = produceDamage(currHero);
+                    if(currHero->mode == ATACK && currHero->base.heroImg.currFrame == 9){
+                        currHero->base.heroImg.currFrame = 1;
+                        int32_t damage = currHero->produceDamage_func(currHero);
                         LOGY("player towedamage taken")
-                        takeDamage(playerTower, damage);
+                        playerTower->takeDamage_func(playerTower, damage);
                     }
                 }
             }
     }
 
     if(firstEnemy == NULL && firstPlayer){
-        struct Hero towerCopy = {
+        struct HeroBase towerCopy = {
             .heroImg.widget.drawParams.pos.x = enemyTower->heroImg.widget.drawParams.pos.x -120,
             .heroImg.widget.drawParams.pos.y = enemyTower->heroImg.widget.drawParams.pos.y,
             .heroImg.widget.drawParams.width = enemyTower->heroImg.widget.drawParams.width,
             .heroImg.widget.drawParams.height = enemyTower->heroImg.widget.drawParams.height,
             };
-        if(meetHeros(firstPlayer, &towerCopy)){
+        if(meetHeros(&firstPlayer->base, &towerCopy)){
             for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->playerArmy); i++){
-                struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
-                    // struct Point pointFirst = {.x = enemyTower->heroImg.widget.drawParams.pos.x -150, .y = currHero->heroImg.widget.drawParams.pos.y};
-                    if(meetHeros(currHero, &towerCopy)){
+                    struct Hero* currHero =
+                        container_of(getElementVectorHero(&self->playerArmy, i), struct Hero, base);
+                    // struct Point pointFirst = {.x = enemyTower->heroImg.widget.drawParams.pos.x -150, .y = currHero->base.heroImg.widget.drawParams.pos.y};
+                    if(meetHeros(&currHero->base, &towerCopy)){
                         if(currHero->mode != ATACK){
-                            setModeAtackHero(currHero);
+                            currHero->setModeAtackHero_func(currHero);
                         }
                     }
                     else {
                         if(currHero->mode != RUN){
-                            setModeRunHero(currHero);
+                            currHero->setModeRunHero_func(currHero);
                         }
                     }
-                    if(currHero->mode == ATACK && currHero->heroImg.currFrame == 9){
-                        currHero->heroImg.currFrame = 1;
-                        int32_t damage = produceDamage(currHero);
+                    if(currHero->mode == ATACK && currHero->base.heroImg.currFrame == 9){
+                        currHero->base.heroImg.currFrame = 1;
+                        int32_t damage = currHero->produceDamage_func(currHero);
                         LOGY("player towedamage taken")
-                        takeDamage(playerTower, damage);
+                        enemyTower->takeDamage_func(enemyTower, damage);
                     }
                 }
             }
@@ -98,111 +111,117 @@ void startBattle(struct Battlefield* self){
     
     for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->playerArmy); i++)
     {
-        struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
-        if(meetHeros(firstPlayer, currHero)){
+        struct Hero* currHero =
+                        container_of(getElementVectorHero(&self->playerArmy, i), struct Hero, base);
+
+        if(meetHeros(&firstPlayer->base, &currHero->base)){
             if(firstPlayer->mode != RUN){
                 LOGY("meet teammate player");
-                setModeIdleHero(currHero);
-                // currHero->heroImg.widget.drawParams.pos.x = firstPlayer->heroImg.widget.drawParams.pos.x - 15;
+                currHero->setModeIdleHero_func(currHero);
+                // currHero->base.heroImg.widget.drawParams.pos.x = firstPlayer->base.heroImg.widget.drawParams.pos.x - 15;
 
             }
         }
     }
 
     for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->enemyArmy); i++)
-    {
-        struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
-        if(meetHeros(firstEnemy, currHero)){
+    {   
+        struct Hero* currHero =
+                        container_of(getElementVectorHero(&self->enemyArmy, i), struct Hero, base);
+
+        if(meetHeros(&firstEnemy->base,  &currHero->base)){
             
             if(firstEnemy->mode != RUN){
                 LOGY("enemeies met")
-                setModeIdleHero(currHero);
-                // currHero->heroImg.widget.drawParams.pos.x = firstEnemy->heroImg.widget.drawParams.pos.x +15;
+                currHero->setModeIdleHero_func(currHero);
+                // currHero->base.heroImg.widget.drawParams.pos.x = firstEnemy->base.heroImg.widget.drawParams.pos.x +15;
             }
         }
     }
 
-    if(meetHeros(firstEnemy, firstPlayer)){
+    if(meetHeros(&firstEnemy->base, &firstPlayer->base)){
         
         if(firstPlayer->mode == RUN){
-            setModeAtackHero(firstPlayer);
+            firstPlayer->setModeAtackHero_func(firstPlayer);
         }
 
         if(firstEnemy->mode == RUN){
-            setModeAtackHero(firstEnemy);
+            firstEnemy->setModeAtackHero_func(firstEnemy);
         }
 
-        if(firstPlayer->heroImg.currFrame == 9){
-            firstPlayer->heroImg.currFrame = 1;
-            int32_t damage = produceDamage(firstPlayer);
+        if(firstPlayer->base.heroImg.currFrame == 9){
+            firstPlayer->base.heroImg.currFrame = 1;
+            int32_t damage = firstPlayer->produceDamage_func(firstPlayer);
             LOGY("damage taken")
-            takeDamage(firstEnemy, damage);
+            firstEnemy->base.takeDamage_func(&firstEnemy->base, damage);
         }
 
-        if(firstEnemy->heroImg.currFrame == 9){
-            firstEnemy->heroImg.currFrame = 1;
-            int32_t damage = produceDamage(firstEnemy);
+        if(firstEnemy->base.heroImg.currFrame == 9){
+            firstEnemy->base.heroImg.currFrame = 1;
+            int32_t damage = firstPlayer->produceDamage_func(firstEnemy);
             LOGY("damage taken")
-            takeDamage(firstPlayer, damage);
+            firstEnemy->base.takeDamage_func(&firstPlayer->base, damage);
         }
 
-        if(!firstPlayer->isAlive){
+        if(!firstPlayer->base.isAlive){
             LOGY("firstPlayer taken")
             stopTimer(firstPlayer->moveTimerId);
             stopTimer(firstPlayer->spriteTimerId);
             
-            deinitHero(firstPlayer);            
+            firstPlayer->base.deinit_func(&firstPlayer->base);         
             deleteElementVectorHero(&self->playerArmy, FIRST_PLAYER_ENEMY_IDX);
 
             firstPlayer = NULL;
 
             if(firstEnemy){
-                setModeRunHero(firstEnemy);
+                firstEnemy->setModeRunHero_func(firstEnemy);
             }
         }
 
-        if(!firstEnemy->isAlive){
+        if(!firstEnemy->base.isAlive){
             LOGY("firstEnemy taken")
             
             stopTimer(firstEnemy->moveTimerId);
             stopTimer(firstEnemy->spriteTimerId);
 
-            deinitHero(firstEnemy);            
+            firstEnemy->base.deinit_func(&firstEnemy->base);            
             deleteElementVectorHero(&self->enemyArmy, FIRST_PLAYER_ENEMY_IDX);
             firstEnemy = NULL;
             if(firstPlayer){
-                setModeRunHero(firstPlayer);
+                firstPlayer->setModeRunHero_func(firstPlayer);
             }
 
         }
     }
 
-    if(!meetHeros(firstEnemy, firstPlayer)) {
+    if(!meetHeros(&firstEnemy->base, &firstPlayer->base)) {
         if(firstPlayer && firstPlayer->mode != RUN){
-            setModeRunHero(firstPlayer);
+            firstPlayer->setModeRunHero_func(firstPlayer);
         }
 
         if(firstEnemy && firstEnemy->mode != RUN){
-            setModeRunHero(firstEnemy);
+            firstEnemy->setModeRunHero_func(firstEnemy);
         }
     }
 
         if(firstPlayer && firstPlayer->mode == RUN){
             for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->playerArmy); i++)
             {
-                struct Hero* currHero = getElementVectorHero(&self->playerArmy, i);
+                struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->playerArmy, i), struct Hero, base);
                 if(currHero->mode != RUN){
-                setModeRunHero(currHero);
+                    currHero->setModeRunHero_func(currHero);
                 }
             }
         }
 
         if(firstEnemy && firstEnemy->mode == RUN){
             for (size_t i = FIRST_PLAYER_ENEMY_IDX + 1; i < getSizeVectorHero(&self->enemyArmy); i++)
-            {
-                struct Hero* currHero = getElementVectorHero(&self->enemyArmy, i);
+            {   
+                struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->enemyArmy, i), struct Hero, base);
                 if(currHero->mode != RUN){
-                setModeRunHero(currHero);
+                    currHero->setModeRunHero_func(currHero);
                 }
             }
         }

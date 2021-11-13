@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o"
   "CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o"
   "CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o"
+  "CMakeFiles/hello.dir/src/Game/Entities/HeroBase.c.o"
   "CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o"
   "CMakeFiles/hello.dir/src/Game/Game.c.o"
   "CMakeFiles/hello.dir/src/containers/VectorHero.c.o"

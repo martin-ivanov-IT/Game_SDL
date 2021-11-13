@@ -30,13 +30,15 @@ struct Game {
   struct Image gameImg;
   struct Image gameOverImg;
   struct Image gameWinImg;
-  struct Hero playerTower;
-  struct Hero enemyTower;
+
+  struct HeroBase playerTower;
+  struct HeroBase enemyTower;
+
   struct WheelButton buttons [WHEEL_BUTTON_COUNT];
   struct Battlefield battlefield;
 
-  struct HeroCfg heroCfg;
-  struct HeroBaseCfg herobaseCfg;
+  struct HeroCfg troll_1Cfg;
+
   int32_t gSpriteTimerId;
   int32_t gAnimTimerId;
 

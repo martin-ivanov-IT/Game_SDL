@@ -297,6 +297,33 @@ src/Game/Entities/Hero.c.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/Hero.c.s
 .PHONY : src/Game/Entities/Hero.c.s
 
+src/Game/Entities/HeroBase.o: src/Game/Entities/HeroBase.c.o
+
+.PHONY : src/Game/Entities/HeroBase.o
+
+# target to build an object file
+src/Game/Entities/HeroBase.c.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/HeroBase.c.o
+.PHONY : src/Game/Entities/HeroBase.c.o
+
+src/Game/Entities/HeroBase.i: src/Game/Entities/HeroBase.c.i
+
+.PHONY : src/Game/Entities/HeroBase.i
+
+# target to preprocess a source file
+src/Game/Entities/HeroBase.c.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/HeroBase.c.i
+.PHONY : src/Game/Entities/HeroBase.c.i
+
+src/Game/Entities/HeroBase.s: src/Game/Entities/HeroBase.c.s
+
+.PHONY : src/Game/Entities/HeroBase.s
+
+# target to generate assembly for a file
+src/Game/Entities/HeroBase.c.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/Game/Entities/HeroBase.c.s
+.PHONY : src/Game/Entities/HeroBase.c.s
+
 src/Game/Entities/Wheel.o: src/Game/Entities/Wheel.c.o
 
 .PHONY : src/Game/Entities/Wheel.o
@@ -432,6 +459,9 @@ help:
 	@echo "... src/Game/Entities/Hero.o"
 	@echo "... src/Game/Entities/Hero.i"
 	@echo "... src/Game/Entities/Hero.s"
+	@echo "... src/Game/Entities/HeroBase.o"
+	@echo "... src/Game/Entities/HeroBase.i"
+	@echo "... src/Game/Entities/HeroBase.s"
 	@echo "... src/Game/Entities/Wheel.o"
 	@echo "... src/Game/Entities/Wheel.i"
 	@echo "... src/Game/Entities/Wheel.s"

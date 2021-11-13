@@ -8,9 +8,10 @@
 
 struct GameConfig {
 
-  struct HeroCfg heroCfg;
-  struct HeroCfg playerTowerCfg;
-  struct HeroCfg enemyTowerCfg;
+  struct HeroCfg troll_1Cfg;
+  struct HeroBaseCfg playerTowerCfg;
+  struct HeroBaseCfg enemyTowerCfg;
+
   int32_t trollBtnRsrcId;
   int32_t trollBtnEnemyRsrcId;
   

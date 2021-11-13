@@ -13,39 +13,9 @@
 #include "Game/proxies/GameInterface.h"
 #include "common/CommonDefines.h"
 #include "common/TimerDefines.h"
+#include "utils/ContainerOf.h"
 
 
-
-
-// static void updateMouseTargetText(struct Text *text, const struct Point *pos) {
-//   const char initialStr[] = "X: ";
-//   const size_t initialStrLen = strlen(initialStr);
-//   char textContent[50];
-//   memset(textContent, 0, sizeof (textContent));
-//   size_t usedSize = 0;
-
-//   //append initial string
-//   strncpy(&textContent[usedSize], initialStr, initialStrLen);
-//   usedSize += initialStrLen;
-
-//   //append X value:
-//   const size_t xValueStrLen = snprintf(NULL, 0, "%d", pos->x);
-//   snprintf(&textContent[usedSize], xValueStrLen + 1, "%d", pos->x);
-//   usedSize += xValueStrLen;
-
-//   const char YStr[] = "nY: ";
-//   const size_t YStrStrLen = strlen(YStr);
-//   strncpy(&textContent[usedSize], YStr, YStrStrLen);
-//   usedSize += YStrStrLen;
-
-
-//   const size_t yValueStrLen = snprintf(NULL, 0, "%d", pos->y);
-//   snprintf(&textContent[usedSize], yValueStrLen + 1, "%d", pos->y);
-//   usedSize += yValueStrLen;
-//   setText(text, textContent);
-  
-//   //...
-// }
 
 static const int32_t FIRST_PLAYER_ENEMY_IDX = 1;
 
@@ -56,17 +26,19 @@ static void cameraMotion(struct Game* self){
         self->gameImg.widget.drawParams.pos.x += 2;
         for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->battlefield.playerArmy); i++)
         {
-          struct Hero* currHero = getElementVectorHero(&self->battlefield.playerArmy, i);
+          struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->battlefield.playerArmy, i), struct Hero, base);
           if(currHero){
-            currHero->heroImg.widget.drawParams.pos.x +=2;
+            currHero->base.heroImg.widget.drawParams.pos.x +=2;
           } 
         }
 
         for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->battlefield.enemyArmy); i++)
         {
-          struct Hero* currHero = getElementVectorHero(&self->battlefield.enemyArmy, i);
+           struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->battlefield.enemyArmy, i), struct Hero, base);
           if(currHero){
-            currHero->heroImg.widget.drawParams.pos.x +=2;
+            currHero->base.heroImg.widget.drawParams.pos.x +=2;
           } 
         }
 
@@ -86,17 +58,19 @@ static void cameraMotion(struct Game* self){
         self->gameImg.widget.drawParams.pos.x -= 2;
         for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->battlefield.playerArmy); i++)
         {
-          struct Hero* currHero = getElementVectorHero(&self->battlefield.playerArmy, i);
+          struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->battlefield.playerArmy, i), struct Hero, base);
           if(currHero){
-            currHero->heroImg.widget.drawParams.pos.x -=2;
+            currHero->base.heroImg.widget.drawParams.pos.x -=2;
           } 
         }
 
         for (size_t i = FIRST_PLAYER_ENEMY_IDX; i < getSizeVectorHero(&self->battlefield.enemyArmy); i++)
         {
-          struct Hero* currHero = getElementVectorHero(&self->battlefield.enemyArmy, i);
+          struct Hero* currHero =
+                    container_of(getElementVectorHero(&self->battlefield.enemyArmy, i), struct Hero, base);
           if(currHero){
-            currHero->heroImg.widget.drawParams.pos.x -=2;
+            currHero->base.heroImg.widget.drawParams.pos.x -=2;
           } 
         }
     }
@@ -118,7 +92,7 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
   self->camaraMotionRightOn = false;
   initBattlefield(&self->battlefield);
   struct Point widgetPos = { .x = 0, .y = 0 };
-  self->heroCfg = cfg->heroCfg;
+  self->troll_1Cfg = cfg->troll_1Cfg;
   resetImage(&self->gameImg);
   resetImage(&self->gameOverImg);
   resetImage(&self->gameWinImg);
@@ -134,7 +108,7 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
 
   const int32_t buttonIds[WHEEL_BUTTON_COUNT] = {cfg->trollBtnRsrcId,cfg->trollBtnEnemyRsrcId};
   const struct Point buttonPos[WHEEL_BUTTON_COUNT] = {
-    {.x=680, .y=100}, {.x=630, .y=100}
+    {.x=220, .y=50}, {.x=1000, .y=50}
   };
 
   for (int32_t i = 0; i < WHEEL_BUTTON_COUNT; ++i) {
@@ -144,16 +118,19 @@ int32_t initGame(struct Game* self, const struct GameConfig* cfg){
     }
   }
 
-  if (SUCCESS != initTower(&self->playerTower, &cfg->playerTowerCfg)) {
+  struct Point playerTowerPos = { .x = 0, .y = 150 };
+  if (SUCCESS != initBase(&self->playerTower, &cfg->playerTowerCfg, &playerTowerPos, PLAYER)) {
     LOGERR("Error, initTower() failed");
     return FAILURE;
   }
   self->playerTower.heroImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
 
-  if (SUCCESS != initTower(&self->enemyTower, &cfg->enemyTowerCfg)) {
+  struct Point enemyTowerPos = { .x = 2400, .y = 150 };
+  if (SUCCESS != initBase(&self->enemyTower, &cfg->enemyTowerCfg,&enemyTowerPos, ENEMY)) {
     LOGERR("Error, initTower() failed");
     return FAILURE;
   }
+
   pushElementVectorHero(&self->battlefield.enemyArmy, &self->enemyTower);
   pushElementVectorHero(&self->battlefield.playerArmy, &self->playerTower);
 
@@ -205,6 +182,26 @@ void drawGame(struct Game* self){
      drawWidget(&self->gameWinImg.widget);
      return;
   }
+  LOGY("playertowe health: %d", self->playerTower.health);
+
+  if(self->playerTower.health<200 && self->playerTower.heroImg.currFrame == 1){
+    self->playerTower.heroImg.currFrame = 2;
+    const struct Rectangle* rect =
+                          (const struct Rectangle*)getElementVector
+                            (self->playerTower.heroImg.frames, self->playerTower.heroImg.currFrame);
+
+    self->playerTower.heroImg.widget.drawParams.frameRect = *rect; 
+  }
+
+  else if(self->playerTower.health<600 && self->playerTower.heroImg.currFrame == 0){
+    self->playerTower.heroImg.currFrame = 1;
+    const struct Rectangle* rect =
+                          (const struct Rectangle*)getElementVector
+                            (self->playerTower.heroImg.frames, self->playerTower.heroImg.currFrame);
+
+    self->playerTower.heroImg.widget.drawParams.frameRect = *rect;
+  }
+
   // drawWheel(&self->wheel);
   cameraMotion(self);
   drawWidget(&self->gameImg.widget);
@@ -214,20 +211,21 @@ void drawGame(struct Game* self){
   drawWheelButton(&self->buttons[0]);
   drawWheelButton(&self->buttons[1]);
   startBattle(&self->battlefield);
-  drawHero(&self->playerTower);
-  drawHero(&self->enemyTower);
+
+  self->playerTower.draw_func(&self->playerTower);
+  self->enemyTower.draw_func(&self->enemyTower);
   for (size_t i = 0; i < getSizeVectorHero(&self->battlefield.playerArmy); i++)
   {
-    struct Hero* hero = getElementVectorHero(&self->battlefield.playerArmy, i);
-    drawHero(hero);
-
+    struct Hero* hero =
+                    container_of(getElementVectorHero(&self->battlefield.playerArmy, i), struct Hero, base);
+    hero->base.draw_func(&hero->base);
   }
 
   for (size_t i = 0; i < getSizeVectorHero(&self->battlefield.enemyArmy); i++)
   {
-    struct Hero* hero = getElementVectorHero(&self->battlefield.enemyArmy, i);
-    drawHero(hero);
-
+    struct Hero* hero =
+                    container_of(getElementVectorHero(&self->battlefield.enemyArmy, i), struct Hero, base);
+    hero->base.draw_func(&hero->base);
   }
   
 }
@@ -236,43 +234,34 @@ void onButtonPressedGameProxy (void* gameProxy, int32_t buttonId){
   struct Game *game = (struct Game*)gameProxy;
   if(buttonId == TROLL_1_BUTTON_IDX){
     struct Hero* currHero = malloc(sizeof(struct Hero));
-    currHero->playerType = PLAYER;
-    struct HeroCfg cfg;
-    cfg = game->heroCfg;
+
     currHero->moveTimerId = game->gAnimTimerId;
     currHero->spriteTimerId = game->gSpriteTimerId;
-    
-    cfg.heroMoveTimerId = game->gSpriteTimerId;
-    cfg.heroChangeAnimTimerId = game->gAnimTimerId;
-  
     game->gAnimTimerId+=2;
     game->gSpriteTimerId+=2;
-    struct Point widgetPos = { .x = game->playerTower.heroImg.widget.drawParams.pos.x + 620, .y = 450};
-    initHero(currHero, &cfg, &widgetPos);
 
-    pushElementVectorHero(&game->battlefield.playerArmy, currHero);
-    startAnim(currHero);
+    struct Point widgetPos = { .x = game->playerTower.heroImg.widget.drawParams.pos.x + HERO_PLAYER_START_X, .y = TROLL_START_Y};
+
+    initHero(&currHero->base, &game->troll_1Cfg, &widgetPos, PLAYER);
+
+    pushElementVectorHero(&game->battlefield.playerArmy, &currHero->base);
+    currHero->startAnim_func(currHero);
   }
 
   else if(buttonId == TROLL_1_BUTTON_ENEMY_IDX){
     struct Hero* currHero = malloc(sizeof(struct Hero));
-    currHero->playerType = ENEMY;
-    struct HeroCfg cfg;
-    cfg = game->heroCfg;
 
     currHero->moveTimerId = game->gAnimTimerId;
     currHero->spriteTimerId = game->gSpriteTimerId;
-    
-    cfg.heroMoveTimerId = game->gSpriteTimerId;
-    cfg.heroChangeAnimTimerId = game->gAnimTimerId;
-  
     game->gAnimTimerId+=2;
     game->gSpriteTimerId+=2;
-    struct Point widgetPos = { .x = game->enemyTower.heroImg.widget.drawParams.pos.x -300, .y = 450};
-    initHero(currHero, &cfg, &widgetPos);
 
-    pushElementVectorHero(&game->battlefield.enemyArmy, currHero);
-    startAnim(currHero);
+    struct Point widgetPos = { .x = game->enemyTower.heroImg.widget.drawParams.pos.x + HERO_ENEMY_START_X, .y = TROLL_START_Y};
+    initHero(&currHero->base, &game->troll_1Cfg, &widgetPos, ENEMY);
+
+    pushElementVectorHero(&game->battlefield.enemyArmy, &currHero->base);
+    currHero->startAnim_func(currHero);
+
   }
 
    else {

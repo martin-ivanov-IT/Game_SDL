@@ -7,6 +7,8 @@ CMakeFiles/hello.dir/src/Engine/Engine.c.o
  ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
+ ../include/Game/Entities/Tower.h
  ../include/Game/Entities/Wheel.h
  ../include/Game/Game.h
  ../include/Game/config/GameCfg.h
@@ -45,6 +47,7 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o
  ../include/Engine/EngineConfigLoader.h
  ../include/Engine/config/EngineCfg.h
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
  ../include/Game/config/GameCfg.h
  ../include/common/CommonDefines.h
  ../include/common/TimerDefines.h
@@ -68,12 +71,14 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o
 CMakeFiles/hello.dir/src/Game/Battlefield/Battlefield.c.o
  ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
  ../include/common/CommonDefines.h
  ../include/containers/VectorHero.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
  ../manager_utils/include/manager_utils/time/TimerClient.h
  ../manager_utils/include/manager_utils/time/TimerClientStructs.h
+ ../utils/include/utils/ContainerOf.h
  ../utils/include/utils/ErrorCodes.h
  ../utils/include/utils/Log.h
  ../utils/include/utils/drawing/DrawParams.h
@@ -96,12 +101,14 @@ CMakeFiles/hello.dir/src/Game/Entities/Buttons/WheelButton.c.o
  /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Buttons/WheelButton.c
 CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
  ../include/common/CommonDefines.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
  ../manager_utils/include/manager_utils/time/TimerClient.h
  ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../sdl_utils/include/sdl_utils/InputEvent.h
+ ../utils/include/utils/ContainerOf.h
  ../utils/include/utils/ErrorCodes.h
  ../utils/include/utils/Log.h
  ../utils/include/utils/drawing/DrawParams.h
@@ -109,6 +116,16 @@ CMakeFiles/hello.dir/src/Game/Entities/Hero.c.o
  ../utils/include/utils/drawing/Rectangle.h
  ../utils/include/utils/input/EventDefines.h
  /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/Hero.c
+CMakeFiles/hello.dir/src/Game/Entities/HeroBase.c.o
+ ../include/Game/Entities/HeroBase.h
+ ../manager_utils/include/manager_utils/drawing/Image.h
+ ../manager_utils/include/manager_utils/drawing/Widget.h
+ ../utils/include/utils/ErrorCodes.h
+ ../utils/include/utils/Log.h
+ ../utils/include/utils/drawing/DrawParams.h
+ ../utils/include/utils/drawing/Point.h
+ ../utils/include/utils/drawing/Rectangle.h
+ /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Entities/HeroBase.c
 CMakeFiles/hello.dir/src/Game/Entities/Wheel.c.o
  ../include/Game/Entities/Wheel.h
  ../manager_utils/include/manager_utils/drawing/Image.h
@@ -127,6 +144,8 @@ CMakeFiles/hello.dir/src/Game/Game.c.o
  ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
+ ../include/Game/Entities/Tower.h
  ../include/Game/Entities/Wheel.h
  ../include/Game/Game.h
  ../include/Game/config/GameCfg.h
@@ -145,6 +164,7 @@ CMakeFiles/hello.dir/src/Game/Game.c.o
  ../sdl_utils/include/sdl_utils/Texture.h
  ../sdl_utils/include/sdl_utils/config/ImageContainerCfg.h
  ../sdl_utils/include/sdl_utils/config/MonitorWindowCfg.h
+ ../utils/include/utils/ContainerOf.h
  ../utils/include/utils/ErrorCodes.h
  ../utils/include/utils/Log.h
  ../utils/include/utils/containers/Vector.h
@@ -155,12 +175,10 @@ CMakeFiles/hello.dir/src/Game/Game.c.o
  ../utils/include/utils/input/EventDefines.h
  /home/martin/SDL_GAME_GIT/Game_SDL/src/Game/Game.c
 CMakeFiles/hello.dir/src/containers/VectorHero.c.o
- ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
  ../include/containers/VectorHero.h
  ../manager_utils/include/manager_utils/drawing/Image.h
  ../manager_utils/include/manager_utils/drawing/Widget.h
- ../manager_utils/include/manager_utils/time/TimerClient.h
- ../manager_utils/include/manager_utils/time/TimerClientStructs.h
  ../utils/include/utils/drawing/DrawParams.h
  ../utils/include/utils/drawing/Point.h
  ../utils/include/utils/drawing/Rectangle.h
@@ -172,6 +190,8 @@ CMakeFiles/hello.dir/src/main.c.o
  ../include/Game/Battlefield/Battlefield.h
  ../include/Game/Entities/Buttons/WheelButton.h
  ../include/Game/Entities/Hero.h
+ ../include/Game/Entities/HeroBase.h
+ ../include/Game/Entities/Tower.h
  ../include/Game/Entities/Wheel.h
  ../include/Game/Game.h
  ../include/Game/config/GameCfg.h

@@ -1,10 +1,10 @@
 #include "Game/Entities/HeroBase.h"
-struct HeroBaseCfg{
-    int32_t rsrcId;
-    int32_t health;
-    bool isAlive;
-    HeroType heroType;
-};
+#include "utils/ErrorCodes.h"
+#include "utils/Log.h"
+
+static void draw(struct HeroBase* self);
+static void takeDamage(struct HeroBase* self, int32_t damage);
+static void deinit(struct HeroBase* self);
 
 int32_t initBase (struct HeroBase* self,const struct HeroBaseCfg* cfg, struct Point* pos, PlayerType playerType){
     self->playerType = playerType;
@@ -15,13 +15,16 @@ int32_t initBase (struct HeroBase* self,const struct HeroBaseCfg* cfg, struct Po
     self->draw_func = draw;
     self->takeDamage_func = takeDamage;
     self->deinit_func = deinit;
+    createImage(&self->heroImg, cfg->rsrcId, pos);
+    return SUCCESS;
+
 }
 
 static void draw(struct HeroBase* self){
     drawImage(&self->heroImg);
 }
 
-static int32_t takeDamage(struct HeroBase* self, int32_t damage){
+static void takeDamage(struct HeroBase* self, int32_t damage){
     self->health -= damage;
     if (self->health < 0){
         self->isAlive = false;

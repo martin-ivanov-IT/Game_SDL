@@ -21,8 +21,8 @@ static const int32_t TROLL_1_BUTTON_FRAME_WIDTH_HEIGHT = 50;
 static const int32_t TROLL_1_HEALTH = 50;
 static const int32_t TROLL_1_ATACK_DEMAGE = 25;
 
-static const int32_t TOWER_HEALTH = 50;
-static const int32_t TOWER_FRAMES_COUNT= 50;
+static const int32_t TOWER_HEALTH = 1000;
+static const int32_t TOWER_FRAMES_COUNT= 3;
 static const int32_t TOWER_FRAME_WIDTH_HEIGHT = 600;
 
 static const int32_t BUTTON_COUNT = 2;
@@ -48,27 +48,28 @@ static void populateResourceLocation (char* buffer, const char* relativePath){
 }
 
 static void popilateCameCfg( struct GameConfig* cfg){
-    UNUSED(cfg);
-    cfg->heroCfg.rsrcId = TROLL_1_RUN_ID;
-    cfg->heroCfg.runRsrcId = TROLL_1_RUN_ID;
-    cfg->heroCfg.atackRsrcId = TROLL_1_ATACK_ID;
-    cfg->heroCfg.dieRsrcId = TROLL_1_DIE_ID;
-    cfg->heroCfg.hurtRsrcId = TROLL_1_HURT_ID;
-    cfg->heroCfg.idleRsrcId = TROLL_1_IDLE_ID;
-    cfg->heroCfg.health = TROLL_1_HEALTH;
-    cfg->heroCfg.atackDamage = TROLL_1_ATACK_DEMAGE;
-    cfg->heroCfg.mode = RUN;
-    cfg->heroCfg.horSteps = 40;
-    cfg->heroCfg.verSteps = 20;
-    cfg->heroCfg.deltaMovePx = 50;
+    cfg->troll_1Cfg.baseCfg.rsrcId = TROLL_1_RUN_ID;
+    cfg->troll_1Cfg.runRsrcId = TROLL_1_RUN_ID;
+    cfg->troll_1Cfg.atackRsrcId = TROLL_1_ATACK_ID;
+    cfg->troll_1Cfg.hurtRsrcId = TROLL_1_HURT_ID;
+    cfg->troll_1Cfg.dieRsrcId = TROLL_1_DIE_ID;
+    cfg->troll_1Cfg.idleRsrcId = TROLL_1_IDLE_ID;
+    cfg->troll_1Cfg.baseCfg.health = TROLL_1_HEALTH;
+    cfg->troll_1Cfg.atackDamage = TROLL_1_ATACK_DEMAGE;
+    cfg->troll_1Cfg.mode = RUN;
+    cfg->troll_1Cfg.deltaMovePx  = 50;
+    cfg->troll_1Cfg.baseCfg.isAlive = true;
+    cfg->troll_1Cfg.baseCfg.heroType = TROLL_1;
 
     cfg->playerTowerCfg.health = TOWER_HEALTH;
     cfg->playerTowerCfg.rsrcId = PLAYER_TOWER_ID;
-    cfg->playerTowerCfg.playerType = PLAYER;
+    cfg->playerTowerCfg.isAlive = true;
+
 
     cfg->enemyTowerCfg.health = TOWER_HEALTH;
     cfg->enemyTowerCfg.rsrcId = ENEMY_TOWER_ID;
-    cfg->enemyTowerCfg.playerType = ENEMY;
+    cfg->enemyTowerCfg.isAlive = true;      
+
 
     cfg->trollBtnRsrcId = TROLL_1_BUTTON_ID;
     cfg->trollBtnEnemyRsrcId = TROLL_1_BUTTON_ENEMY_ID;
@@ -235,7 +236,7 @@ static void populateImageContainerCfg(struct ImageContainerCfg* cfg){
     insertImageConfig(cfg, TEXTURE_WIN_GAME, &imgCfg);
     clearElementsVector(&imgCfg.frames);
 //buttons
-    const char* buttonPaths[2] = {"resources/p/buttons/island_boy_face.png", "resources/p/buttons/troll_1_face.png"};
+    const char* buttonPaths[2] = {"resources/p/buttons/troll_1_face.png", "resources/p/buttons/troll_1_face.png"};
     const int32_t buttonRsrcIds[2] = { TROLL_1_BUTTON_ID, TROLL_1_BUTTON_ENEMY_ID};
 
     for (int32_t buttonId = 0; buttonId < BUTTON_COUNT; ++buttonId) {

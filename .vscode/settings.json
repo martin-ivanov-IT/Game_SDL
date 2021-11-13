@@ -13,6 +13,8 @@
         "game.h": "c",
         "hero.h": "c",
         "battlefield.h": "c",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "commondefines.h": "c",
+        "containerof.h": "c"
     }
 }
