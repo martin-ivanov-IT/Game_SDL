@@ -16,6 +16,7 @@ typedef enum HeroMode{
     HURT,
     DIE,
     IDLE,
+    LONG_ATACK,
 }HeroMode;
 
 

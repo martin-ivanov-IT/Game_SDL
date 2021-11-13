@@ -15,10 +15,23 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 0.04
 3.06
 
-convert +append *.png troll_2_sprite_run.png
-convert +append *.png troll_2_sprite_atack.png
-convert +append *.png troll_2_sprite_idle.png
-convert +append *.png troll_2_sprite_die.png
-convert +append *.png troll_2_sprite_hurt.png
+convert +append *.png troll_3_sprite_run.png
+convert +append *.png troll_3_sprite_atack.png
+convert +append *.png troll_3_sprite_idle.png
+convert +append *.png troll_3_sprite_die.png
+convert +append *.png troll_3_sprite_hurt.png
+
+convert +append *.png terrorist_1_face.png
+convert +append *.png terrorist_2_face.png
+convert +append *.png terrorist_3_face.png
+
+convert +append *.png terrorist_1_sprite_run.png
+convert +append *.png terrorist_1_sprite_atack.png
+convert +append *.png terrorist_1_sprite_long_atack.png
+convert +append *.png terrorist_1_sprite_idle.png
+convert +append *.png terrorist_1_sprite_die.png
+convert +append *.png terrorist_1_sprite_hurt.png
+
+convert +append *.png star_button.png
 
 convert *.png -resize 200x100 myfigure.jpg

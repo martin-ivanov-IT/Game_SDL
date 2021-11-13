@@ -7,6 +7,8 @@ typedef enum HeroType{
     TOWER,
     TROLL_1,
     TROLL_2,
+    TROLL_3,
+    TERRORIST_1,
 }HeroType;
 
 struct HeroBaseCfg{

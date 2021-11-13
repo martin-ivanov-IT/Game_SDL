@@ -7,6 +7,7 @@ CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Battlefield/Battlefi
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/HeroBase.h
+CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Terrorist.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Tower.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Entities/Wheel.h
 CMakeFiles/hello.dir/src/Engine/Engine.c.o: ../include/Game/Game.h
@@ -47,6 +48,7 @@ CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Engine/Engine
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Engine/config/EngineCfg.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Game/Entities/HeroBase.h
+CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Game/Entities/Terrorist.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/Game/config/GameCfg.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/common/CommonDefines.h
 CMakeFiles/hello.dir/src/Engine/EngineConfigLoader.c.o: ../include/common/TimerDefines.h
@@ -144,6 +146,7 @@ CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Battlefield/Battlefield.
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/HeroBase.h
+CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Terrorist.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Tower.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Entities/Wheel.h
 CMakeFiles/hello.dir/src/Game/Game.c.o: ../include/Game/Game.h
@@ -190,6 +193,7 @@ CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Battlefield/Battlefield.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Buttons/WheelButton.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Hero.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/HeroBase.h
+CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Terrorist.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Tower.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Entities/Wheel.h
 CMakeFiles/hello.dir/src/main.c.o: ../include/Game/Game.h

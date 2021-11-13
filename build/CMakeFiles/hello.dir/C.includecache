@@ -48,11 +48,23 @@ stdint.h
 manager_utils/drawing/Image.h
 ../include/Game/Entities/manager_utils/drawing/Image.h
 
+../include/Game/Entities/Terrorist.h
+stdint.h
+-
+manager_utils/drawing/Image.h
+../include/Game/Entities/manager_utils/drawing/Image.h
+manager_utils/time/TimerClient.h
+../include/Game/Entities/manager_utils/time/TimerClient.h
+Game/Entities/Hero.h
+../include/Game/Entities/Game/Entities/Hero.h
+
 ../include/Game/config/GameCfg.h
 stdint.h
 -
 Game/Entities/Hero.h
 ../include/Game/config/Game/Entities/Hero.h
+Game/Entities/Terrorist.h
+../include/Game/config/Game/Entities/Terrorist.h
 
 ../include/common/CommonDefines.h
 

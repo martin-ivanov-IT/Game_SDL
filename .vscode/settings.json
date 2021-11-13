@@ -15,6 +15,7 @@
         "battlefield.h": "c",
         "*.tcc": "cpp",
         "commondefines.h": "c",
-        "containerof.h": "c"
+        "containerof.h": "c",
+        "gamecfg.h": "c"
     }
 }
