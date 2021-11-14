@@ -22,6 +22,7 @@ typedef enum HeroMode{
 
 typedef enum HeroDefines{
     HERO_PLAYER_START_X = 620,
+    TERRORIST_START_Y = 555,
     TROLL_START_Y = 450,
     HERO_ENEMY_START_X = -300,
 
@@ -38,6 +39,8 @@ struct HeroCfg{
     enum HeroMode mode;
     int32_t atackDamage;
     int32_t deltaMovePx;
+    int32_t prise;
+    int32_t atackFrame;
 
 };
 
@@ -48,6 +51,8 @@ struct Hero{
     int32_t moveTimerId;
     int32_t spriteTimerId;
 
+    int32_t atackFrame;
+
     struct Image heroRunImg;
     struct Image heroAtackImg;
     struct Image heroHurtImg;
@@ -55,6 +60,7 @@ struct Hero{
     struct Image heroIdleImg;
 
     int32_t atackDamage;
+    int32_t prise;
     enum HeroMode mode;
 
     int32_t currAnimStep;

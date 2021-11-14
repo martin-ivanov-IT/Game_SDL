@@ -1,5 +1,5 @@
 #ifndef GAME_WHEEL_H_
-#define GAME_WHEELH_
+#define GAME_WHEEL_H_
 #include <stdint.h>
 #include <stdbool.h>
 #include "manager_utils/drawing/Image.h"

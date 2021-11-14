@@ -4,6 +4,9 @@
 #include "utils/ContainerOf.h"
 #include "utils/Log.h"
 #include "common/CommonDefines.h"
+#include <stdlib.h>
+
+
 
 static void deinit(struct HeroBase* heroBase);
 static void startAnim(struct Hero* self);
@@ -11,8 +14,8 @@ static int32_t produceDamage(struct Hero* self);
 static void setModeAtackHero(struct Hero* self);
 static void setModeIdleHero(struct Hero* self);
 static void setModeHurtHero(struct Hero* self);
-void setModeRunHero(struct Hero* self);
-void setModeDieHero(struct Hero* self);
+static void setModeRunHero(struct Hero* self);
+static void setModeDieHero(struct Hero* self);
 
 void handleEventHero (struct Hero* self, struct InputEvent* e){
     UNUSED(self);
@@ -68,12 +71,15 @@ int32_t initHero (struct HeroBase* heroBase,const struct HeroCfg* cfg, struct Po
     self->setModeRunHero_func = setModeRunHero;
     self->startAnim_func = startAnim;
     self->produceDamage_func = produceDamage;
+    self->prise = cfg->prise;
+    self->atackFrame = cfg->atackFrame;
     
     createImage(&self->heroRunImg, cfg->runRsrcId, pos);
-    createImage(&self->heroDieImg, cfg->dieRsrcId, pos);
-    createImage(&self->heroHurtImg, cfg->hurtRsrcId, pos);
+    createImage(&self->heroAtackImg, cfg->atackRsrcId, pos);
+    // createImage(&self->heroHurtImg, cfg->hurtRsrcId, pos);
     createImage(&self->heroIdleImg, cfg->idleRsrcId, pos);
     createImage(&self->heroAtackImg, cfg->atackRsrcId, pos);
+    createImage(&self->heroDieImg, cfg->dieRsrcId, pos);
 
     if(self->base.playerType == ENEMY){
         self->heroRunImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
@@ -82,7 +88,6 @@ int32_t initHero (struct HeroBase* heroBase,const struct HeroCfg* cfg, struct Po
         self->heroAtackImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
         self->heroIdleImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
         self->base.heroImg.widget.drawParams.flipType = HORIZONTAL_WIDGET_FLIP;
-
     }
     self->base.heroImg = self->heroRunImg;
     self->currAnimStep = 0;
@@ -98,13 +103,7 @@ int32_t initHero (struct HeroBase* heroBase,const struct HeroCfg* cfg, struct Po
 }
 
 static void deinit(struct HeroBase* heroBase){
-    struct Hero* self = container_of(heroBase, struct Hero, base);
-    destroyImage(&self->base.heroImg);
-    destroyImage(&self->heroHurtImg);
-    destroyImage(&self->heroDieImg);
-    destroyImage(&self->heroRunImg);
-    destroyImage(&self->heroAtackImg);
-    destroyImage(&self->heroIdleImg);
+    UNUSED(heroBase);
 }
 
 static void startAnim(struct Hero* self){

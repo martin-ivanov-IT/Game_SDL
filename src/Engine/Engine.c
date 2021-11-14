@@ -117,6 +117,7 @@ void deinitEngine(struct Engine *engine) {
   deinitInputEvent(&engine->event);
   
   deinitManagerHadnler();
+  deinitDebugConsole(&engine->debugConsole);
 }
 
 void startEngine(struct Engine *engine) {

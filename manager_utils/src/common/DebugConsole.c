@@ -11,6 +11,8 @@
 #include "utils/time/Time.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"
+#include <stdlib.h>
+
 
 static const int32_t UPDATE_SKIPS = 20;
 

@@ -7,7 +7,7 @@
 
 
 #define MAX_IMAGE_NAME_LEN 50
-#define MAX_IMAGE_SIZE 50
+#define MAX_IMAGE_SIZE 200
 
 struct ImageConfig {
   struct Vector frames;

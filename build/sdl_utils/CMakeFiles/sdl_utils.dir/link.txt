@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsdl_utils.a  CMakeFiles/sdl_utils.dir/src/SDL_loader.c.o CMakeFiles/sdl_utils.dir/src/MonitorWindow.c.o CMakeFiles/sdl_utils.dir/src/Texture.c.o CMakeFiles/sdl_utils.dir/src/InputEvent.c.o CMakeFiles/sdl_utils.dir/src/Renderer.c.o CMakeFiles/sdl_utils.dir/src/containers/ImageContainer.c.o CMakeFiles/sdl_utils.dir/src/containers/TextContainer.c.o CMakeFiles/sdl_utils.dir/src/config/ImageContainerCfg.c.o CMakeFiles/sdl_utils.dir/src/config/TextContainerCfg.c.o
-/usr/bin/ranlib libsdl_utils.a

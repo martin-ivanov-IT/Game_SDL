@@ -53,10 +53,9 @@ void deinitImageContainer(struct ImageContainer *self){
         }
         const size_t size = getSizeVector(&self->textureFrames[i]);
         for (size_t el = 0; el < size; el++)
-        {
+        {   
             free(getElementVector(&self->textureFrames[i], el));
         }
-        
         freeVector(&self->textureFrames[i]);
     }
     freeVector(&EMPTY_FRAMES);

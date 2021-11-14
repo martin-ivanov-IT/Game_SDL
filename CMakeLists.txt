@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.2)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers_c.cmake)
 
-project(hello LANGUAGES C)
+project(age_of_war LANGUAGES C)
 
 set(CMAKE_MODULE_PATH 
     ${CMAKE_MODULE_PATH}
@@ -23,8 +23,8 @@ add_executable(${PROJECT_NAME}
     ${_SOURCES_DIR}/Game/Battlefield/Battlefield.c
     ${_SOURCES_DIR}/Game/Entities/Hero.c
     ${_SOURCES_DIR}/Game/Entities/HeroBase.c
-    ${_SOURCES_DIR}/Game/Entities/Wheel.c
-    ${_SOURCES_DIR}/Game/Entities/Buttons/WheelButton.c
+    ${_SOURCES_DIR}/Game/Entities/Terrorist.c
+    ${_SOURCES_DIR}/Game/Entities/Buttons/GameButton.c
     ${_SOURCES_DIR}/Engine/EngineConfigLoader.c
     ${_SOURCES_DIR}/containers/VectorHero.c
 
@@ -33,8 +33,9 @@ add_executable(${PROJECT_NAME}
     ${_INCLUDE_DIR}/Game/Game.h
     ${_INCLUDE_DIR}/Game/Entities/Hero.h
     ${_INCLUDE_DIR}/Game/Entities/HeroBase.h
-    ${_INCLUDE_DIR}/Game/Entities/Wheel.h
-    ${_INCLUDE_DIR}/Game/Entities/Buttons/WheelButton.h
+    ${_INCLUDE_DIR}/Game/Entities/Terrorist.h
+    ${_INCLUDE_DIR}/Game/Entities/Robot.h
+    ${_INCLUDE_DIR}/Game/Entities/Buttons/GameButton.h
     ${_INCLUDE_DIR}/common/CommonDefines.h
     ${_INCLUDE_DIR}/common/TimerDefines.h
     ${_INCLUDE_DIR}/Game/config/GameCfg.h
@@ -47,7 +48,7 @@ add_executable(${PROJECT_NAME}
 
 set_target_c_standard(${PROJECT_NAME} 11)
 enable_target_c_warnings(${PROJECT_NAME})
-enable_target_c_sanitizer(${PROJECT_NAME} "address")
+# enable_target_c_sanitizer(${PROJECT_NAME} "address")
 # "undefined"
 # "address"
 

@@ -4,12 +4,23 @@
 #include "stdlib.h"
 #include "string.h"
 
-static void copyTextContent(char** currText, const char* newText){
-    if(*currText != NULL){
-        free(*currText);
-    }
-    *currText =  (char*)malloc(strlen(newText) + 1);
-    strcpy(*currText, newText);
+static void copyTextContent(struct Text *text, const char *textContent) {
+  const size_t INPUT_TEXT_SIZE = strlen(textContent);
+
+  // sanity check
+  if (NULL != text->textContent) {
+    free(text->textContent);
+    text->textContent = NULL;
+  }
+
+  char *tempText = (char*)malloc(INPUT_TEXT_SIZE + 1);  //+1 for the terminator
+  strncpy(tempText, textContent, INPUT_TEXT_SIZE);
+  
+
+  // strncpy should be OK, but just to be sure
+  tempText[INPUT_TEXT_SIZE] = '\0';
+
+  text->textContent = tempText;
 }
 void createText(struct Text *self, const char *textContent, int32_t fontId,
                 const struct Color *color, const struct Point *pos){
@@ -29,17 +40,21 @@ void createText(struct Text *self, const char *textContent, int32_t fontId,
     self->fontId = fontId;
     self->color = *color;
     self->textContent = NULL;
-    copyTextContent(&self->textContent, textContent);
+    copyTextContent(self, textContent);
 
     params->frameRect.x = 0;
     params->frameRect.y = 0;
     params->frameRect.w = params->width;
     params->frameRect.h = params->height;
 
+    self->widget.isCreated = true;
+    self->widget.isVisible = true;
+    self->widget.isAlphaModulationEnabled = true;
+    self->widget.isDestroyed = false; 
+    
     gResourceMngrProxy->createTextResourceMgr(self->textContent, color, fontId,
                             &params->rsrcId, &params->width, &params->height);
-    self->widget.isCreated = true;
-    self->widget.isDestroyed = false;        
+           
 
 }
 
@@ -72,7 +87,7 @@ void setText(struct Text *self, const char *textContent){
     if(!strcmp(self->textContent, textContent)){
         return;
     }
-    copyTextContent(&self->textContent, textContent);
+    copyTextContent(self, textContent);
     struct DrawParams* params = &self->widget.drawParams;
     gResourceMngrProxy->reloadTextResourceMgr(self->textContent, &self->color, self->fontId, params->rsrcId, &params->width, &params->height);
     params->frameRect.w = params->width;

@@ -2,13 +2,13 @@
 #define GAME_HEROBASE_H_
 #include <stdint.h>
 #include "manager_utils/drawing/Image.h"
+
 typedef enum HeroType{
     HERO,
     TOWER,
-    TROLL_1,
-    TROLL_2,
-    TROLL_3,
-    TERRORIST_1,
+    TROLL,
+    TERRORIST,
+    ROBOT,
 }HeroType;
 
 struct HeroBaseCfg{

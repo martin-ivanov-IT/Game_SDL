@@ -14,7 +14,7 @@ struct Terrorist{
     struct Hero hero;
     int32_t longAtackDamage;
     struct Image heroLongAtackImg;
-    void (*setModeLongAtackHero_func)(struct Hero* self);
+    void (*setModeLongAtackHero_func)(struct Terrorist* self);
 
 };
 int32_t initTerrorist (struct HeroBase* base,const struct TerroristCfg* cfg, struct Point* pos, PlayerType playerType);

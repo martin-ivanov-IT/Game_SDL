@@ -11,7 +11,7 @@
 #include "manager_utils/time/TimerClientStructs.h"
 #include "utils/time/Time.h"
 
-#define MAX_SUPPORTED_TIMERS 50
+#define MAX_SUPPORTED_TIMERS 1000000
 
 //Forward declarations
 struct TimerMgrConfig;

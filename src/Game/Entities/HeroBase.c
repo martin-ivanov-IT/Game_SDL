@@ -1,6 +1,9 @@
 #include "Game/Entities/HeroBase.h"
 #include "utils/ErrorCodes.h"
 #include "utils/Log.h"
+#include "include/containers/VectorHero.h"
+#include <stdlib.h>
+
 
 static void draw(struct HeroBase* self);
 static void takeDamage(struct HeroBase* self, int32_t damage);
@@ -31,5 +34,5 @@ static void takeDamage(struct HeroBase* self, int32_t damage){
     }
 }
 static void deinit(struct HeroBase* self){
- destroyImage(&self->heroImg);
+    UNUSED(self);
 }
